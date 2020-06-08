@@ -1,0 +1,28 @@
+<form class="form-signin"
+    [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+>
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+    <div class="social-login">
+        <button class="btn facebook-btn social-btn" type="button"><span><i class="fa fa-facebook-f"></i>
+                Facebook</span> </button>
+        <button class="btn google-btn social-btn" type="button"><span><i class="fa fa-google"></i> Google</span>
+        </button>
+    </div>
+    <p style="text-align:center"> OR </p>
+    <input class="form-group"
+        formControlName="email" 
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <input class="form-group"
+        formControlName="password" 
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+        type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+    <button class="btn btn-success btn-block" type="submit"><i class="fa fa-sign-in-alt"></i> Sign in</button>
+    <a href="#" id="forgot_pswd" routerLink="/login/forgot-password">Forgot password?</a>
+    <hr>
+    <!-- <p>Don't have an account!</p>  -->
+    <button routerLink='/login/sign-up' class="btn btn-primary btn-block" type="submit"><i class="fa fa-user-plus"></i> 
+        New User Register</button>
+    <a href='#' routerLink='/'>Home</a>
+</form>

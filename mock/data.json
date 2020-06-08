@@ -1,0 +1,832 @@
+{
+    "exam-choice-hierarchy": {
+        "name": "Exam",
+        "node": [
+            {
+                "name": "School",
+                "node": [
+                    {
+                        "name": "Primary"
+                    },
+                    {
+                        "name": "Secondary",
+                        "node": [
+                            {
+                                "name": "8th"
+                            },
+                            {
+                                "name": "9th"
+                            },
+                            {
+                                "name": "10th"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Senior Secondary",
+                        "node": [
+                            {
+                                "name": "Science",
+                                "node": [
+                                    {
+                                        "name": "Physics",
+                                        "node": [
+                                            {
+                                                "name": "11th"
+                                            },
+                                            {
+                                                "name": "12th"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "Chemistry",
+                                        "node": [
+                                            {
+                                                "name": "11th"
+                                            },
+                                            {
+                                                "name": "12th"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "Maths"
+                                    },
+                                    {
+                                        "name": "Biology"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Commerce"
+                            },
+                            {
+                                "name": "Arts"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "College"
+            },
+            {
+                "name": "Competitive",
+                "node": [
+                    {
+                        "name": "IIT JEE"
+                    },
+                    {
+                        "name": "NEET"
+                    },
+                    {
+                        "name": "Banking"
+                    }
+                ]
+            }
+        ]
+    },
+    "users": [
+        {
+            "id": "249",
+            "name": "Bharti Yadav",
+            "phone": "+918866647797",
+            "email": "bharti.yadav807@gmail.com",
+            "selected_choice": "jee_neet_phy",
+            "created_at": "2019-11-12 10:47:10",
+            "updated_at": "2019-11-12 10:55:39"
+        },
+        {
+            "id": "248",
+            "name": "Vijay Rana",
+            "phone": "+919426347226",
+            "email": "vijaycby@gmail.com",
+            "selected_choice": "10th_mat_cb_en",
+            "created_at": "2019-10-05 09:01:39",
+            "updated_at": "2019-11-03 12:03:58"
+        },
+        {
+            "id": "247",
+            "name": "",
+            "phone": "+917405650858",
+            "email": "pandyahardik980@gmail.com",
+            "selected_choice": "10th_mat_cb_en",
+            "created_at": "2019-10-02 09:55:02",
+            "updated_at": "2019-10-02 09:55:56"
+        },
+        {
+            "id": "246",
+            "name": "",
+            "phone": "+919315410947",
+            "email": "harshvp967@gmail.com",
+            "selected_choice": "11th_mat_cb_en",
+            "created_at": "2019-10-01 00:26:10",
+            "updated_at": "2019-10-01 00:27:37"
+        },
+        {
+            "id": "245",
+            "name": "maulesh patel",
+            "phone": "+919825151427",
+            "email": "mauleshpatel747.pmk@gmail.com",
+            "selected_choice": null,
+            "created_at": "2019-09-28 12:52:46",
+            "updated_at": "2019-09-28 12:54:22"
+        },
+        {
+            "id": "243",
+            "name": "Hiren Jani",
+            "phone": "+919265436383",
+            "email": "hirenjani94@gmail.com",
+            "selected_choice": "8th_mat_cb_en",
+            "created_at": "2019-09-19 12:07:28",
+            "updated_at": "2019-09-21 08:26:42"
+        },
+        {
+            "id": "241",
+            "name": "",
+            "phone": "+919558573312",
+            "email": "rinkeshkayasth@gmail.com",
+            "selected_choice": "11th_mat_cb_en",
+            "created_at": "2019-09-18 05:05:11",
+            "updated_at": "2019-09-18 17:14:49"
+        },
+        {
+            "id": "240",
+            "name": "Rupareliya Bhargav",
+            "phone": "+919898443159",
+            "email": "rupareliyabhargav13@gmail.com",
+            "selected_choice": "10th_sci_cb_en",
+            "created_at": "2019-09-14 07:21:59",
+            "updated_at": "2019-09-14 07:28:45"
+        },
+        {
+            "id": "239",
+            "name": "Madhuri Panwar",
+            "phone": "+916265483129",
+            "email": "madhuri20panwar@gmail.com",
+            "selected_choice": "10th_mat_cb_en",
+            "created_at": "2019-09-12 09:46:25",
+            "updated_at": "2019-09-12 09:49:38"
+        },
+        {
+            "id": "238",
+            "name": "pinki dey duttachoudhury",
+            "phone": null,
+            "email": "pinki.mtedu@gmail.com",
+            "selected_choice": null,
+            "created_at": "2019-09-11 12:40:11",
+            "updated_at": "2019-09-11 12:40:11"
+        }
+    ],
+    "user": {
+        "choices": {
+            "favChoices": [
+                {
+                    "id": 14,
+                    "name": "8th Science",
+                    "db_prefix": "8th_sci_cb_en"
+                },
+                {
+                    "id": 15,
+                    "name": "8th Maths",
+                    "db_prefix": "8th_mat_cb_en"
+                },
+                {
+                    "id": 17,
+                    "name": "9th Science",
+                    "db_prefix": "9th_sci_cb_en"
+                },
+                {
+                    "id": 21,
+                    "name": "11th Physics",
+                    "db_prefix": "11th_phy_cb_en"
+                },
+                {
+                    "id": 25,
+                    "name": "12th Physics",
+                    "db_prefix": "12th_phy_cb_en"
+                },
+                {
+                    "id": 26,
+                    "name": "12th Chemistry",
+                    "db_prefix": "12th_che_cb_en"
+                },
+                {
+                    "id": 20,
+                    "name": "11th Maths",
+                    "db_prefix": "11th_mat_cb_en"
+                },
+                {
+                    "id": 19,
+                    "name": "10th Science",
+                    "db_prefix": "10th_sci_cb_en"
+                },
+                {
+                    "id": 24,
+                    "name": "12th Maths",
+                    "db_prefix": "12th_mat_cb_en"
+                },
+                {
+                    "id": 18,
+                    "name": "10th Maths",
+                    "db_prefix": "10th_mat_cb_en"
+                },
+                {
+                    "id": 36,
+                    "name": "JEE NEET Physics",
+                    "db_prefix": "jee_neet_phy"
+                },
+                {
+                    "id": 28,
+                    "name": "11 Biology",
+                    "db_prefix": "11th_bio_cb_en"
+                },
+                {
+                    "id": 16,
+                    "name": "9th Maths",
+                    "db_prefix": "9th_mat_cb_en"
+                },
+                {
+                    "id": 22,
+                    "name": "11th Chemistry",
+                    "db_prefix": "11th_che_cb_en"
+                },
+                {
+                    "id": 27,
+                    "name": "12th Biology",
+                    "db_prefix": "12th_bio_cb_en"
+                },
+                {
+                    "id": 30,
+                    "name": "11th Economics",
+                    "db_prefix": "11th_eco_cb_en"
+                },
+                {
+                    "id": 33,
+                    "name": "12th Accountancy",
+                    "db_prefix": "12th_acc_cb_en"
+                },
+                {
+                    "id": 32,
+                    "name": "11th Accountancy",
+                    "db_prefix": "11th_acc_cb_en"
+                },
+                {
+                    "id": 29,
+                    "name": "Test Database",
+                    "db_prefix": "test_test"
+                }
+            ],
+            "selectedChoice": {
+                "id": 14,
+                "name": "8th Science",
+                "db_prefix": "8th_sci_cb_en"
+            }
+        },
+        "id": "249",
+        "name": "Bharti Yadav",
+        "phone": "+918866647797",
+        "email": "bharti.yadav807@gmail.com"
+    },
+    "exam-choices": [
+        {
+            "id": "12",
+            "name": "8th_mat_cb_en",
+            "chapters": [
+                {
+                    "name": "Rational Numbers",
+                    "id": "1"
+                },
+                {
+                    "name": "Ratio and Proportions",
+                    "id": "2"
+                },
+                {
+                    "name": "Mensuration",
+                    "id": "3"
+                },
+                {
+                    "name": "chapter 4",
+                    "id": "4"
+                },
+                {
+                    "name": "chapter 5",
+                    "id": "5"
+                }
+
+            ],
+            "marks": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "categories": [
+                {
+                    "id": "1",
+                    "name": "MCQ"
+                },
+                {
+                    "id": "2",
+                    "name": "MCQ2"
+                },
+                {
+                    "id": "3",
+                    "name": "Subjective"
+                },
+                {
+                    "id": "4",
+                    "name": "Fill in the Blanks"
+                }
+            ]
+        },
+        {
+            "id": "13",
+            "name": "9th_mat_cb_en",
+            "chapters": [
+                {
+                    "name": "Rational Numbers",
+                    "id": "1"
+                },
+                {
+                    "name": "Ratio and Proportions",
+                    "id": "2"
+                }
+            ],
+            "marks": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "categories": [
+                {
+                    "id": "1",
+                    "name": "MCQ"
+                },
+                {
+                    "id": "2",
+                    "name": "MCQ2"
+                },
+                {
+                    "id": "3",
+                    "name": "Subjective"
+                },
+                {
+                    "id": "4",
+                    "name": "Fill in the Blanks"
+                }
+            ]
+        },
+        {
+            "id": "14",
+            "name": "10th_mat_cb_en",
+            "chapters": [
+                {
+                    "name": "Rational Numbers",
+                    "id": "1"
+                },
+                {
+                    "name": "Ratio and Proportions",
+                    "id": "2"
+                }
+            ],
+            "marks": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "categories": [
+                {
+                    "id": "1",
+                    "name": "MCQ"
+                },
+                {
+                    "id": "2",
+                    "name": "MCQ2"
+                },
+                {
+                    "id": "3",
+                    "name": "Subjective"
+                },
+                {
+                    "id": "4",
+                    "name": "Fill in the Blanks"
+                }
+            ]
+        }
+    ],
+    "questions": [
+        {
+            "id": 254,
+            "question": {
+                "question": [
+                    "If a pair of linear equations is consistent, then the lines will be"
+                ],
+                "option": {
+                    "0": null,
+                    "a": "parallel",
+                    "b": "always coincident<br>",
+                    "c": "intersecting or coincident",
+                    "d": "always intersecting"
+                },
+                "book": {
+                    "name": "NCERT Exemplar",
+                    "rl": {
+                        "name": "Exercise",
+                        "value": null
+                    },
+                    "q_no": "3",
+                    "p_no": "18"
+                }
+            },
+            "answer": {
+                "answer": {
+                    "0": "c"
+                },
+                "solution": ""
+            },
+            "marks": 2,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-10-31 14:58:04",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 255,
+            "previous_id": null
+        },
+        {
+            "id": 255,
+            "question": "{\"question\":[\"The sum of the digits of a two-digit number is 9. If 27 is added to it, the digits of the number get reversed. The number is\"],\"option\":{\"0\":null,\"a\":\"25\",\"b\":\"72\",\"c\":\"63\",\"d\":\"36\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Sample Question\",\"value\":null},\"q_no\":\"2\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 2,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-10-31 15:11:23",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 256,
+            "previous_id": 254
+        },
+        {
+            "id": 256,
+            "question": "{\"question\":[\"Graphically, the pair of equations<br>6x – 3y + 10 = 0<br>2x – y + 9 = 0<br>represents two lines which are\"],\"option\":{\"0\":null,\"a\":\"intersecting at exactly one point.\",\"b\":\"intersecting at exactly two points.<br>\",\"c\":\"coincident.\",\"d\":\"parallel.\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"1\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 257,
+            "previous_id": 255
+        },
+        {
+            "id": 257,
+            "question": "{\"question\":[\"The pair of equations x + 2y + 5 = 0 and –3x – 6y + 1 = 0 have\"],\"option\":{\"0\":null,\"a\":\"a unique solution\",\"b\":\"exactly two solutions<br>\",\"c\":\"infinitely many solutions\",\"d\":\"no solution\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"2\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 258,
+            "previous_id": 256
+        },
+        {
+            "id": 258,
+            "question": "{\"question\":[\"If a pair of linear equations is consistent, then the lines will be\"],\"option\":{\"0\":null,\"a\":\"parallel\",\"b\":\"always coincident<br>\",\"c\":\"intersecting or coincident\",\"d\":\"always intersecting\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"3\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"c\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 259,
+            "previous_id": 257
+        },
+        {
+            "id": 259,
+            "question": "{\"question\":[\"The pair of equations y = 0 and y = –7 has\"],\"option\":{\"0\":null,\"a\":\"one solution\",\"b\":\"two solutions<br>\",\"c\":\"infinitely many solutions\",\"d\":\"no solution\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"4\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 260,
+            "previous_id": 258
+        },
+        {
+            "id": 260,
+            "question": "{\"question\":[\"The pair of equations x = a and y = b graphically represents lines which are\"],\"option\":{\"0\":null,\"a\":\"parallel\",\"b\":\"intersecting at (b, a)<br>\",\"c\":\"coincident\",\"d\":\"intersecting at (a, b)\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"5\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 261,
+            "previous_id": 259
+        },
+        {
+            "id": 261,
+            "question": "{\"question\":[\"For what value of k, do the equations 3x – y + 8 = 0 and 6x – ky = –16 represent coincident lines?\"],\"option\":{\"0\":null,\"a\":\"`1/2`\",\"b\":\"`–1/2`\",\"c\":\"2\",\"d\":\"–2\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"6\",\"p_no\":\"18\"}}",
+            "answer": "{\"answer\":{\"0\":\"c\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 262,
+            "previous_id": 260
+        },
+        {
+            "id": 262,
+            "question": "{\"question\":[\"If the lines given by 3x + 2ky = 2 and 2x + 5y + 1 = 0 are parallel, then the value of k is\"],\"option\":{\"0\":null,\"a\":\"`(–5)/4`\",\"b\":\"`2/5`\",\"c\":\"`15/4`\",\"d\":\"`3/2`\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"7\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"c\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 263,
+            "previous_id": 261
+        },
+        {
+            "id": 263,
+            "question": "{\"question\":[\"The value of c for which the pair of equations cx – y = 2 and 6x – 2y = 3 will have infinitely many solutions is\"],\"option\":{\"0\":null,\"a\":\"3\",\"b\":\"– 3\",\"c\":\"–12\",\"d\":\"no value\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"8\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 264,
+            "previous_id": 262
+        },
+        {
+            "id": 264,
+            "question": "{\"question\":[\"One equation of a pair of dependent linear equations is –5x + 7y = 2. The second equation can be\"],\"option\":{\"0\":null,\"a\":\"10x + 14y + 4 = 0\",\"b\":\"–10x – 14y + 4 = 0<br>\",\"c\":\"–10x + 14y + 4 = 0\",\"d\":\"10x – 14y = –4\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"9\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 265,
+            "previous_id": 263
+        },
+        {
+            "id": 265,
+            "question": "{\"question\":[\"A pair of linear equations which has a unique solution x = 2, y = –3 is\"],\"option\":{\"0\":null,\"a\":\"x + y = –1\",\"b\":\"2x + 5y = –11<br> 2x – 3y = –5 4x + 10y = –22<br>\",\"c\":\"2x – y = 1\",\"d\":\"x – 4y –14 = 0<br> 3x + 2y = 0 5x – y – 13 = 0\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"10\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 266,
+            "previous_id": 264
+        },
+        {
+            "id": 266,
+            "question": "{\"question\":[\"If x = a, y = b is the solution of the equations x – y = 2 and x + y = 4, then the values of a and b are, respectively\"],\"option\":{\"0\":null,\"a\":\"3 and 5\",\"b\":\"5 and 3\",\"c\":\"3 and 1\",\"d\":\"–1 and –3\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"11\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"c\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 267,
+            "previous_id": 265
+        },
+        {
+            "id": 267,
+            "question": "{\"question\":[\"Aruna has only Re 1 and Rs 2 coins with her. If the total number of coins that she has is 50 and the amount of money with her is Rs 75, then the number of Re 1 and Rs 2 coins are, respectively\"],\"option\":{\"0\":null,\"a\":\"35 and 15\",\"b\":\"35 and 20\",\"c\":\"15 and 35\",\"d\":\"25 and 25\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"12\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"d\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 268,
+            "previous_id": 266
+        },
+        {
+            "id": 268,
+            "question": "{\"question\":[\"The father’s age is six times his son’s age. Four years hence, the age of the father will be four times his son’s age. The present ages, in years, of the son and the father are, respectively\"],\"option\":{\"0\":null,\"a\":\"4 and 24\",\"b\":\"5 and 30\",\"c\":\"6 and 36\",\"d\":\"3 and 24\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"13\",\"p_no\":\"19\"}}",
+            "answer": "{\"answer\":{\"0\":\"c\"},\"solution\":\"\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 1,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 269,
+            "previous_id": 267
+        },
+        {
+            "id": 269,
+            "question": "{\"question\":[\"Is it true to say that the pair of equations<br> – x + 2y + 2 = 0 and `1/2x-1/4y-1` 0<br>\"],\"option\":{\"0\":null,\"a\":\"\",\"b\":\"\",\"c\":\"\",\"d\":\"\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Sample Question\",\"value\":null},\"q_no\":\"1\",\"p_no\":\"20\"}}",
+            "answer": "{\"answer\":{\"0\":\"\"},\"solution\":\"Yes\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 4,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 270,
+            "previous_id": 268
+        },
+        {
+            "id": 270,
+            "question": "{\"question\":[\"Do the equations 4x + 3y – 1 = 5 and 12x + 9y = 15 represent a pair of coincident lines? Justify your answer.<br>\"],\"option\":{\"0\":null,\"a\":\"\",\"b\":\"\",\"c\":\"\",\"d\":\"\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Sample Question\",\"value\":null},\"q_no\":\"2\",\"p_no\":\"20\"}}",
+            "answer": "{\"answer\":{\"0\":\"\"},\"solution\":\"No\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 4,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 271,
+            "previous_id": 269
+        },
+        {
+            "id": 271,
+            "question": "{\"question\":[\"Is the pair of equations x + 2y – 3 = 0 and 6y + 3x – 9 = 0 consistent? Justify your answer.<br>\"],\"option\":{\"0\":null,\"a\":\"\",\"b\":\"\",\"c\":\"\",\"d\":\"\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Sample Question\",\"value\":null},\"q_no\":\"3\",\"p_no\":\"20\"}}",
+            "answer": "{\"answer\":{\"0\":\"\"},\"solution\":\"Yes\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 4,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 272,
+            "previous_id": 270
+        },
+        {
+            "id": 272,
+            "question": "{\"question\":[\"Do the following pair of linear equations have no solution? Justify your answer.\n<br>\n               \n                2x + 4y = 3 <br> 12y + 6x = 6 y = 2x<br>\"],\"option\":{\"0\":null,\"a\":\"\",\"b\":\"\",\"c\":\"\",\"d\":\"\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"1-i\",\"p_no\":\"21\"}}",
+            "answer": "{\"answer\":{\"0\":\"\"},\"solution\":\"Yes\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 4,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 273,
+            "previous_id": 271
+        },
+        {
+            "id": 273,
+            "question": "{\"question\":[\"Do the following pair of linear equations have no solution? Justify your answer.\n<br>\n               \n                x = 2y<br> y = 2x<br>\"],\"option\":{\"0\":null,\"a\":\"\",\"b\":\"\",\"c\":\"\",\"d\":\"\"},\"book\":{\"name\":\"NCERT Exemplar\",\"rl\":{\"name\":\"Exercise\",\"value\":null},\"q_no\":\"1-ii\",\"p_no\":\"21\"}}",
+            "answer": "{\"answer\":{\"0\":\"\"},\"solution\":\"No\"}",
+            "marks": 1,
+            "type_id": null,
+            "category_id": 4,
+            "level_id": null,
+            "chapter_id": 3,
+            "created_at": "2017-10-08 07:36:41",
+            "updated_at": "2018-04-02 09:20:29",
+            "status": 0,
+            "uploaded_by": 1,
+            "approved_by": null,
+            "approved_at": null,
+            "file_id": 62,
+            "next_id": 274,
+            "previous_id": 272
+        }
+    ]
+}
+

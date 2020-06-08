@@ -1,0 +1,5 @@
+<h3>Marks</h3>
+<div class="form-check-inline"  *ngFor="let m of marks; index as i">
+  <mat-checkbox [name]='"marks-"+m' 
+  [(ngModel)]="selectedMarks[m]" [value]='m' (change)="updateMarks()">{{m}}</mat-checkbox>
+</div>

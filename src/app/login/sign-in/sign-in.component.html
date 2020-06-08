@@ -1,0 +1,59 @@
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="">
+        <h4 class="text-center font-weight-light">LOGIN</h4>
+        <hr>
+        <!-- SOCIAL LOGIN -->
+        <div class="">
+            <div class="border-bottom btn btn-group div-group">
+                <button class="btn btn-danger"><i class="fa fa-google"> </i> Google</button>
+                <button class="btn btn-primary"><i class="fa fa-facebook"> </i> FaceBook</button>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div>
+            <div>
+                <div class="form-group">
+                    <label></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </div>
+                        </div>
+                        <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                            required="required" autofocus="">
+                    </div>
+                    <!-- <span id="emailHelpBlock" class="form-text text-muted">Type your email</span> -->
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-asterisk"></i>
+                            </div>
+                        </div>
+                        <input formControlName="password" [ngClass]="{'is-invalid': submitted && f.password.errors }"
+                            type="password" id="inputPassword" class="form-control" placeholder="Password"
+                            required="required">
+                    </div>
+                    <!-- <span id="textHelpBlock" class="form-text text-muted">Type your password</span> -->
+                </div>
+                <div class="form-group">
+                    <button name="submit" class="btn btn-block btn-primary" type="submit">Login</button>
+                </div>
+                <hr>
+                <!-- EXTRA LINKS-->
+                <div class="btn-group form-group">
+                    <a href="#" id="forgot_pswd" class="btn btn-outline-info"
+                    routerLink="/login/forgot-password">Forgot password?</a>
+
+                    <a href="#"  routerLink='/login/sign-up' class="btn btn-outline-info">New
+                        User?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

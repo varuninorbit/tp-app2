@@ -1,0 +1,40 @@
+<div  (swipeRight)="swipe($event.type)" (swipeLeft)="swipe($event.type)">
+  <ul class="fixed-tab nav  nav-pills nav-justified">    
+    <li class="nav-item">
+      <a class="nav-link" [@activeTab]="tab==0" (click)="tab=0">Chapters</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [@activeTab]="tab==1" (click)="tab=1">Questions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [@activeTab]="tab==2" (click)="tab=2">Options</a>
+    </li>
+  </ul>
+  <div [hidden]="tab!=0">
+    <app-chapters></app-chapters>
+  </div>
+  <div [hidden]="tab!=1">
+    <app-questions></app-questions>
+  </div>
+  <div [hidden]="tab!=2">
+    <app-marks></app-marks>
+    <app-category></app-category>
+  </div>
+</div>
+<app-nav>
+  <button type="button" class="btn btn-primary btn-lg float-left">
+      <span class="fa fa-bell-o text-light" data-toogle="tooltip"></span>
+  </button>
+  
+  <button type="button" class="btn btn-primary btn-lg float-left">
+      <span class="fa fa-cab text-light" data-toogle="tooltip"></span>
+  </button>
+
+  <button type="button" class="btn btn-primary btn-lg float-left">
+      <span class="fa fa-book text-light" data-toogle="tooltip"></span>
+  </button>
+
+  <button type="button" class="btn btn-primary btn-lg float-left">
+      <span class="fa fa-bus text-light" data-toogle="tooltip"></span>
+  </button>
+</app-nav>

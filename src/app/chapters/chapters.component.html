@@ -1,0 +1,6 @@
+<div class="list-group">
+  <div *ngFor="let chap of chapters" href="#" class="list-group-item list-group-item-action ">
+     <mat-checkbox [(ngModel)]='selectedChapters[chap.id]' (change)='upadateChapters()'
+     [name]='chap.name'>{{chap.id}} {{chap.name}}</mat-checkbox>
+  </div> 
+</div>

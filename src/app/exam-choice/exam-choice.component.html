@@ -1,0 +1,10 @@
+<app-card [param]="{title:currentChoice.name,rightCaption:'Selected Choice'}">  
+    <p class="mb-1"></p>
+    <small></small>
+</app-card>
+<div class="list-group">
+    <div *ngFor="let cho of choices" href="#" class="list-group-item list-group-item-action ">
+        <strong>{{cho.name}}</strong>
+    </div> 
+  </div>
+<a type="button" class="btn btn-block btn-lg btn-outline-info"  routerLink='exam-choice-add'>Add Choice</a>

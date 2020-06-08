@@ -1,0 +1,23 @@
+<!-- container div to render mathjax directive -->
+<div mathjax> 
+  <strong>{{question.id}}</strong>
+`  <strong>></strong><span class="math-container" [innerHTML]="_(jp(question.question).question[0])"></span>
+  <!-- <strong>JSON</strong> {{jp(question.question) | json}} -->
+  <br>
+
+  <div [ngSwitch]='question.category_id'>
+    <!-- MCQ QUESTIONS -->
+    <div *ngSwitchCase='1'>
+      <strong>Options</strong>
+      <p class="math-container">A {{jp(question.question).option['a']}}</p>
+      <p class="math-container">B {{jp(question.question).option['b']}}</p>
+      <p class="math-container">C {{jp(question.question).option['c']}}</p>
+      <p class="math-container">D {{jp(question.question).option['d']}}</p>
+    </div>
+    1
+    <!-- TRUE AND FALSE -->
+    <div *ngSwitchCase='4' class="math-container">
+      <span>{{jp(question.answer).answer[0]}}</span>
+    </div>
+  </div>
+</div>
