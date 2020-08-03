@@ -14,15 +14,15 @@ export class ActionService {
     window['http'] = http;
   }
 
-  get(ControllerName: string, keyval = false) {
+  get(ControllerName: string, keyval = false,query='') {
     //action name callback
     return (ActionName: string) => {
-      let actionUrl = `${Urls.base}${this.relativeURL}${ControllerName}/${ActionName}`;
+      let actionUrl = `${Urls.apiServerUrl}${ControllerName}/${ActionName}`;
 
       if (keyval) {
         //keval callback
         return (data:any):Observable<any> =>{
-          return this.http.get(actionUrl+'/keyval',{params: data})
+          return this.http.get(actionUrl+'/keyval'+query,{params: data})
         }
       } else {
         //params callback
@@ -34,7 +34,7 @@ export class ActionService {
     };
   }
 
-  post(ControllerName: string, keyval = false) {
+  post(ControllerName: string, keyval = false,query='') {
     //action name callback
     return (ActionName: string) => {
       let actionUrl = `${Urls.base}${this.relativeURL}${ControllerName}/${ActionName}`;
@@ -42,13 +42,13 @@ export class ActionService {
       if (keyval) {
         //keval callback
         return (data:any):Observable<any> =>{
-          return this.http.post(actionUrl+'/keyval',data)
+          return this.http.post(actionUrl+'/keyval'+query,data)
         }
       } else {
         //params callback
         return (...params: string[]): Observable<any> => {
           
-          return this.http.post(actionUrl,params);
+          return this.http.post(actionUrl+query,params);
         };
       }
     };

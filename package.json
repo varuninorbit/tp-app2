@@ -1,10 +1,11 @@
 {
   "name": "tp-app",
   "version": "0.0.0",
-  "scripts": {    
+  "scripts": {
     "ng": "ng",
     "app": "ng serve",
-    "app-lan": "ng serve --host=192.168.0.104 --port=4200",
+    "app-lan1": "ng serve --host=192.168.0.104 --port=4200",
+    "app-lan": "ng serve --host=localhost --port=4200 --deploy-url /tp-app",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
