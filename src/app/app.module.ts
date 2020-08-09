@@ -28,7 +28,7 @@ import { GlobalService } from "./_services/global.service";
 import * as Hammer from "hammerjs";
 import { BackButtonDirective } from "./back-button.directive";
 import { ActionService } from "./services/action.service";
-import { SchemaPageComponent } from './comp/schema-page/schema-page.component';
+import { SchemeModule } from './scheme/scheme.module';
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
@@ -58,9 +58,10 @@ export class MyHammerConfig extends HammerGestureConfig {
       version: "2.7.5",
       config: "TeX-MML-AM_CHTML",
       hostname: "cdnjs.cloudflare.com"
-    })
+    }),
+    SchemeModule
   ],
-  declarations: [AppComponent, AppRoutingModule.components, AlertComponent,BackButtonDirective, SchemaPageComponent],
+  declarations: [AppComponent, AppRoutingModule.components, AlertComponent,BackButtonDirective],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule],
   providers: [
