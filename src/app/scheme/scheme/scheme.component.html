@@ -1,12 +1,38 @@
 <span>Schemes</span>
-<p *ngFor="let scheme of schemes">
-    ID <span>{{scheme.id}}</span><br>
-    Name <span>{{scheme.name}}</span><br>
-    Description <span>{{scheme.name}}</span>
-</p>
 
+<mat-card *ngFor="let scheme of schemes">
+    <mat-card-title> {{scheme.name}}</mat-card-title>
+    <mat-card-content>
+    ID <span>{{scheme.id}}</span><br>
+    Description <span>{{scheme.name}}</span>
+    </mat-card-content>
+</mat-card>
 <!-- 
     TODO
     Select a scheme
     After clicking next button chapter selection should appear
  -->
+
+
+ <app-bottom-nav>
+    <button type="button" class="btn btn-primary btn-lg float-left">
+        <span class="fa fa-bell-o text-light" data-toogle="tooltip"></span>
+    </button>
+    
+    <button type="button" class="btn btn-primary btn-lg float-left">
+        <span class="fa fa-cab text-light" data-toogle="tooltip"></span>
+    </button>
+  
+    <a type="button" (click)="pop()" class="btn btn-primary btn-lg float-left">
+        <span class="fa fa-book text-light" data-toogle="tooltip"></span>
+    </a>
+  
+    <a type="button" class="btn btn-primary btn-lg float-left">
+        <span class="fa fa-bus text-light" data-toogle="tooltip"></span>
+    </a> 
+ </app-bottom-nav>
+
+            
+
+    
+  

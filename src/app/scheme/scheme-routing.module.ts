@@ -2,23 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule,Routes } from '@angular/router';
 import { SchemeComponent } from './scheme/scheme.component';
+import { ChapcilComponent } from './chapcil/chapcil.component';
+import { BottomNavComponent } from '../bottom-nav.component';
 
 const routes: Routes = [
-  {
-    path: "scheme",
-    component: SchemeComponent,
-    // children: [
-    //   {
-    //     path: "",
-    //     component: HomeComponent,
-    //     canActivate: [AuthGuard]
-    //   },
-    //   { path: "sign-in", component: SignInComponent },
-    //   { path: "forgot-password", component: PasswordResetComponent },
-    //   { path: "sign-up", component: SignUpComponent },
-    //   //{ path: "**", redirectTo: "sign-in" }
-    // ]
-  }
+  {path: "scheme", component: SchemeComponent},
+  {path: "scheme/chapcil", component: ChapcilComponent}
 ];
 
 @NgModule({
@@ -28,6 +17,6 @@ const routes: Routes = [
 })
 export class SchemeRoutingModule {
   static components = [
-    SchemeComponent
+    SchemeComponent, ChapcilComponent
   ]
  }

@@ -7,8 +7,8 @@ import { Location } from '@angular/common';
 export class BackButtonDirective {
     constructor(private location: Location) { }
 
-    @HostListener('click')
-    onClick() {
+    @HostListener('click',['$event.target'])
+    onClick(btn) {
         this.location.back();
     }
 }
