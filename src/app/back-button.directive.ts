@@ -1,4 +1,4 @@
-import { Directive, HostListener, Injectable } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Directive({
@@ -7,8 +7,8 @@ import { Location } from '@angular/common';
 export class BackButtonDirective {
     constructor(private location: Location) { }
 
-    @HostListener('click',['$event.target'])
-    onClick(btn) {
+    @HostListener('click')
+    onClick() {
         this.location.back();
     }
 }

@@ -2,3 +2,11 @@
 <mat-card *ngFor="let chapter of chapters">
         <mat-checkbox>{{chapter.chapter}}</mat-checkbox>
 </mat-card>
+
+<app-bottom-nav>
+
+    <a type="button" routerLink='..' class="btn btn-primary btn-lg float-left">
+         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+     </a>
+     
+</app-bottom-nav>
