@@ -1,6 +1,7 @@
 <span>Schemes</span>
 
-<mat-card *ngFor="let scheme of schemes">
+<mat-card (click)="select(scheme)" *ngFor="let scheme of schemes" class="card" 
+    [class]="{'select-highlighted':isSelected(scheme.id)}">
     <mat-card-title> {{scheme.name}}</mat-card-title>
     <mat-card-content>
     ID <span>{{scheme.id}}</span><br>

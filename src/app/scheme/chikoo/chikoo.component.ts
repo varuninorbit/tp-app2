@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SchemeModule } from '../scheme.module';
 
 @Component({
   selector: 'app-chikoo',
@@ -10,6 +11,10 @@ export class ChikooComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  select(scheme){
+    alert('selected'+scheme.id);
   }
 
 }

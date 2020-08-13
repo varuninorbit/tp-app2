@@ -5,6 +5,6 @@ export interface IState {
     chapters?:IChapter[];
     selectedChapters?:number[];
 
-    scheme?:IScheme;    
+    currentScheme?:IScheme;    
 }
   

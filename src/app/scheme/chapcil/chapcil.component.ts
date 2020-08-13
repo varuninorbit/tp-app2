@@ -29,21 +29,16 @@ export class ChapcilComponent implements OnInit {
      this.scheme = scheme;
    })
 
-   let state = this.stateService.getState().getValue()
-   this.selectedChapters = state.selectedChapters
+   this.selectedChapters = this.stateService.state.selectedChapters;
   }
 
+
+
   update(){
-    alert('updating chapters...');
-    let state = {
-      chapters:[
-      ],
-      selectedChapters:[]
-    };
-
-    state.selectedChapters = this.selectedChapters;
-
-    this.stateService.setState(state);
+    this.stateService.updateState((state)=>{
+      state.selectedChapters=this.selectedChapters;
+      return state;
+    });
   }
 
 }

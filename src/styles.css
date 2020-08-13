@@ -2,3 +2,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.select-highlighted{
+    background-color: #007bffe6;
+    color: white;
+}
