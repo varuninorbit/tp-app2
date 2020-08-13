@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
+import { StateService } from 'src/app/state.service';
 
 @Component({
   selector: 'app-scheme',
@@ -10,7 +11,7 @@ import { IScheme } from 'src/app/types/i-scheme';
 export class SchemeComponent implements OnInit {
   private AScheme;
   schemes:IScheme[];
-  constructor(private ac:ActionService ) { 
+  constructor(private ac:ActionService, private state: StateService ) { 
     this.AScheme = ac.get('ASchema');
   }
 
@@ -18,9 +19,5 @@ export class SchemeComponent implements OnInit {
     this.AScheme('all')('exam_choice=9th_sci_cb_en').subscribe(schemes=>{
       this.schemes = schemes;
     })
-  }
-
-  pop(){
-    alert('hello');
-  }
+  }  
 }
