@@ -6,8 +6,9 @@ import { ActionService } from '../services/action.service';
 import { MaterialModule } from '../material/material.module';
 import { GlobalModule } from '../global.module';
 import { FormsModule } from '@angular/forms';
+import { ChikooComponent } from './chikoo/chikoo.component';
 @NgModule({
-  declarations: [SchemeRoutingModule.components, SchemeComponent],
+  declarations: [SchemeRoutingModule.components, SchemeComponent, ChikooComponent],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule

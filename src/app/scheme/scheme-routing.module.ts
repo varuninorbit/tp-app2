@@ -4,10 +4,12 @@ import { RouterModule,Routes } from '@angular/router';
 import { SchemeComponent } from './scheme/scheme.component';
 import { ChapcilComponent } from './chapcil/chapcil.component';
 import { BottomNavComponent } from '../bottom-nav.component';
+import { ChikooComponent } from './chikoo/chikoo.component';
 
 const routes: Routes = [
   {path: "scheme", component: SchemeComponent},
-  {path: "scheme/chapcil", component: ChapcilComponent}
+  {path: "scheme/chapcil", component: ChapcilComponent},
+  {path: "scheme/chikoo", component: ChikooComponent}
 ];
 
 @NgModule({
@@ -17,6 +19,6 @@ const routes: Routes = [
 })
 export class SchemeRoutingModule {
   static components = [
-    SchemeComponent, ChapcilComponent
+    SchemeComponent, ChapcilComponent,ChikooComponent
   ]
- }
+}
