@@ -11,7 +11,8 @@ import { IQuestionsList } from 'src/app/types/i-questions-list';
 export class ChikooComponent implements OnInit {
   questionsList:IQuestionsList;
 
-  constructor(private ac:ActionService, private state: StateService) { 
+  constructor(private ac:ActionService, private state: StateService
+    ) { 
     window['chikoo']=this;
 
     const arrayTable = this.state.state.arrayTable;
@@ -28,5 +29,4 @@ export class ChikooComponent implements OnInit {
   select(scheme){
     alert('selected'+scheme.id);
   }
-
 }

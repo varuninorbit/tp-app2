@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
-import { NavModule } from "./nav/nav.module";
 //import { FaIconsComponent } from './nav/fa-icons/fa-icons.component';
 
 import { HttpClientModule } from "@angular/common/http";
@@ -45,7 +44,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NavModule,
+    //NavModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
