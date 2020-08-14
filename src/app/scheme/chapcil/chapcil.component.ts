@@ -1,8 +1,9 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { IChapter } from 'src/app/types/i-exam-choice';
 import { StateService } from 'src/app/state.service';
+import { ArrayTableService } from '../array-table.service';
 
 @Component({
   selector: 'app-chapcil',
@@ -16,8 +17,9 @@ export class ChapcilComponent implements OnInit {
   chapters:IChapter[];
   selectedChapters:any=[];
 
-  constructor(private ac:ActionService, private zone: NgZone, 
-    private stateService:StateService
+  constructor(private ac:ActionService, 
+    private stateService:StateService,
+    private arrayTable: ArrayTableService
     ) { 
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil']=this);
@@ -33,10 +35,10 @@ export class ChapcilComponent implements OnInit {
   }
 
 
-
   update(){
     this.stateService.updateState((state)=>{
       state.selectedChapters=this.selectedChapters;
+      state.currentScheme = this.scheme;
       return state;
     });
   }

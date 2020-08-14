@@ -14,12 +14,11 @@ import { NavModule } from "./nav/nav.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ExamChoiceService } from "./exam-choice/exam-choice.service";
 import { AppRoutingModule } from "./app-routing.module";
-import { LoginModule } from "./login/login.module";
+//import { LoginModule } from "./login/login.module";
 import { ExamChoiceModule } from "./exam-choice/exam-choice.module";
 import { AlertComponent } from "./_directives";
 import { AlertService } from "./_services";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { OptionsModule } from "./nav/options/options.module";
 import { MaterialModule } from "./material/material.module";
 import { ToggleMenuService } from "./_services/toggle-menu.service";
 import { SelectedOptionsService } from "./selected-options.service";
@@ -49,9 +48,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     NavModule,
     HttpClientModule,
     AppRoutingModule,
-    LoginModule,
-    OptionsModule,
-    ExamChoiceModule,
     BrowserAnimationsModule,
     MaterialModule,
     MathJaxModule.forRoot({
@@ -60,7 +56,8 @@ export class MyHammerConfig extends HammerGestureConfig {
       hostname: "cdnjs.cloudflare.com"
     }),
     SchemeModule,
-    GlobalModule
+    GlobalModule,
+    ExamChoiceModule
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],

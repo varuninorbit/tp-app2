@@ -41,12 +41,12 @@ export class ActionService {
 
       if (keyval) {
         //keval callback
-        return (data:any):Observable<any> =>{
+        return (data:any):Observable<any> =>{ //todo type correction
           return this.http.post(actionUrl+'/keyval'+query,data)
         }
       } else {
         //params callback
-        return (...params: string[]): Observable<any> => {
+        return (...params: string[]|any): Observable<any> => { //todo type correction
           
           return this.http.post(actionUrl+query,params);
         };

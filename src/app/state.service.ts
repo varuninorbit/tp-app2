@@ -21,7 +21,35 @@ export class StateService {
         id:0,
         description:'',
         name:''
-      }
+      },
+      arrayTable:[
+        [
+          "chapter_id",
+          "category_id",
+          "marks",
+          "no"
+        ],
+        [
+          [
+            3,
+            1,
+            0,
+            3
+          ],
+          [
+            7,
+            1,
+            1,
+            6
+          ],
+          [
+            4,
+            1,
+            0,
+            5
+          ]
+        ]
+      ]
     };
 
     this.state$ = new BehaviorSubject<IState> (this.state_);

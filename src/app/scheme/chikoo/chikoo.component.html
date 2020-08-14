@@ -1,11 +1,12 @@
-<p>chikoo works!</p>
+<p>Questions List</p>
+<div *ngFor="let question of questionsList">
+    <!-- <app-question question="question"></app-question> -->
+</div>
+
 <app-bottom-nav>
 
-    <a type="button" routerLink='chapcil' class="btn btn-primary btn-lg float-left">
+    <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
          <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
-     </a>
-     <a type="button" class="btn btn-primary btn-lg float-left">
-         <span class="fa fa-arrow-left text-light" data-toogle="tooltip"></span>
-     </a>
+    </a>
      
-  </app-bottom-nav>
+</app-bottom-nav>

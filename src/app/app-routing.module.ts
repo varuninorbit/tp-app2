@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './test/test.component';
-import { OptionsComponent } from './nav/options/options.component';
 
 const app_routes: Routes = [    
     //{ path: 'chapters', component: ChaptersComponent },
-    { path: 'options', component: OptionsComponent },
-    { path: 'test', component: TestComponent }
+    //{ path: 'test', component: TestComponent }
 ]
 
 @NgModule({
@@ -16,7 +14,9 @@ const app_routes: Routes = [
   providers: []
 })
 export class AppRoutingModule { 
-    static components = [TestComponent];
+    static components = [
+      //TestComponent
+    ];
 }
 
 

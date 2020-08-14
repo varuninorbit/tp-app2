@@ -5,6 +5,7 @@ import { SchemeComponent } from './scheme/scheme.component';
 import { ChapcilComponent } from './chapcil/chapcil.component';
 import { BottomNavComponent } from '../bottom-nav.component';
 import { ChikooComponent } from './chikoo/chikoo.component';
+import { QuestionComponent } from '../test/questions/question/question.component';
 
 const routes: Routes = [
   {path: "scheme", component: SchemeComponent},
@@ -19,6 +20,6 @@ const routes: Routes = [
 })
 export class SchemeRoutingModule {
   static components = [
-    SchemeComponent, ChapcilComponent,ChikooComponent
+    SchemeComponent, ChapcilComponent,ChikooComponent, QuestionComponent, BottomNavComponent
   ]
 }
