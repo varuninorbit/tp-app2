@@ -14,19 +14,25 @@ export class ChikooComponent implements OnInit {
   constructor(private ac:ActionService, private state: StateService
     ) { 
     window['chikoo']=this;
+    this.getQuestionsFromServer();    
+  }
 
-    const arrayTable = this.state.state.arrayTable;
+  ngOnInit(): void {
+  }
 
+  changeQuestion(){
+    alert('question changing...');
+  }
+
+  getQuestionsFromServer(){
+    let arrayTable = this.state.state.arrayTable;
     this.ac.post('ASchema',true,'?exam_choice=9th_sci_cb_en&XDEBUG_SESSION_START')
     ('loadQuestions')({scheme:arrayTable}).subscribe(questionsList=>{
       this.questionsList = questionsList;
     })  
   }
 
-  ngOnInit(): void {
-  }
-
-  select(scheme){
-    alert('selected'+scheme.id);
+  reloadQuestions(){
+    this.getQuestionsFromServer();
   }
 }

@@ -2,10 +2,10 @@
 <div *ngFor="let question of questionsList" class="border bottom-bar breadcrumb">
     <app-question [question]="question"></app-question>
     <div class="btn-block btn-group btn-group-sm">
-    <a class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
-    <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
-    <a class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
-    <a class="btn btn-outline-primary"><span class="fa fa-warning"></span></a>
+        <a (click)="changeQuestion()" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
+        <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
+        <a class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
+        <a class="btn btn-outline-primary"><span class="fa fa-warning"></span></a>
     </div>
     <hr>
 </div>
@@ -13,7 +13,10 @@
 <app-bottom-nav>
 
     <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
-         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+        <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
     </a>
-     
+    <a type="button" (click)="reloadQuestions()"  class="btn btn-primary btn-lg float-left">
+        <span class="fa fa-refresh text-light" data-toogle="tooltip"></span>
+    </a>
+
 </app-bottom-nav>

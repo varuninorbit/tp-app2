@@ -15,7 +15,12 @@ export class ChapcilComponent implements OnInit {
   private AScheme;
   scheme:IScheme;
   chapters:IChapter[];
-  selectedChapters:any=[];
+  selectedChapters:any[];  
+  //checkboxArray type
+  //[empty x 5 , true , empty x 2, true ]
+  
+  selecredChaptersID:number[];
+  //[3,4,5] 3rd chapter 4th and 5th
 
   constructor(private ac:ActionService, 
     private stateService:StateService,
@@ -41,6 +46,10 @@ export class ChapcilComponent implements OnInit {
       state.currentScheme = this.scheme;
       return state;
     });
+  }
+
+  checkDisabled(indexOfChapter){// from 0
+    return (indexOfChapter%2==0)?true:false;
   }
 
 }
