@@ -49,7 +49,14 @@ export class ChapcilComponent implements OnInit {
   }
 
   checkDisabled(indexOfChapter){// from 0
-    return (indexOfChapter%2==0)?true:false;
+    return false;
+    //return (indexOfChapter%2==0)?true:false;
+  }
+
+  updateArrayTableFromSelectedCheckbox(){
+    let at = this.stateService.state.arrayTable;
+    let ciCol = this.arrayTable.iDArray(this.selectedChapters)
+    this.arrayTable.replaceChapterColInArrayTable(ciCol,at)
   }
 
 }
