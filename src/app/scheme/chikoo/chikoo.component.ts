@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { StateService } from 'src/app/state.service';
 import { IQuestionsList } from 'src/app/types/i-questions-list';
+import { findIndex } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chikoo',
@@ -20,8 +21,8 @@ export class ChikooComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeQuestion(){
-    alert('question changing...');
+  changeQuestion(index){
+    alert('question changing...' + index);
   }
 
   getQuestionsFromServer(){

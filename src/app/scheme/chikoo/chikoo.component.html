@@ -1,8 +1,8 @@
 <p>Questions List</p>
-<div *ngFor="let question of questionsList" class="border bottom-bar breadcrumb">
+<div *ngFor="let question of questionsList; let i = index" class="border bottom-bar breadcrumb">
     <app-question [question]="question"></app-question>
     <div class="btn-block btn-group btn-group-sm">
-        <a (click)="changeQuestion()" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
+        <a (click)="changeQuestion(i)" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-warning"></span></a>
