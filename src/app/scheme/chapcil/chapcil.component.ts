@@ -31,32 +31,55 @@ export class ChapcilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   //load chapters and scheme 
    this.AScheme('schter')(8,'exam_choice=9th_sci_cb_en').subscribe(({scheme,chapters})=>{
      this.chapters = chapters;
      this.scheme = scheme;
    })
 
-   this.selectedChapters = this.stateService.state.selectedChapters;
+   //set selected chapter from stored state
+   //this.selectedChapters = this.stateService.state.selectedChapters;
+   this.autoSelectCheckboxFromStoredArrayTable();
   }
 
 
   update(){
-    this.stateService.updateState((state)=>{
-      state.selectedChapters=this.selectedChapters;
-      state.currentScheme = this.scheme;
-      return state;
-    });
+    // this.stateService.updateState((state)=>{
+    //   state.selectedChapters=this.selectedChapters;      
+    //   return state;
+    // });
+    this.updateArrayTableFromSelectedCheckbox();
   }
 
-  checkDisabled(indexOfChapter){// from 0
-    return false;
-    //return (indexOfChapter%2==0)?true:false;
+  checkDisabled(indexOfChapter){
+    let arrayHelper = this.arrayTable;
+    let arrayTable = this.stateService.state.arrayTable;
+
+    let chaptersCount = arrayTable[1].length;
+    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
+    let selectedChaptersCount = selectedChaptersIDArray.length;
+
+    // if less chapters are selected than permissible don't disable
+    if(selectedChaptersCount < chaptersCount) return false;
+
+    let idExists = (selectedChaptersIDArray.indexOf(indexOfChapter+1)!=-1); // index starts from 0 
+    return (!idExists); // don't disable
   }
 
   updateArrayTableFromSelectedCheckbox(){
     let at = this.stateService.state.arrayTable;
     let ciCol = this.arrayTable.iDArray(this.selectedChapters)
+
+    //this line updates silently, without emiting observable
     this.arrayTable.replaceChapterColInArrayTable(ciCol,at)
+  }
+
+  autoSelectCheckboxFromStoredArrayTable(){
+    let at = this.stateService.state.arrayTable;
+    let atHelper = this.arrayTable;
+    let chapterIDCol = atHelper.chapterIDColfrom(at);
+    let checkboxArray = atHelper.checkboxArray(chapterIDCol,100); //for 100 chapters; todo: change to chapters length
+    this.selectedChapters = checkboxArray;
   }
 
 }

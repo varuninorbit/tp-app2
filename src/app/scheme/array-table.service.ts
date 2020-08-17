@@ -40,12 +40,12 @@ export class ArrayTableService {
   }
 
 
-  iDArray(CheckboxArray) {
+  iDArray( CheckboxArray ){
 
-    return [...CheckboxArray].map((item, i) => {
-      return (item === undefined) ? false : i;
-    }).filter(i => i)
-  }
+    return [...CheckboxArray].map((item,i)=>{
+         return (Boolean(item))?i:false;
+     }).filter(i=>i)
+ }
   //   index      =>  0    1          3                   7        
   //CheckboxArray = [null,null,null,true,null,null,null,true,null,null];
   //IDArray(CheckboxArray) => [3, 7]
@@ -69,7 +69,8 @@ export class ArrayTableService {
 
 
   chapterIDColfrom(arrayTable) {
-    return this.iDColfrom(arrayTable, 'chapter_id');
+    return this.iDColfrom(arrayTable, 'chapter_id')
+    .filter(item=>item);
   }
 
   iDColfrom(arrayTable, col_name) {
