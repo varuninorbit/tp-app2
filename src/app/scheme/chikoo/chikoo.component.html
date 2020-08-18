@@ -1,9 +1,10 @@
 <p>Questions List</p>
-<div *ngFor="let question of questionsList; let i = index" (mouseover)="hideBud[i]=false"
-    (mouseout)="hideBud[i]=true" class="border bottom-bar breadcrumb">
+<div *ngFor="let question of questionsList; let i = index" 
+    (mouseover)="showBud[i]=true" (mouseout)="showBud[i]=false" 
+    class="border bottom-bar breadcrumb">
     <app-question [question]="question"></app-question>
     <!-- bud controls hides or shows via [hideBud] property -->
-    <div [hidden] = "!isThisBudShown(i)"
+    <div [hidden] = "isBudHidden(i)"
         class="btn-block btn-group btn-group-sm" >
         <a (click)="changeQuestion(i)" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
