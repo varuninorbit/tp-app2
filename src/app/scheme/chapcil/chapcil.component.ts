@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { IChapter } from 'src/app/types/i-exam-choice';
@@ -13,37 +13,37 @@ import { ArrayTableService } from '../array-table.service';
 export class ChapcilComponent implements OnInit {
 
   private AScheme;
-  scheme:IScheme;
-  chapters:IChapter[];
-  selectedChapters:any[];  
+  scheme: IScheme;
+  chapters: IChapter[];
+  selectedChapters: any[];
   //checkboxArray type
   //[empty x 5 , true , empty x 2, true ]
-  
-  selecredChaptersID:number[];
+
+  selecredChaptersID: number[];
   //[3,4,5] 3rd chapter 4th and 5th
 
-  constructor(private ac:ActionService, 
-    private stateService:StateService,
+  constructor(private ac: ActionService,
+    private stateService: StateService,
     private arrayTable: ArrayTableService
-    ) { 
+  ) {
     this.AScheme = ac.get('ASchema');
-    console.log(window['chapcil']=this);
+    console.log(window['chapcil'] = this);
   }
 
   ngOnInit(): void {
-   //load chapters and scheme 
-   this.AScheme('schter')(8,'exam_choice=9th_sci_cb_en').subscribe(({scheme,chapters})=>{
-     this.chapters = chapters;
-     this.scheme = scheme;
-   })
+    //load chapters and scheme 
+    this.AScheme('schter')(8, 'exam_choice=9th_sci_cb_en').subscribe(({ scheme, chapters }) => {
+      this.chapters = chapters;
+      this.scheme = scheme;
+    })
 
-   //set selected chapter from stored state
-   //this.selectedChapters = this.stateService.state.selectedChapters;
-   this.autoSelectCheckboxFromStoredArrayTable();
+    //set selected chapter from stored state
+    //this.selectedChapters = this.stateService.state.selectedChapters;
+    this.autoSelectCheckboxFromStoredArrayTable();
   }
 
 
-  update(){
+  update() {
     // this.stateService.updateState((state)=>{
     //   state.selectedChapters=this.selectedChapters;      
     //   return state;
@@ -51,7 +51,7 @@ export class ChapcilComponent implements OnInit {
     this.updateArrayTableFromSelectedCheckbox();
   }
 
-  checkDisabled(indexOfChapter){
+  checkDisabled(indexOfChapter) {
     let arrayHelper = this.arrayTable;
     let arrayTable = this.stateService.state.arrayTable;
 
@@ -60,26 +60,46 @@ export class ChapcilComponent implements OnInit {
     let selectedChaptersCount = selectedChaptersIDArray.length;
 
     // if less chapters are selected than permissible don't disable
-    if(selectedChaptersCount < chaptersCount) return false;
+    if (selectedChaptersCount < chaptersCount) return false;
 
-    let idExists = (selectedChaptersIDArray.indexOf(indexOfChapter+1)!=-1); // index starts from 0 
+    let idExists = (selectedChaptersIDArray.indexOf(indexOfChapter + 1) != -1); // index starts from 0 
     return (!idExists); // don't disable
   }
 
-  updateArrayTableFromSelectedCheckbox(){
+  updateArrayTableFromSelectedCheckbox() {
     let at = this.stateService.state.arrayTable;
     let ciCol = this.arrayTable.iDArray(this.selectedChapters)
 
     //this line updates silently, without emiting observable
-    this.arrayTable.replaceChapterColInArrayTable(ciCol,at)
+    this.arrayTable.replaceChapterColInArrayTable(ciCol, at)
   }
 
-  autoSelectCheckboxFromStoredArrayTable(){
+  autoSelectCheckboxFromStoredArrayTable() {
     let at = this.stateService.state.arrayTable;
     let atHelper = this.arrayTable;
     let chapterIDCol = atHelper.chapterIDColfrom(at);
-    let checkboxArray = atHelper.checkboxArray(chapterIDCol,100); //for 100 chapters; todo: change to chapters length
+    let checkboxArray = atHelper.checkboxArray(chapterIDCol, 100); //for 100 chapters; todo: change to chapters length
     this.selectedChapters = checkboxArray;
+  }
+
+  displayPopUp(i:number) {
+    let arrayHelper = this.arrayTable;
+    let arrayTable = this.stateService.state.arrayTable;
+    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
+    let selectedChaptersCount = selectedChaptersIDArray.length;
+    if (this.isChapterSelectionLimitFull() && this.checkDisabled(i)) {
+      alert('You need to select (' + selectedChaptersCount + ') chapters only. \n Or choose some different scheme.')
+    }
+  }
+
+  isChapterSelectionLimitFull(): boolean {
+    let arrayHelper = this.arrayTable;
+    let arrayTable = this.stateService.state.arrayTable;
+    let chaptersCount = arrayTable[1].length;
+
+    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
+    let selectedChaptersCount = selectedChaptersIDArray.length;
+    return (selectedChaptersCount == chaptersCount) ? true : false;
   }
 
 }
@@ -87,7 +107,7 @@ export class ChapcilComponent implements OnInit {
 todo
 1 import componet into the routes
     .1 route => /chapsil
-    .2 
+    .2
 
 2 fake data in component
 */

@@ -2,6 +2,7 @@
 <mat-card *ngFor="let chapter of chapters; let i=index;">
         <mat-checkbox [(ngModel)]="selectedChapters[chapter.id]" (change)="update()"
         [ngModelOptions]="{standalone: true}" [disabled]="checkDisabled(i)"
+        (click)="[displayPopUp(i)]"
         >{{chapter.chapter}}</mat-checkbox>
 </mat-card>
 

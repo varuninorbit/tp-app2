@@ -1,7 +1,10 @@
 <p>Questions List</p>
-<div *ngFor="let question of questionsList; let i = index" class="border bottom-bar breadcrumb">
+<div *ngFor="let question of questionsList; let i = index" (mouseover)="hideBud[i]=false"
+    (mouseout)="hideBud[i]=true" class="border bottom-bar breadcrumb">
     <app-question [question]="question"></app-question>
-    <div class="btn-block btn-group btn-group-sm">
+    <!-- bud controls hides or shows via [hideBud] property -->
+    <div [hidden] = "!isThisBudShown(i)"
+        class="btn-block btn-group btn-group-sm" >
         <a (click)="changeQuestion(i)" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
@@ -15,7 +18,7 @@
     <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
     </a>
-    <a type="button" (click)="reloadQuestions()"  class="btn btn-primary btn-lg float-left">
+    <a type="button" (click)="reloadQuestions()" class="btn btn-primary btn-lg float-left">
         <span class="fa fa-refresh text-light" data-toogle="tooltip"></span>
     </a>
 

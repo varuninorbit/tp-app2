@@ -11,11 +11,13 @@ import { findIndex } from 'rxjs/operators';
 })
 export class ChikooComponent implements OnInit {
   questionsList:IQuestionsList;
+  hideBud:boolean[];
 
   constructor(private ac:ActionService, private state: StateService
     ) { 
     window['chikoo']=this;
-    this.getQuestionsFromServer();    
+    this.getQuestionsFromServer();
+    this.hideBud=[];    
   }
 
   ngOnInit(): void {
@@ -35,5 +37,10 @@ export class ChikooComponent implements OnInit {
 
   reloadQuestions(){
     this.getQuestionsFromServer();
+  }
+
+  isThisBudShown(i:number){
+    //hideBud = true
+    return (!this.hideBud[i])?true:false;
   }
 }
