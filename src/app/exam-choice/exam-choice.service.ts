@@ -14,10 +14,10 @@ export class ExamChoiceService {
   examChoice_: Observable<IExamChoice>;
   examChoiceHierarchy: Observable<INode>;
   
-  constructor(private ac: ActionService) {
+  constructor(private ac: ActionService, private http:HttpClient) {
     
-    // this.examChoice_  = this.http.get<Array<IExamChoice>>(Urls.host+'exam-choices/id/12')
-    // .pipe(map(d=>d[0]));
+    this.examChoice_  = this.http.get<Array<IExamChoice>>(Urls.host+'exam-choices/id/12')
+    .pipe(map(d=>d[0]));
 
     this.examChoiceHierarchy = ac.get('AExamChoice')('hierarchy')();
     

@@ -7,7 +7,7 @@ import { ChikooComponent } from './chikoo/chikoo.component';
 import { QuestionComponent } from '../test/questions/question/question.component';
 
 const routes: Routes = [
-  {path: "", component: SchemeComponent},
+  {path: "scheme", component: SchemeComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent}
 ];
