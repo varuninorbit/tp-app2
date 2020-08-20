@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, AfterContentChecked, AfterContentInit } f
 import { ActionService } from 'src/app/services/action.service';
 import { StateService } from 'src/app/state.service';
 import { IQuestionsList } from 'src/app/types/i-questions-list';
-import { MathJaxDirective } from 'ngx-mathjax';
 
 @Component({
   selector: 'app-chikoo',
@@ -11,9 +10,7 @@ import { MathJaxDirective } from 'ngx-mathjax';
 })
 export class ChikooComponent implements OnInit, AfterContentChecked ,AfterContentInit{
   questionsList:IQuestionsList;
-  showBud:boolean[];
-
-  @ViewChild(MathJaxDirective,{static:false}) mathjaxd: MathJaxDirective; 
+  showBud:boolean[]; 
 
   constructor(private ac:ActionService, private state: StateService
     ) { 

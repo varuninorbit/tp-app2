@@ -1,6 +1,8 @@
 <!-- container div to render mathjax directive -->
 <div>
-  <span class="math-container" [innerHTML]="_(question_question.question[0])"></span>
+  <span class="math-container"  mathjax  [innerHTML]="question_question.question[0] | safe : 'html'">
+      
+  </span>
   <!-- <strong>JSON</strong> {{jp(question.question) | json}} -->
   <br>
 

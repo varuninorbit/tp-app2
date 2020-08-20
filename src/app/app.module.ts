@@ -19,14 +19,13 @@ import { AlertComponent } from "./_directives";
 import { AlertService } from "./_services";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
-import { ToggleMenuService } from "./_services/toggle-menu.service";
-import { SelectedOptionsService } from "./selected-options.service";
 import { MathJaxModule } from "ngx-mathjax";
 import { GlobalService } from "./_services/global.service";
 import * as Hammer from "hammerjs";
 import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
+import { SafePipeModule } from 'safe-pipe';
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
@@ -44,11 +43,12 @@ export class MyHammerConfig extends HammerGestureConfig {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    //NavModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    
+    AppRoutingModule,
+    
     MathJaxModule.forRoot({
       version: "2.7.5",
       config: "TeX-MML-AM_CHTML",
@@ -56,18 +56,20 @@ export class MyHammerConfig extends HammerGestureConfig {
     }),
     SchemeModule,
     GlobalModule,
-    ExamChoiceModule
+    ExamChoiceModule,
+
+    SafePipeModule
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
-    ,GlobalModule
+    ,GlobalModule, SafePipeModule
   ],
   providers: [
     ExamChoiceService,
     AlertService,
-    ToggleMenuService,
-    SelectedOptionsService,
+    //ToggleMenuService,
+    //SelectedOptionsService,
     // {provide:HAMMER_GESTURE_CONFIG,useClass:HammerGestureConfig},
     { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
     GlobalService,

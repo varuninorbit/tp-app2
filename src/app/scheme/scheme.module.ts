@@ -7,11 +7,13 @@ import { MaterialModule } from '../material/material.module';
 import { GlobalModule } from '../global.module';
 import { FormsModule } from '@angular/forms';
 import { MathJaxModule } from 'ngx-mathjax';
+import { SafePipeModule } from 'safe-pipe';
 @NgModule({
   declarations: [SchemeRoutingModule.components],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
-    FormsModule, MathJaxModule.forChild()
+    FormsModule, MathJaxModule.forChild(), 
+    SafePipeModule
   ],
   providers:[
     ActionService, ArrayTableService

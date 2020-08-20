@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild,NgZone } from '@angular/core';
 import { IQuestion } from 'src/app/types/i-question';
 import {DomSanitizer } from '@angular/platform-browser';
+import { MathJaxDirective } from 'ngx-mathjax';
 
 
 class QobjModification { //todo it should extend AQobjModification class
@@ -26,6 +27,7 @@ class QobjModification { //todo it should extend AQobjModification class
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
+  @ViewChild(MathJaxDirective,{static:false}) mathjaxd: MathJaxDirective; 
   private qobjModification = new QobjModification();
 
   
@@ -49,7 +51,8 @@ export class QuestionComponent implements OnInit {
   }
 
   _(str:string){
-    return this.sanitizer.bypassSecurityTrustHtml(str);
+    //return this.sanitizer.bypassSecurityTrustHtml(str);
+    return str;
   }
 
 }
