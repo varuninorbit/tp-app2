@@ -6,6 +6,7 @@ import { IExamChoice } from "../types/i-exam-choice";
 import { Urls } from '../../environments/environment';
 import { INode } from "../types/i-node";
 import { UserService } from "../user.service";
+import { ActionService } from '../services/action.service';
 
 @Injectable()
 export class ExamChoiceService {
@@ -13,12 +14,12 @@ export class ExamChoiceService {
   examChoice_: Observable<IExamChoice>;
   examChoiceHierarchy: Observable<INode>;
   
-  constructor(private http: HttpClient, private user: UserService) {
+  constructor(private ac: ActionService) {
     
-    this.examChoice_  = this.http.get<Array<IExamChoice>>(Urls.host+'exam-choices/id/12')
-    .pipe(map(d=>d[0]));
+    // this.examChoice_  = this.http.get<Array<IExamChoice>>(Urls.host+'exam-choices/id/12')
+    // .pipe(map(d=>d[0]));
 
-    this.examChoiceHierarchy = this.http.get<INode>(Urls.host+'exam-choice-hierarchy')
+    this.examChoiceHierarchy = ac.get('AExamChoice')('hierarchy')();
     
   }
 

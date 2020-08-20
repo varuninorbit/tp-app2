@@ -7,9 +7,9 @@ import { ChikooComponent } from './chikoo/chikoo.component';
 import { QuestionComponent } from '../test/questions/question/question.component';
 
 const routes: Routes = [
-  {path: "scheme", component: SchemeComponent},
+  {path: "", component: SchemeComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
-  {path: "", component: ChikooComponent}
+  {path: "scheme/chikoo", component: ChikooComponent}
 ];
 
 @NgModule({

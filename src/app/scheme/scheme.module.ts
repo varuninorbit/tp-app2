@@ -6,11 +6,12 @@ import { ArrayTableService } from '../scheme/array-table.service';
 import { MaterialModule } from '../material/material.module';
 import { GlobalModule } from '../global.module';
 import { FormsModule } from '@angular/forms';
+import { MathJaxModule } from 'ngx-mathjax';
 @NgModule({
   declarations: [SchemeRoutingModule.components],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
-    FormsModule
+    FormsModule, MathJaxModule.forChild()
   ],
   providers:[
     ActionService, ArrayTableService

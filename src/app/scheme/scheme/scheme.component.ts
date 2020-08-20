@@ -16,6 +16,7 @@ export class SchemeComponent implements OnInit {
 
   cardClass=[];
   constructor(private ac:ActionService, private state: StateService ) { 
+    window['scheme']= this;
     this.AScheme = ac.get('ASchema');
     this.selectedID=this.state.state.currentScheme.id;
   }

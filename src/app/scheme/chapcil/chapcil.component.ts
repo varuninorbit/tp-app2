@@ -31,10 +31,12 @@ export class ChapcilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let schemeID = this.stateService.state.currentScheme.id;
     //load chapters and scheme 
-    this.AScheme('schter')(8, 'exam_choice=9th_sci_cb_en').subscribe(({ scheme, chapters }) => {
+    this.AScheme('schter')(schemeID, 'exam_choice=8th_mat_cb_en').subscribe(({ scheme, chapters }) => {
       this.chapters = chapters;
       this.scheme = scheme;
+      this.updateArrayTableAfterXHR() ;
     })
 
     //set selected chapter from stored state
@@ -82,7 +84,7 @@ export class ChapcilComponent implements OnInit {
     this.selectedChapters = checkboxArray;
   }
 
-  displayPopUp(i:number) {
+  displayPopUp(i: number) {
     let arrayHelper = this.arrayTable;
     let arrayTable = this.stateService.state.arrayTable;
     let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
@@ -100,6 +102,10 @@ export class ChapcilComponent implements OnInit {
     let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
     let selectedChaptersCount = selectedChaptersIDArray.length;
     return (selectedChaptersCount == chaptersCount) ? true : false;
+  }
+
+  updateArrayTableAfterXHR() {
+    this.stateService.state.arrayTable = this.arrayTable.arrayTable(this.scheme.table)
   }
 
 }

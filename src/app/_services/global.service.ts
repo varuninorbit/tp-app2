@@ -5,4 +5,8 @@ export class GlobalService{
     get window(){
         return window;
     }
+
+    constructor(){
+         
+    }
 }
