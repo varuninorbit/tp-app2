@@ -10,15 +10,16 @@
     <!-- MCQ QUESTIONS -->
     <div *ngSwitchCase='1'>
       <strong>Options</strong><br>
-      A<span class="math-container" [innerHTML]="_(question_question.option['a'])"></span>
-      B<span class="math-container" [innerHTML]="_(question_question.option['b'])"></span>
-      C<span class="math-container" [innerHTML]="_(question_question.option['c'])"></span>
-      D<span class="math-container" [innerHTML]="_(question_question.option['d'])"></span>    
+      A<span class="math-container" [innerHTML]="question_question.option['a'] | safe : 'html'"></span>
+      B<span class="math-container" [innerHTML]="question_question.option['b'] | safe : 'html'"></span>
+      C<span class="math-container" [innerHTML]="question_question.option['c'] | safe : 'html'"></span>
+      D<span class="math-container" [innerHTML]="question_question.option['d'] | safe : 'html'"></span>    
     </div>
     
     <!-- TRUE AND FALSE -->
     <div *ngSwitchCase='4' class="math-container">
-      <span>{{jp(question.answer).answer[0]}}</span>
+      <span class="math-container" [innerHTML]="question_answer.answer[0] | safe : 'html'">
+      </span>
     </div>
   </div>
 </div>
