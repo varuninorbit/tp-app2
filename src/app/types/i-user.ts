@@ -1,12 +1,12 @@
 import { IExamChoice } from "./i-exam-choice";
 
 export interface IUser {
-  choices: {
-    favChoices: IExamChoice[];
-    selectedChoice: IExamChoice;
-    id: number;
-    name: string;
-    phone: string;
-    email: string;
-  };
+  id?: number;
+  username: string;
+  email:string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
+  token?:string;
 }
+

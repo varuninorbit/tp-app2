@@ -2,16 +2,16 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Urls } from '../environments/environment';
-import { IUser } from './_models';
+import { IUser } from './types/i-user';
+import { ActionService } from './services/action.service';
 
 
 @Injectable()
 export class UserService {
     Ouser: Observable<IUser>;
     user: IUser; //TODO change type
-    constructor(private http: HttpClient) {
-        this.Ouser = this.http
-            .get<IUser>(Urls.host + 'user/this') //TODO change <any> to user
+    constructor(private http: HttpClient, ac:ActionService) {
+        this.Ouser = ac.get('User')('me')() //TODO change <any> to user
     }
 
     getAll() {
