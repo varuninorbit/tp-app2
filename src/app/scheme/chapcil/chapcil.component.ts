@@ -5,6 +5,7 @@ import { IChapter } from 'src/app/types/i-exam-choice';
 import { StateService } from 'src/app/state.service';
 import { ArrayTableService } from '../array-table.service';
 import * as _ from 'underscore';
+import { NotifierService } from 'angular-notifier';
 
 
 
@@ -26,7 +27,8 @@ export class ChapcilComponent implements OnInit {
   //set initially to 
   constructor(private ac: ActionService,
     private stateService: StateService,
-    private arrayTableHelper: ArrayTableService
+    private arrayTableHelper: ArrayTableService,
+    private notifier: NotifierService
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);    
@@ -84,9 +86,12 @@ export class ChapcilComponent implements OnInit {
     return [oldArray,newArray];
   }
 
+  change(){
+    //showNotification( 'success', 'Notification successfully opened.' )
+    this.notifier.notify('success','Test message');
+  }
+
   
-
-
 }
 
 

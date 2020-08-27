@@ -5,13 +5,13 @@ import { BottomNavComponent } from './bottom-nav.component';
 import { StateService } from './state.service';
 import { UserService } from './user.service';
 import { GlobalService } from './_services';
-
+import { NotifierModule } from "angular-notifier";
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent],
   imports: [
-    CommonModule
+    CommonModule, NotifierModule
   ],
-  exports:[BackButtonDirective,BottomNavComponent],
+  exports:[BackButtonDirective,BottomNavComponent, NotifierModule],
   providers:[StateService, UserService, GlobalService]
 })
 export class GlobalModule { }
