@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 //import { TestComponent } from './test/test.component';
 
 const app_routes: Routes = [    
+  
     //{ path: 'chapters', component: ChaptersComponent },
     //{ path: 'test', component: TestComponent }
 ]

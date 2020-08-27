@@ -22,21 +22,44 @@ export class ArrayTableService {
     return [this.colNames(jsonTable), this.jsonTableToMatrix(jsonTable)];
   }
 
-  // to get 10 questions no val is to be replaced by 10;
-  //replaceColDataInArrayTable('no',[10],row_at) 
-  replaceColDataInArrayTable(replaceColName, replacementCol, arrayTable) {
-    let colNames = arrayTable[0];
-    let matrix = arrayTable[1];
-    let replacement_id_index = colNames.indexOf(replaceColName)
-    matrix = matrix.map((row, i) => {
-      row[replacement_id_index] = replacementCol[i];
-      return row;
-    });
-    return [colNames, matrix];
+  f(x,mappingArr){
+    /*  mappingArr = 
+      [3, 7, 4],
+      [6, 9, 10]
+  
+      f(3,mappingArr) => 6
+    */  
+    return mappingArr[1][mappingArr[0].indexOf(x)];
   }
+  
+  
+  
+    /*  mappingArr = 
+      [3, 7, 4],
+      [6, 9, 10]
+  
+      f(3,mappingArr) => 6
+    */  
+  
+    /*
+      replaceColDataInArrayTable('chapter_id',at,mappingArr)    
+    */
+  
+  replaceColDataInArrayTable(replaceColName,arrayTable,mappingArr) {
+      let colNames = arrayTable[0];
+      let matrix = arrayTable[1];
+      let replacement_id_index = colNames.indexOf(replaceColName)
+      
+      matrix = matrix.map((item,idx)=>{
+          let x = item[replacement_id_index];
+          let y = f(x,mappingArr);
+          item[replacement_id_index]= y;
+          return item;        
+      })
+   }
 
-  replaceChapterColInArrayTable(replacementCol,arrayTable){
-    return this.replaceColDataInArrayTable('chapter_id',replacementCol, arrayTable);
+  replaceChapterColInArrayTable(arrayTable, mappingArr){
+    return this.replaceColDataInArrayTable('chapter_id', arrayTable, mappingArr);
   }
 
 

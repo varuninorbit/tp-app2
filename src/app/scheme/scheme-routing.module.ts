@@ -8,6 +8,7 @@ import { QuestionComponent } from '../test/questions/question/question.component
 
 const routes: Routes = [
   {path: "scheme", component: SchemeComponent},
+  {path: "", component: ChapcilComponent},  //<-- temp
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent}
 ];

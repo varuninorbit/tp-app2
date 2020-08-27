@@ -1,13 +1,22 @@
 <span>Choose Chapters</span>
-<mat-card *ngFor="let chapter of chapters; let i=index;">
-        <mat-checkbox [(ngModel)]="selectedChapters[chapter.id]" (change)="update()"
-        [ngModelOptions]="{standalone: true}" [disabled]="checkDisabled(i)"
-        (click)="[displayPopUp(i)]"
-        >{{chapter.chapter}}</mat-checkbox>
-</mat-card>
+<div class="form-group row">
+  <div *ngFor="let idx of chaptersCountArray">
+    <label></label>
+    <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" name="chapter">
+      <option value="0">Chapter {{idx+1}}</option>
+      <option *ngFor="let chapter of chapters" [disabled]="isDisabled(chapter.id)" [value]="chapter.id">
+        {{chapter.chapter}}</option>
+    </select>
+  </div>
+</div>
+
+
+
+<!-- <p> here {{ selectedChaptersID | json }}</p> -->
+
 
 <app-bottom-nav>
-    <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
-         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
-    </a>     
+  <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
+    <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+  </a>
 </app-bottom-nav>

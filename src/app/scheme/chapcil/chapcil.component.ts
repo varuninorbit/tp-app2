@@ -4,6 +4,9 @@ import { IScheme } from 'src/app/types/i-scheme';
 import { IChapter } from 'src/app/types/i-exam-choice';
 import { StateService } from 'src/app/state.service';
 import { ArrayTableService } from '../array-table.service';
+import * as _ from 'underscore';
+
+
 
 @Component({
   selector: 'app-chapcil',
@@ -15,19 +18,18 @@ export class ChapcilComponent implements OnInit {
   private AScheme;
   scheme: IScheme;
   chapters: IChapter[];
-  selectedChapters: any[];
-  //checkboxArray type
-  //[empty x 5 , true , empty x 2, true ]
 
-  selecredChaptersID: number[];
-  //[3,4,5] 3rd chapter 4th and 5th
+  chaptersCountArray=[];
+  //selectedOptions=[null,1,2,3,4];
 
+  selectedChaptersID=[];
+  //set initially to 
   constructor(private ac: ActionService,
     private stateService: StateService,
-    private arrayTable: ArrayTableService
+    private arrayTableHelper: ArrayTableService
   ) {
     this.AScheme = ac.get('ASchema');
-    console.log(window['chapcil'] = this);
+    console.log(window['chapcil'] = this);    
   }
 
   ngOnInit(): void {
@@ -36,79 +38,58 @@ export class ChapcilComponent implements OnInit {
     this.AScheme('schter')(schemeID, 'exam_choice=8th_mat_cb_en').subscribe(({ scheme, chapters }) => {
       this.chapters = chapters;
       this.scheme = scheme;
-      this.updateArrayTableAfterXHR() ;
+      this.updateState() ;
+      this.chaptersCountArray_();
+      this.selectedChaptersID = this.getSelectedChaptersFromArrayTable();
     })
 
     //set selected chapter from stored state
     //this.selectedChapters = this.stateService.state.selectedChapters;
-    this.autoSelectCheckboxFromStoredArrayTable();
+    //this.autoSelectCheckboxFromStoredArrayTable();
+
+   
+  }
+
+  updateState(){
+    this.stateService.updateState(state=>{
+      state.arrayTable = this.arrayTableHelper.arrayTable(this.scheme.table)
+      state.chapters = this.chapters;
+      state.currentScheme = this.scheme;
+      return state;
+    });
   }
 
 
-  update() {
-    // this.stateService.updateState((state)=>{
-    //   state.selectedChapters=this.selectedChapters;      
-    //   return state;
-    // });
-    this.updateArrayTableFromSelectedCheckbox();
+  isDisabled(index:(number | string)){
+    index = index + ''; //no to string cast
+    return (this.selectedChaptersID.indexOf(index)!=-1)?true:false;
   }
 
-  checkDisabled(indexOfChapter) {
-    let arrayHelper = this.arrayTable;
-    let arrayTable = this.stateService.state.arrayTable;
-
-    let chaptersCount = arrayTable[1].length;
-    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
-    let selectedChaptersCount = selectedChaptersIDArray.length;
-
-    // if less chapters are selected than permissible don't disable
-    if (selectedChaptersCount < chaptersCount) return false;
-
-    let idExists = (selectedChaptersIDArray.indexOf(indexOfChapter + 1) != -1); // index starts from 0 
-    return (!idExists); // don't disable
+  chaptersCount(){
+    // changes state of this.selectedChaptersID
+    return this.getSelectedChaptersFromArrayTable().length
   }
 
-  updateArrayTableFromSelectedCheckbox() {
-    let at = this.stateService.state.arrayTable;
-    let ciCol = this.arrayTable.iDArray(this.selectedChapters)
-
-    //this line updates silently, without emiting observable
-    this.arrayTable.replaceChapterColInArrayTable(ciCol, at)
+  chaptersCountArray_(){
+    return  this.chaptersCountArray = [...Array(this.chaptersCount()).keys()];
   }
 
-  autoSelectCheckboxFromStoredArrayTable() {
-    let at = this.stateService.state.arrayTable;
-    let atHelper = this.arrayTable;
-    let chapterIDCol = atHelper.chapterIDColfrom(at);
-    let checkboxArray = atHelper.checkboxArray(chapterIDCol, 100); //for 100 chapters; todo: change to chapters length
-    this.selectedChapters = checkboxArray;
+  getSelectedChaptersFromArrayTable(){
+    return  _.unique(this.arrayTableHelper.chapterIDColfrom(this.stateService.state.arrayTable))
   }
 
-  displayPopUp(i: number) {
-    let arrayHelper = this.arrayTable;
-    let arrayTable = this.stateService.state.arrayTable;
-    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
-    let selectedChaptersCount = selectedChaptersIDArray.length;
-    if (this.isChapterSelectionLimitFull() && this.checkDisabled(i)) {
-      alert('You need to select (' + selectedChaptersCount + ') chapters only. \n Or choose some different scheme.')
-    }
+  calculateMappingArray(){
+    let newArray = this.selectedChaptersID.map(i=>parseInt(i));
+    let oldArray = this.getSelectedChaptersFromArrayTable();
+    return [oldArray,newArray];
   }
 
-  isChapterSelectionLimitFull(): boolean {
-    let arrayHelper = this.arrayTable;
-    let arrayTable = this.stateService.state.arrayTable;
-    let chaptersCount = arrayTable[1].length;
+  
 
-    let selectedChaptersIDArray = arrayHelper.chapterIDColfrom(arrayTable);
-    let selectedChaptersCount = selectedChaptersIDArray.length;
-    return (selectedChaptersCount == chaptersCount) ? true : false;
-  }
-
-  updateArrayTableAfterXHR() {
-    this.stateService.state.arrayTable = this.arrayTable.arrayTable(this.scheme.table)
-  }
 
 }
+
+
 /*
 todo
 1 import componet into the routes

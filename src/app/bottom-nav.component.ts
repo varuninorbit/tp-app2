@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-bottom-nav',
   template: `
-    <div class="fixed-bottom nav-link row">
+    <div class="fixed-bottom nav-link row bg-primary">
       <div class="bg-primary pt-1">
           <div>
               <ng-content></ng-content>

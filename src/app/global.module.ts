@@ -4,6 +4,7 @@ import { BackButtonDirective } from './back-button.directive';
 import { BottomNavComponent } from './bottom-nav.component';
 import { StateService } from './state.service';
 import { UserService } from './user.service';
+import { GlobalService } from './_services';
 
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent],
@@ -11,6 +12,6 @@ import { UserService } from './user.service';
     CommonModule
   ],
   exports:[BackButtonDirective,BottomNavComponent],
-  providers:[StateService, UserService]
+  providers:[StateService, UserService, GlobalService]
 })
 export class GlobalModule { }
