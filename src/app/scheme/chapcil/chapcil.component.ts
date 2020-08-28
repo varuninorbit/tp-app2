@@ -62,8 +62,8 @@ export class ChapcilComponent implements OnInit {
   }
 
 
-  isDisabled(index:(number | string)){
-    index = index + ''; //no to string cast
+  isDisabled(index:(number)){
+    //index = index + ''; //no to string cast
     return (this.selectedChaptersID.indexOf(index)!=-1)?true:false;
   }
 
@@ -81,14 +81,16 @@ export class ChapcilComponent implements OnInit {
   }
 
   calculateMappingArray(){
-    let newArray = this.selectedChaptersID.map(i=>parseInt(i));
+    let newArray = this.selectedChaptersID; //.map(i=>parseInt(i));
     let oldArray = this.getSelectedChaptersFromArrayTable();
     return [oldArray,newArray];
   }
 
   change(){
     //showNotification( 'success', 'Notification successfully opened.' )
-    this.notifier.notify('success','Test message');
+    //this.notifier.notify('success','Test message');
+    //convert selectedChaptersID: string[] to number[]
+    this.selectedChaptersID = this.selectedChaptersID.map(i=>parseInt(i));
   }
 
   

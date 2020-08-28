@@ -52,7 +52,7 @@ export class ArrayTableService {
       
       matrix = matrix.map((item,idx)=>{
           let x = item[replacement_id_index];
-          let y = f(x,mappingArr);
+          let y = this.f(x,mappingArr);
           item[replacement_id_index]= y;
           return item;        
       })
