@@ -8,6 +8,7 @@ import { GlobalModule } from '../global.module';
 import { FormsModule } from '@angular/forms';
 import { MathJaxModule } from 'ngx-mathjax';
 import { SafePipeModule } from 'safe-pipe';
+
 @NgModule({
   declarations: [SchemeRoutingModule.components],
   imports: [

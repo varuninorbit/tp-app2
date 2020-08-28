@@ -9,4 +9,3 @@ export interface IState {
     arrayTable?:any //todo change type,
     questionsList?:IQuestionsList
 }
-  

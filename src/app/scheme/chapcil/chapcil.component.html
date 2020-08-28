@@ -1,19 +1,14 @@
 <span>Choose Chapters</span>
-<div class="form-group row">
+<div class="form-group col">
   <div *ngFor="let idx of chaptersCountArray">
     <label></label>
-    <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" name="chapter" (change)="change()" >
+    <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" name="chapter" >
       <option value="0">Chapter {{idx+1}}</option>
       <option *ngFor="let chapter of chapters" [disabled]="isDisabled(chapter.id)" [value]="chapter.id">
         {{chapter.chapter}}</option>
     </select>
   </div>
 </div>
-
-
-
-<!-- <p> here {{ selectedChaptersID | json }}</p> -->
-
 
 <app-bottom-nav>
   <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
