@@ -43,6 +43,7 @@ export class ChapcilComponent implements OnInit {
       this.updateState() ;
       this.chaptersCountArray_();
       this.selectedChaptersID = this.getSelectedChaptersFromArrayTable();
+      this.change();
     })
 
     //set selected chapter from stored state
@@ -77,10 +78,10 @@ export class ChapcilComponent implements OnInit {
   }
 
   getSelectedChaptersFromArrayTable(){
-    return  _.unique(this.arrayTableHelper.chapterIDColfrom(this.stateService.state.arrayTable))
+    return  _.unique(this.arrayTableHelper.iDColfrom(this.stateService.state.arrayTable,'chapter_id'))
   }
 
-  calculateMappingArray(){
+  calculateMappingArray():[number[],number[]]{
     let newArray = this.selectedChaptersID; //.map(i=>parseInt(i));
     let oldArray = this.getSelectedChaptersFromArrayTable();
     return [oldArray,newArray];
@@ -91,6 +92,13 @@ export class ChapcilComponent implements OnInit {
     //this.notifier.notify('success','Test message');
     //convert selectedChaptersID: string[] to number[]
     this.selectedChaptersID = this.selectedChaptersID.map(i=>parseInt(i));
+    this.updateArrayTableFromChangedChapterIDS();
+  }
+
+ updateArrayTableFromChangedChapterIDS(){
+    let at = this.stateService.state.arrayTable;
+    let ah = this.arrayTableHelper;
+    at = ah.replaceColDataInArrayTable('chapter_id',at,this.calculateMappingArray())
   }
 
   

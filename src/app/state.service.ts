@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class StateService {
 
-  private state_:IState;
+  state_:IState;
   state$:BehaviorSubject<IState>
 
   constructor() { 

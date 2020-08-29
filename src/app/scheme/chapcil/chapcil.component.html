@@ -1,9 +1,9 @@
 <span>Choose Chapters</span>
-<h3>{{scheme.name}}</h3>
-<p>{{scheme.description}}</p>
+<h3>{{scheme?.name}}</h3>
+<p>{{scheme?.description}}</p>
 <div class="form-group col">
-  <div *ngFor="let idx of chaptersCountArray">
-    <label></label>
+  <div *ngFor="let idx of chaptersCountArray; index as i">
+    <label>Chapter {{i + 1}}</label>
     <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" name="chapter"(change)="change()">
       <option value="0">Chapter {{idx+1}}</option>
       <option *ngFor="let chapter of chapters" [disabled]="isDisabled(chapter.id)" [value]="chapter.id">

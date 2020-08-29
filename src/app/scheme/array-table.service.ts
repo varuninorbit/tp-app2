@@ -56,11 +56,7 @@ export class ArrayTableService {
           item[replacement_id_index]= y;
           return item;        
       })
-   }
-
-  replaceChapterColInArrayTable(arrayTable, mappingArr){
-    return this.replaceColDataInArrayTable('chapter_id', arrayTable, mappingArr);
-  }
+   } 
 
 
   iDArray( CheckboxArray ){
@@ -91,16 +87,11 @@ export class ArrayTableService {
   }
 
 
-  chapterIDColfrom(arrayTable) {
-    return this.iDColfrom(arrayTable, 'chapter_id')
-    .filter(item=>item);
-  }
-
   iDColfrom(arrayTable, col_name) {
     let col_index = arrayTable[0].indexOf(col_name);
     return arrayTable[1].map((row, indx) => {
       return row[col_index];
-    });
+    }).filter(item=>item);
   }
 
 
