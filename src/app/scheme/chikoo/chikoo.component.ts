@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, AfterContentChecked, AfterContentInit } f
 import { ActionService } from 'src/app/services/action.service';
 import { StateService } from 'src/app/state.service';
 import { IQuestionsList } from 'src/app/types/i-questions-list';
+import { LiteralService } from 'src/app/_services/literal.service';
+import { SchemeCreateService } from '../scheme-create.service';
 
 @Component({
   selector: 'app-chikoo',
@@ -9,21 +11,39 @@ import { IQuestionsList } from 'src/app/types/i-questions-list';
   styleUrls: ['./chikoo.component.css']
 })
 export class ChikooComponent implements OnInit, AfterContentChecked ,AfterContentInit{
-  questionsList:IQuestionsList;
+  questionsList:IQuestionsList[];
   showBud:boolean[]; 
+  edit:number;
 
-  constructor(private ac:ActionService, private state: StateService
+  constructor(private ac:ActionService, private state: StateService,
+    private li:LiteralService,
+    private sc:SchemeCreateService
     ) { 
     window['chikoo']=this;
     this.getQuestionsFromServer();
     this.showBud=[];    
+    this.edit=-1;
   }
 
   ngOnInit(): void {
   }
 
-  changeQuestion(index){
-    alert('question changing...' + index);
+  changeQuestion(question,i){
+    let notIn = this.questionsList.map(i=>i.id);
+
+    let scheme = this.sc.friendSchemeForSingleQuestion(question,this.state.state.arrayTable);
+    this.ac.post('AQuestion',false,'?exam_choice=8th_mat_cb_en')
+    ('singleFriendQuestion')(scheme,notIn)
+    .subscribe(r=>{
+      if(this.questionsList[i].id != r[0][0].id){
+        
+        //use original value of block
+        let blk = this.questionsList[i].blk;
+        r[0][0].blk = blk;
+
+        this.questionsList[i] = r[0][0];
+      }
+    })
   }
 
   getQuestionsFromServer(){
@@ -52,4 +72,17 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   ngAfterContentInit(){
     
   }
+
+  _(str){
+    return this.li.resolve(this)(str);
+  }
+
+  toggleEdit(i){
+    if(this.edit==i){
+      this.edit=-1;
+    }else{
+      this.edit=i;
+    }
+  }
+
 }

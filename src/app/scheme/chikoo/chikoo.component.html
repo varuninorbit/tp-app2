@@ -4,13 +4,15 @@
     class="border bottom-bar breadcrumb" mathjax>
     
   <strong>{{i+1}} </strong>
-  <app-question [question]="question"></app-question>
+  <app-question [attr.contenteditable]="edit==i" [question]="question"
+    [class.bg-light]="edit==i"
+  ></app-question>
     <!-- bud controls hides or shows via [hideBud] property -->
     <div [hidden] = "isBudHidden(i)"
         class="btn-block btn-group btn-group-sm" >
-        <a (click)="changeQuestion(i)" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
+        <a (click)="changeQuestion(question,i)" class="btn btn-outline-primary"><span class="fa fa-refresh"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
-        <a class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
+        <a (click)="toggleEdit(i)" class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
         <a class="btn btn-outline-primary"><span class="fa fa-warning"></span></a>
     </div>
     <hr>

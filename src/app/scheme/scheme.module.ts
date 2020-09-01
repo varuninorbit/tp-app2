@@ -8,6 +8,7 @@ import { GlobalModule } from '../global.module';
 import { FormsModule } from '@angular/forms';
 import { MathJaxModule } from 'ngx-mathjax';
 import { SafePipeModule } from 'safe-pipe';
+import { SchemeCreateService } from './scheme-create.service';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components],
@@ -17,7 +18,7 @@ import { SafePipeModule } from 'safe-pipe';
     SafePipeModule
   ],
   providers:[
-    ActionService, ArrayTableService
+    ActionService, ArrayTableService, SchemeCreateService
   ]
 })
 export class SchemeModule { }

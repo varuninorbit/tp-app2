@@ -95,12 +95,6 @@ export class ArrayTableService {
   }
 
 
-  //to get arrayTable for single question
-  rowArrayTableOf(questionID, arrayTable, questionsList) {
-    let rowMatrix = arrayTable[1][this.blockOf(questionID, questionsList)];
-    return [arrayTable[0], [rowMatrix]];
-  }
-
   //used in above function to get the block index of question from its id
   blockOf(questionID, questionsList) {
     return questionsList[questionID].blk;
