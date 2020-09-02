@@ -1,0 +1,84 @@
+<div class="card bg-warning text-white">
+    <div class="card-body">
+        <form class="form-horizontal">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Error</legend>
+
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                    <label class="col-md-6 control-label">Report an Error !</label>
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <label for="chapter">
+                                <input type="checkbox" name="checkboxes" id="chapter" [checked]="chapterChecked_q"
+                                    (change)="chapterChecked_q = !chapterChecked_q">
+                                Chapter
+                            </label>
+                            <div>
+                                <select [hidden]="!chapterChecked_q" name="selectbasic" class="form-control">
+                                    <option value="1">Option one</option>
+                                    <option value="2">Option two</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="checkbox">
+                            <label for="category">
+                                <input id="category" [checked]="categoryChecked_q"
+                                    (change)="categoryChecked_q = !categoryChecked_q" type="checkbox" name="checkboxes"
+                                    value="2">
+                                Category
+                            </label>
+
+                            <div>
+                                <select [hidden]="!categoryChecked_q" name="selectbasic" class="form-control">
+                                    <option value="1">Option one</option>
+                                    <option value="2">Option two</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="checkbox">
+                            <label for="marks">
+                                <input id="marks" [checked]="marksChecked_q" (change)="marksChecked_q = !marksChecked_q"
+                                    type="checkbox" name="checkboxes" value="2">
+                                Marks
+                            </label>
+
+                            <div>
+                                <select [hidden]="!marksChecked_q" id="selectbasic" name="selectbasic"
+                                    class="form-control">
+                                    <option value="1">Option one</option>
+                                    <option value="2">Option two</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="checkbox">
+                            <label for="other">
+                                <input id="other" [checked]="otherChecked_q" (change)="otherChecked_q = !otherChecked_q"
+                                    type="checkbox" name="checkboxes" value="">
+                                Other
+                            </label>
+                            <textarea [hidden]="!otherChecked_q" class="input-group input-group-text"></textarea>
+
+                        </div>
+                        <hr>
+
+                        <!-- Button -->
+                        <button id="singlebutton" name="singlebutton"
+                            class="btn btn-info form-control">Button</button>
+
+
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>

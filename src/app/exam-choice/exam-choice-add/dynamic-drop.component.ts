@@ -15,18 +15,16 @@ import { INode } from "src/app/types/i-node";
       <div class="dropdown-menu">
         <a
           class="dropdown-item"
-          (click)="createInnerDD([x])"
+          (click)="selected([x])"
           *ngFor="let x of node[0].node"
         >
           {{ x.name }}
         </a>
       </div>
     </div>
-    <!--
-    <div *ngIf="DoesInnerNodeExists(); else leaf">
+    <div *ngIf="DoesInnerNodeExists()">
       <app-dynamic-drop [node]="selectedChoice"></app-dynamic-drop>
     </div>
-    -->
   `,
   styles: []
 })
@@ -39,28 +37,16 @@ export class DynamicDropComponent implements OnInit {
     this.selectedChoice = this.blankSelectedChoice;
   }
 
-  selectedDD(selectedChoice: INode[]) {
+  selected(selectedChoice: INode[]) {
     this.selectedChoice = selectedChoice; // so that if inner node does not exist lenght prop can be 0
-  }
-
-  createInnerDD(selectedChoice: INode[]){
-    this.selectedDD(selectedChoice);
-    this.actForIfLastChoice();
   }
 
   DoesInnerNodeExists(): boolean {
     const hasNode = this.selectedChoice[0].hasOwnProperty('node');
     if(hasNode){
         return ( this.selectedChoice[0].node.length)?true:false;
-    }
-    return false;    
+    }    
   }
 
   ngOnInit() {}
-
-  actForIfLastChoice(){
-    if(!this.DoesInnerNodeExists()){
-      alert('Do you really want to add this choice.');
-    }
-  }
 }
