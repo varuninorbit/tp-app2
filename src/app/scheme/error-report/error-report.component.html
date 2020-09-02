@@ -4,7 +4,7 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>Error</legend>
+                <legend>Correction</legend>
 
                 <!-- Multiple Checkboxes -->
                 <div class="form-group">
@@ -18,8 +18,8 @@
                             </label>
                             <div>
                                 <select [hidden]="!chapterChecked_q" name="selectbasic" class="form-control">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
+                                    <option value="1">Chapter</option>
+                                    <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.chapter}}</option>
                                 </select>
                             </div>
                         </div>
@@ -35,9 +35,9 @@
 
                             <div>
                                 <select [hidden]="!categoryChecked_q" name="selectbasic" class="form-control">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
-                                </select>
+                                    <option value="1">Category</option>
+                                    <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+                                </select>                                
                             </div>
                         </div>
                         <hr>
@@ -45,16 +45,13 @@
                         <div class="checkbox">
                             <label for="marks">
                                 <input id="marks" [checked]="marksChecked_q" (change)="marksChecked_q = !marksChecked_q"
-                                    type="checkbox" name="checkboxes" value="2">
+                                    type="checkbox" name="checkboxes">
                                 Marks
                             </label>
 
                             <div>
-                                <select [hidden]="!marksChecked_q" id="selectbasic" name="selectbasic"
-                                    class="form-control">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
-                                </select>
+                                <input type="number" [hidden]="!marksChecked_q" name="selectbasic"
+                                min="1" max="25" class="form-control"/>
                             </div>
                         </div>
                         <hr>
@@ -72,9 +69,7 @@
 
                         <!-- Button -->
                         <button id="singlebutton" name="singlebutton"
-                            class="btn btn-info form-control">Button</button>
-
-
+                            class="btn btn-info form-control">Report</button>
                     </div>
                 </div>
 
