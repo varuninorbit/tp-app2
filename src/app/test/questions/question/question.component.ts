@@ -50,9 +50,6 @@ export class QuestionComponent implements OnInit {
     return JSON.parse(str);
   }
 
-  _(str:string){
-    //return this.sanitizer.bypassSecurityTrustHtml(str);
-    return str;
-  }
+
 
 }

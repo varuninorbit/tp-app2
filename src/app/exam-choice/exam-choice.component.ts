@@ -15,7 +15,11 @@ export class ExamChoiceComponent implements OnInit {
   node: INode[];
   constructor(private examChoiceService: ExamChoiceService, private user: UserService,
     private ac: ActionService) {
-      
+      this.currentChoice={
+        name:'',
+        id:'',
+        db_prefix:''
+      };      
   }
 
   ngOnInit() {

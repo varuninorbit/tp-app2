@@ -10,10 +10,39 @@
     <!-- MCQ QUESTIONS -->
     <div *ngSwitchCase='1'>
       <strong>Options</strong><br>
-      A<span class="math-container" [innerHTML]="question_question.option['a'] | safe : 'html'"></span>
-      B<span class="math-container" [innerHTML]="question_question.option['b'] | safe : 'html'"></span>
-      C<span class="math-container" [innerHTML]="question_question.option['c'] | safe : 'html'"></span>
-      D<span class="math-container" [innerHTML]="question_question.option['d'] | safe : 'html'"></span>    
+      <strong>(A) </strong>
+      <span class="math-container" [innerHTML]="question_question.option['a'] | safe : 'html'"></span><hr>
+
+      <strong>(B) </strong>
+      <span class="math-container" [innerHTML]="question_question.option['b'] | safe : 'html'"></span><hr>
+
+      <strong>(C) </strong>
+      <span class="math-container" [innerHTML]="question_question.option['c'] | safe : 'html'"></span><hr>
+
+      <strong>(D) </strong>
+      <span class="math-container" [innerHTML]="question_question.option['d'] | safe : 'html'"></span><hr>
+      
+      <p></p>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="">A
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="">B
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="" >C
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="" >D
+        </label>
+      </div>
     </div>
     
     <!-- TRUE AND FALSE -->

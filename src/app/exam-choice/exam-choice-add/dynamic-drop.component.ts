@@ -34,6 +34,7 @@ export class DynamicDropComponent implements OnInit {
   selectedChoice: INode[] = [];
 
   constructor() {
+    this.node=[];
     this.selectedChoice = this.blankSelectedChoice;
   }
 

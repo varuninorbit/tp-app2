@@ -14,6 +14,8 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   questionsList:IQuestionsList[];
   showBud:boolean[]; 
   edit:number;
+  
+  showErrorComponent_q=false;
 
   constructor(private ac:ActionService, private state: StateService,
     private li:LiteralService,
