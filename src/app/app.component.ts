@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ToggleMenuService } from './_services/toggle-menu.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActionService } from './services/action.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'my-app',
@@ -12,11 +13,15 @@ import { ActionService } from './services/action.service';
 export class AppComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatSidenav,{static:true}) 
   menuRef;
-  constructor(private menu:ToggleMenuService, private zone: NgZone, private as:ActionService){
+  constructor(private menu:ToggleMenuService, private zone: NgZone, 
+    private as:ActionService,
+    private user:UserService
+    ){
   }
 
   ngOnInit(){
     //this.menu.opened
+    window['appComp']=this;
   }
   mode = new FormControl('over');
 
@@ -25,6 +30,6 @@ export class AppComponent implements OnInit, AfterViewInit  {
   }
 
   ngAfterViewInit(){
-    console.log('menu ref',this.menuRef,this.zone)
+    
   }
 }

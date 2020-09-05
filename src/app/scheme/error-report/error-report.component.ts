@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
-
+import { store } from 'src/app/_services/store.service.js';
 @Component({
   selector: 'app-error-report',
   templateUrl: './error-report.component.html',
@@ -17,6 +17,7 @@ export class ErrorReportComponent implements OnInit {
   
   constructor(private ac:ActionService) { 
     window['error']=this;
+    window['store']=store;
   }
 
   ngOnInit(): void {

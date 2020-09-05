@@ -7,7 +7,7 @@ import { QuestionComponent } from '../test/questions/question/question.component
 import { ErrorReportComponent } from './error-report/error-report.component';
 
 const routes: Routes = [
-  { path: '', component: ErrorReportComponent },
+  {path: '', component: ErrorReportComponent},
   {path: "scheme", component: SchemeComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},
@@ -20,7 +20,7 @@ const routes: Routes = [
 })
 export class SchemeRoutingModule {
   static components = [
-    SchemeComponent, ChapcilComponent,ChikooComponent, 
+    SchemeComponent, ChapcilComponent, ChikooComponent, 
     QuestionComponent, ErrorReportComponent
   ]
 }

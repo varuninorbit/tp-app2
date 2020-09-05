@@ -23,7 +23,7 @@ export class ExamChoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ac.get('AExamChoice')('choices')('0').subscribe(({choices,currentChoice})=>{
+    this.ac.get('AExamChoice')('choices')(this.user.me().id).subscribe(({choices,currentChoice})=>{
       this.choices = choices;
       this.currentChoice=currentChoice;
     })

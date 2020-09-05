@@ -13,6 +13,6 @@ import { LiteralService } from './_services/literal.service';
     CommonModule, NotifierModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule],
-  providers:[StateService, UserService, GlobalService, LiteralService]
+  providers:[StateService, UserService, GlobalService, LiteralService, UserService]
 })
 export class GlobalModule { }
