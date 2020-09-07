@@ -12,13 +12,14 @@
                 <div class="col-md-6">
                     <div class="checkbox">
                         <label for="chapter">
-                            <input type="checkbox" name="checkboxes" id="chapter" [checked]="chapterChecked_q"
+                            <input type="checkbox"  id="chapter" [checked]="chapterChecked_q"
                                 (change)="chapterChecked_q = !chapterChecked_q">
                             Chapter
                         </label>
                         <div>
-                            <select [hidden]="!chapterChecked_q" name="selectbasic" class="form-control">
-                                <option value="1">Chapter</option>
+                            <select [hidden]="!chapterChecked_q"  class="form-control" 
+                            [(ngModel)]="form.chapter" name="chapter">
+                                <option value="0">Chapter</option>
                                 <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.chapter}}
                                 </option>
                             </select>
@@ -29,14 +30,15 @@
                     <div class="checkbox">
                         <label for="category">
                             <input id="category" [checked]="categoryChecked_q"
-                                (change)="categoryChecked_q = !categoryChecked_q" type="checkbox" name="checkboxes"
+                                (change)="categoryChecked_q = !categoryChecked_q" type="checkbox" 
                                 value="2">
                             Category
                         </label>
 
                         <div>
-                            <select [hidden]="!categoryChecked_q" name="selectbasic" class="form-control">
-                                <option value="1">Category</option>
+                            <select [hidden]="!categoryChecked_q"  class="form-control" 
+                            [(ngModel)]="form.category" name="category">
+                                <option value="0">Category</option>
                                 <option [value]="category.id" *ngFor="let category of categories">{{category.name}}
                                 </option>
                             </select>
@@ -47,13 +49,14 @@
                     <div class="checkbox">
                         <label for="marks">
                             <input id="marks" [checked]="marksChecked_q" (change)="marksChecked_q = !marksChecked_q"
-                                type="checkbox" name="checkboxes">
+                                type="checkbox" >
                             Marks
                         </label>
 
                         <div>
-                            <input type="number" [hidden]="!marksChecked_q" name="selectbasic" min="1" max="25"
-                                class="form-control" />
+                            <input type="number" [hidden]="!marksChecked_q"  min="1" max="25"
+                                class="form-control" 
+                                [(ngModel)]="form.marks" name="marks"/>
                         </div>
                     </div>
                     <hr>
@@ -61,16 +64,17 @@
                     <div class="checkbox">
                         <label for="other">
                             <input id="other" [checked]="otherChecked_q" (change)="otherChecked_q = !otherChecked_q"
-                                type="checkbox" name="checkboxes" value="">
+                                type="checkbox"  value="">
                             Other
                         </label>
                         <textarea [hidden]="!otherChecked_q" class="input-group input-group-text"
-                            style="text-align: left;"></textarea>
+                            style="text-align: left;" 
+                            [(ngModel)]="form.other" name="other"></textarea>
                     </div>
                     <hr>
 
                     <!-- Button -->
-                    <button id="singlebutton" name="singlebutton" class="btn btn-info form-control">Report</button>
+                    <button id="singlebutton"  class="btn btn-info form-control">Report</button>
                 </div>
             </div>
 

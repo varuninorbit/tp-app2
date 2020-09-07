@@ -19,7 +19,8 @@ export class ExamChoiceComponent implements OnInit {
         name:'',
         id:'',
         db_prefix:''
-      };      
+      };
+      window['examChoice']=this;      
   }
 
   ngOnInit() {

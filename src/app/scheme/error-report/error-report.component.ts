@@ -14,6 +14,9 @@ export class ErrorReportComponent implements OnInit {
 
   categories: {id:number; name:string}[];
   chapters:{id:number; chapter:string}[];
+
+  
+  form={chapter:null,category:null,marks:null,other:null};
   
   constructor(private ac:ActionService) { 
     window['error']=this;
