@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { StateService } from 'src/app/state.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-scheme',
@@ -15,10 +16,13 @@ export class SchemeComponent implements OnInit {
   selectedID=0;
 
   cardClass=[];
-  constructor(private ac:ActionService, private state: StateService ) { 
+  private 
+  constructor(private ac:ActionService, private state: StateService, 
+    private notifier:NotifierService
+    ) { 
     window['scheme']= this;
     this.AScheme = ac.get('ASchema');
-    this.selectedID=this.state.state.currentScheme.id;
+    
   }
 
   ngOnInit(): void {
@@ -39,5 +43,16 @@ export class SchemeComponent implements OnInit {
     return (schemeId==this.state?.state.currentScheme.id)
     ?true
     :false;
+  }
+
+  nextIsEnabled(){
+    return (this.state.state.currentScheme.id);
+  }
+
+  notify(){
+    this.notifier.show({
+      type: "warning",
+      message: "Select a Scheme first."
+    });
   }
 }

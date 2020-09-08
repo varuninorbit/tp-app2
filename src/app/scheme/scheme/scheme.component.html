@@ -8,25 +8,15 @@
     Description <span>{{scheme.name}}</span>
     </mat-card-content>
 </mat-card>
-<!-- 
-    TODO
-    Select a scheme
-    After clicking next button chapter selection should appear
- -->
 
-
- <app-bottom-nav>
-
-   <a type="button" routerLink='/scheme/chapcil' class="btn btn-primary btn-lg float-left">
-        <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
-    </a>
-    <a type="button" class="btn btn-primary btn-lg float-left">
-        <span class="fa fa-arrow-left text-light" data-toogle="tooltip"></span>
-    </a>
-    
+<app-bottom-nav>
+    <a *ngIf="nextIsEnabled()" type="button" routerLink='/scheme/chapcil' class="btn btn-primary btn-lg float-left">
+         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+    </a> 
+    <a *ngIf="!nextIsEnabled()" type="button" (click)="notify()" class="btn btn-primary btn-lg float-left">
+             <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+    </a>    
  </app-bottom-nav>
-
-            
 
     
   

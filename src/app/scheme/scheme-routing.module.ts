@@ -7,7 +7,7 @@ import { QuestionComponent } from '../test/questions/question/question.component
 import { ErrorReportComponent } from './error-report/error-report.component';
 
 const routes: Routes = [
-  {path: '', component: ErrorReportComponent},
+  {path: '', component: SchemeComponent},
   {path: "scheme", component: SchemeComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},

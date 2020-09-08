@@ -4,6 +4,7 @@ import { ToggleMenuService } from './_services/toggle-menu.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActionService } from './services/action.service';
 import { UserService } from './user.service';
+import { store } from 'src/app/_services/store.service.js';
 
 @Component({
   selector: 'my-app',
@@ -13,10 +14,13 @@ import { UserService } from './user.service';
 export class AppComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatSidenav,{static:true}) 
   menuRef;
+
+  examChoiceName:string;
   constructor(private menu:ToggleMenuService, private zone: NgZone, 
     private as:ActionService,
     private user:UserService
     ){
+      this.examChoiceName = store.currentChoice.name;
   }
 
   ngOnInit(){

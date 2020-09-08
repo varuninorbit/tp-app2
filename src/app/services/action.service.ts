@@ -73,7 +73,7 @@ export class ActionService {
 
 interface Hemta{
   headers?:string[];
-  everyQuery?:string;
+  everyQuery?:string; //shoud start with &
   query?:string;
   baseURL:string;
   relativeURL:string;

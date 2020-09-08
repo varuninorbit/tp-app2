@@ -4,6 +4,7 @@ import { IExamChoice } from "../types/i-exam-choice";
 import { INode } from "../types/i-node";
 import { UserService } from "../user.service";
 import { ActionService } from '../services/action.service';
+import { store } from 'src/app/_services/store.service.js';
 @Component({
   selector: "app-exam-choice",
   templateUrl: "./exam-choice.component.html",
@@ -14,7 +15,8 @@ export class ExamChoiceComponent implements OnInit {
   currentChoice: IExamChoice;
   node: INode[];
   constructor(private examChoiceService: ExamChoiceService, private user: UserService,
-    private ac: ActionService) {
+    private ac: ActionService
+    ) {
       this.currentChoice={
         name:'',
         id:'',
@@ -27,6 +29,7 @@ export class ExamChoiceComponent implements OnInit {
     this.ac.get('AExamChoice')('choices')(this.user.me().id).subscribe(({choices,currentChoice})=>{
       this.choices = choices;
       this.currentChoice=currentChoice;
+      store.currentChoice=currentChoice;
     })
   }
 }
