@@ -37,7 +37,7 @@ export class ChapcilComponent implements OnInit {
   ngOnInit(): void {
     let schemeID = this.stateService.state.currentScheme.id;
     //load chapters and scheme 
-    this.AScheme('schter')(schemeID, 'exam_choice=8th_mat_cb_en').subscribe(({ scheme, chapters }) => {
+    this.AScheme('schter')(schemeID).subscribe(({ scheme, chapters }) => {
       this.chapters = chapters;
       this.scheme = scheme;
       this.updateState() ;

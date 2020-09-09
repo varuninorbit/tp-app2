@@ -16,6 +16,7 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   edit:number;
   
   showErrorComponent_q=false;
+  errorQuestionID:number;
 
   constructor(private ac:ActionService, private state: StateService,
     private li:LiteralService,
@@ -34,7 +35,7 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     let notIn = this.questionsList.map(i=>i.id);
 
     let scheme = this.sc.friendSchemeForSingleQuestion(question,this.state.state.arrayTable);
-    this.ac.post('AQuestion',false,'?exam_choice=8th_mat_cb_en')
+    this.ac.post('AQuestion')
     ('singleFriendQuestion')(scheme,notIn)
     .subscribe(r=>{
       if(this.questionsList[i].id != r[0][0].id){

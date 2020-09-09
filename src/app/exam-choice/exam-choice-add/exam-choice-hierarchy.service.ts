@@ -4,11 +4,10 @@ import { ActionService } from 'src/app/services/action.service';
 
 @Injectable()
 export class ExamChoiceServiceHierarchy {
-    examChoiceHierarchy: Observable<any>;
+    examChoiceHierarchy: Observable<any>; //TODO change type
   
   constructor(private ac:ActionService) {
     
-    //TODO change type
     this.examChoiceHierarchy  = ac.get('AExamChoice')('hierarchy')();   
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { store } from 'src/app/_services/store.service.js';
 @Component({
@@ -17,6 +17,8 @@ export class ErrorReportComponent implements OnInit {
 
   
   form={chapter:null,category:null,marks:null,other:null};
+
+  @Input() questionID:number;
   
   constructor(private ac:ActionService) { 
     window['error']=this;
@@ -24,10 +26,18 @@ export class ErrorReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ac.get('ErrorReport')('loadFields')('exam_choice=8th_mat_cb_en').subscribe(r=>{
+    this.ac.get('ErrorReport')('loadFields')().subscribe(r=>{
       this.categories=r.categories;
       this.chapters=r.chapters;
     })    
+  }
+
+  submitForm(){
+    let data = {
+      'questionID':this.questionID,
+      'errorData':this.form
+      }
+      this.ac.post('ErrorReport',true)('save')(data).subscribe()
   }
 
 }

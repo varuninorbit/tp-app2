@@ -26,7 +26,7 @@ export class SchemeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.AScheme('all')('exam_choice=9th_sci_cb_en')
+    this.AScheme('all')()
     .subscribe(schemes=>{
       this.schemes = schemes;
     })

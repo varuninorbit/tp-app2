@@ -12,7 +12,8 @@
                     class="fa fa-refresh"></span></a>
             <a class="btn btn-outline-primary"><span class="fa fa-list"></span></a>
             <a (click)="toggleEdit(i)" class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
-            <a (click)="showErrorComponent_q=true" class="btn btn-outline-primary"><span class="fa fa-warning"></span></a>
+            <a (click)="showErrorComponent_q=true; errorQuestionID = question.id" class="btn btn-outline-primary"><span class="fa fa-warning"
+                ></span></a>
         </div>
         <hr>
     </div>
@@ -29,7 +30,7 @@
                 <button (click)="showErrorComponent_q=false" type="button" class="close">&times;</button>
             </div>
 
-            <app-error-report></app-error-report>
+            <app-error-report [questionID]="errorQuestionID"></app-error-report>
 
             <!-- Modal footer -->
             <div class="modal-footer">
