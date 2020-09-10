@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { store } from 'src/app/_services/store.service.js';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-error-report',
   templateUrl: './error-report.component.html',
@@ -17,10 +18,15 @@ export class ErrorReportComponent implements OnInit {
 
   
   form={chapter:null,category:null,marks:null,other:null};
-
+  
+  
   @Input() questionID:number;
   
-  constructor(private ac:ActionService) { 
+  constructor(private ac:ActionService,
+    private dialog: MatDialog,
+    public dialogRef: MatDialogRef<ErrorReportComponent>,
+    @Inject(MAT_DIALOG_DATA) public dialogData
+    ) {    
     window['error']=this;
     window['store']=store;
   }
@@ -33,11 +39,11 @@ export class ErrorReportComponent implements OnInit {
   }
 
   submitForm(){
+    this.dialogRef.close();
     let data = {
-      'questionID':this.questionID,
+      'questionID':this.dialogData.question.id,
       'errorData':this.form
       }
       this.ac.post('ErrorReport',true)('save')(data).subscribe()
-  }
-
+  } 
 }

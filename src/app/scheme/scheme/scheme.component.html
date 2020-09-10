@@ -9,10 +9,10 @@
     </mat-card-content>
 </mat-card>
 
-<app-bottom-nav>
-    <a *ngIf="nextIsEnabled()" type="button" routerLink='/scheme/chapcil' class="btn btn-primary btn-lg float-left">
-         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
-    </a> 
+<app-bottom-nav>    
+   <a *ngIf="nextIsEnabled()" type="button" routerLink='/scheme/chapcil' class="btn btn-primary btn-lg float-left">
+    <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+   </a> 
     <a *ngIf="!nextIsEnabled()" type="button" (click)="notify()" class="btn btn-primary btn-lg float-left">
              <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
     </a>    

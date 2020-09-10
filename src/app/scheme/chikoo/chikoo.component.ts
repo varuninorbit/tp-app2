@@ -4,6 +4,8 @@ import { StateService } from 'src/app/state.service';
 import { IQuestionsList } from 'src/app/types/i-questions-list';
 import { LiteralService } from 'src/app/_services/literal.service';
 import { SchemeCreateService } from '../scheme-create.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorReportComponent } from '../error-report/error-report.component';
 
 @Component({
   selector: 'app-chikoo',
@@ -20,7 +22,8 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
 
   constructor(private ac:ActionService, private state: StateService,
     private li:LiteralService,
-    private sc:SchemeCreateService
+    private sc:SchemeCreateService,
+    private dialog: MatDialog
     ) { 
     window['chikoo']=this;
     this.getQuestionsFromServer();
@@ -51,7 +54,7 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
 
   getQuestionsFromServer(){
     let arrayTable = this.state.state.arrayTable;
-    this.ac.post('ASchema',true,'?exam_choice=8th_mat_cb_en&XDEBUG_SESSION_START')
+    this.ac.post('ASchema',true)
     ('loadQuestions')({scheme:arrayTable}).subscribe(questionsList=>{
       this.questionsList = questionsList;
     })  
@@ -79,13 +82,20 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   _(str){
     return this.li.resolve(this)(str);
   }
-
   toggleEdit(i){
     if(this.edit==i){
       this.edit=-1;
     }else{
       this.edit=i;
     }
+  }
+
+  openErrorDialog(question){
+    const dialogRef = this.dialog.open(ErrorReportComponent,{
+      data:{
+        question:question
+      }
+    });
   }
 
 }

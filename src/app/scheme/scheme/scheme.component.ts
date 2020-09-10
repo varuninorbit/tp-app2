@@ -3,6 +3,8 @@ import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { StateService } from 'src/app/state.service';
 import { NotifierService } from 'angular-notifier';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorReportComponent } from '../error-report/error-report.component';
 
 @Component({
   selector: 'app-scheme',
@@ -18,7 +20,8 @@ export class SchemeComponent implements OnInit {
   cardClass=[];
   private 
   constructor(private ac:ActionService, private state: StateService, 
-    private notifier:NotifierService
+    private notifier:NotifierService,
+    private dialog: MatDialog
     ) { 
     window['scheme']= this;
     this.AScheme = ac.get('ASchema');
@@ -54,5 +57,10 @@ export class SchemeComponent implements OnInit {
       type: "warning",
       message: "Select a Scheme first."
     });
+  }
+
+  openErrorDialog(){
+    alert('opening dialog');
+    const dialogRef = this.dialog.open(ErrorReportComponent);
   }
 }
