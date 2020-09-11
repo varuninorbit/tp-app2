@@ -9,15 +9,18 @@ import { NotifierModule } from "angular-notifier";
 import { LiteralService } from './_services/literal.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MessageHttpInterceptor } from './interceptors/message-http.interceptor';
+import { ConfirmDialog } from './confirm-dialog.component';
+import { MaterialModule } from './material/material.module';
 @NgModule({
-  declarations: [BackButtonDirective, BottomNavComponent],
+  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog],
   imports: [
-    CommonModule, NotifierModule
+    CommonModule, NotifierModule, MaterialModule
   ],
-  exports:[BackButtonDirective,BottomNavComponent, NotifierModule],
+  exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true}  
-  ]
+  ],
+  entryComponents:[]
 })
 export class GlobalModule { }

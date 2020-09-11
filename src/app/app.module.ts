@@ -26,6 +26,7 @@ import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
 import { SafePipeModule } from 'safe-pipe';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
@@ -73,7 +74,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     // {provide:HAMMER_GESTURE_CONFIG,useClass:HammerGestureConfig},
     { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
     GlobalService,
-    ActionService
+    ActionService,
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
   ]
 })
 export class AppModule {}

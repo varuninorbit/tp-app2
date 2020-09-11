@@ -5,6 +5,8 @@ import { INode } from "../types/i-node";
 import { UserService } from "../user.service";
 import { ActionService } from '../services/action.service';
 import { store } from 'src/app/_services/store.service.js';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialog } from '../confirm-dialog.component';
 @Component({
   selector: "app-exam-choice",
   templateUrl: "./exam-choice.component.html",
@@ -15,7 +17,7 @@ export class ExamChoiceComponent implements OnInit {
   currentChoice: IExamChoice;
   node: INode[];
   constructor(private examChoiceService: ExamChoiceService, private user: UserService,
-    private ac: ActionService
+    private ac: ActionService, private dialog: MatDialog
     ) {
       this.currentChoice={
         name:'',
@@ -32,4 +34,22 @@ export class ExamChoiceComponent implements OnInit {
       store.currentChoice=currentChoice;
     })
   }
+
+  openChoicesDialog(choice): void {
+    const dialogRef = this.dialog.open(ConfirmDialog, {      
+      data:{
+          title: choice.name,
+          message:'Use this choice?',
+          btn1:{name:'Yes',value:'true',color:'primary'},
+          btn2:{name:'Delete',value:'delete', color:'warn'},
+          btn3:null
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+    });
+  }
+
+  
 }

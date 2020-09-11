@@ -2,9 +2,9 @@
     <p class="mb-1"></p>
     <small></small>
 </app-card>
-<div class="list-group">
-    <div *ngFor="let cho of choices" href="#" class="list-group-item list-group-item-action ">
-        <strong>{{cho.name}}</strong>
+<div class="list-group" >
+    <div (click)="openChoicesDialog(choice)" *ngFor="let choice of choices" href="#" class="list-group-item list-group-item-action ">
+        <strong>{{choice.name}}</strong>
     </div> 
   </div>
 

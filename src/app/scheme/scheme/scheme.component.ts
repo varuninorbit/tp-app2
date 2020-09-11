@@ -4,7 +4,6 @@ import { IScheme } from 'src/app/types/i-scheme';
 import { StateService } from 'src/app/state.service';
 import { NotifierService } from 'angular-notifier';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorReportComponent } from '../error-report/error-report.component';
 
 @Component({
   selector: 'app-scheme',
@@ -57,10 +56,5 @@ export class SchemeComponent implements OnInit {
       type: "warning",
       message: "Select a Scheme first."
     });
-  }
-
-  openErrorDialog(){
-    alert('opening dialog');
-    const dialogRef = this.dialog.open(ErrorReportComponent);
-  }
+  }  
 }
