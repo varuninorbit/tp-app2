@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { store } from 'src/app/_services/store.service.js';
 import * as _ from 'underscore';
+import { StateService } from '../state.service';
 @Injectable()
 export class GlobalService{
     get window(){
         return window;
     }
 
-    constructor(){
+    constructor(private state_: StateService){
          window['_']=_;
     }
 
@@ -21,5 +23,15 @@ export class GlobalService{
             }
         })
     }
+
+    store(){
+        return store;
+    }
+
+    state():StateService{
+        return this.state_;
+    }
+
+
     
 }

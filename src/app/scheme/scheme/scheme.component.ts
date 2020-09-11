@@ -3,7 +3,7 @@ import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { StateService } from 'src/app/state.service';
 import { NotifierService } from 'angular-notifier';
-import { MatDialog } from '@angular/material/dialog';
+import { GlobalService } from 'src/app/_services';
 
 @Component({
   selector: 'app-scheme',
@@ -20,7 +20,7 @@ export class SchemeComponent implements OnInit {
   private 
   constructor(private ac:ActionService, private state: StateService, 
     private notifier:NotifierService,
-    private dialog: MatDialog
+    private gs: GlobalService
     ) { 
     window['scheme']= this;
     this.AScheme = ac.get('ASchema');

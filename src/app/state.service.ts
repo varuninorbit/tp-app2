@@ -65,7 +65,8 @@ export class StateService {
   }
 
   get state():IState{
-    return this.state$.getValue()
+    let state =  this.state$.getValue();
+    return state;
   }
 }
 
