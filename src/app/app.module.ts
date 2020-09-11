@@ -74,8 +74,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     // {provide:HAMMER_GESTURE_CONFIG,useClass:HammerGestureConfig},
     { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
     GlobalService,
-    ActionService,
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
+    ActionService
   ]
 })
 export class AppModule {}
