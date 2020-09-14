@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { store } from 'src/app/_services/store.service.js';
-import * as _ from 'underscore';
 import { StateService } from '../state.service';
 @Injectable()
 export class GlobalService{
@@ -9,7 +8,7 @@ export class GlobalService{
     }
 
     constructor(private state_: StateService){
-         window['_']=_;
+        
     }
 
     newOrDefaultValue(obj, defaultObj, nonExistingProp=null) {
@@ -30,6 +29,12 @@ export class GlobalService{
 
     state():StateService{
         return this.state_;
+    }
+
+    updateState(){
+        this.state_.updateState(state=>{
+            return state; //just to hit subscribers
+        });
     }
 
 

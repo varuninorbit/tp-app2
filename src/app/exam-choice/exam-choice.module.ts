@@ -5,6 +5,7 @@ import { CardComponent } from '../card/card.component';
 import { DynamicDropComponent } from './exam-choice-add/dynamic-drop.component';
 import { ExamChoiceService } from './exam-choice.service';
 import { GlobalModule } from '../global.module';
+import { ExamChoiceServiceHierarchy } from './exam-choice-add/exam-choice-hierarchy.service';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,6 @@ import { GlobalModule } from '../global.module';
     ExamChoiceRoutingModule,
     GlobalModule
   ],
-  providers: [ ExamChoiceService]
+  providers: [ ExamChoiceService, ExamChoiceServiceHierarchy]
 })
 export class ExamChoiceModule { }
