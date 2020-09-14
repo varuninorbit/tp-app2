@@ -31,9 +31,13 @@ export class GlobalService{
         return this.state_;
     }
 
-    updateState(){
+    updateState(param){
+        let choices = param.choices.choices; //TODO optmise in ExamChoiceControllerAuthi@updateCurrentChoice
+        let currentChoice = param.choices.currentChoice;
         this.state_.updateState(state=>{
-            return state; //just to hit subscribers
+            state.currentChoice = currentChoice;
+            state.choices = choices;
+            return state;
         });
     }
 

@@ -49,7 +49,12 @@ export class StateService {
             5
           ]
         ]
-      ]
+      ],
+      currentChoice:{
+        "id": 0,
+        "name": "",
+        "db_prefix": ""
+      }
     };
 
     this.state$ = new BehaviorSubject<IState> (this.state_);

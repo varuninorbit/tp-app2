@@ -5,6 +5,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ActionService } from './services/action.service';
 import { UserService } from './user.service';
 import { store } from 'src/app/_services/store.service.js';
+import { StateService } from './state.service';
 
 @Component({
   selector: 'my-app',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit, AfterViewInit  {
   examChoiceName:string;
   constructor(private menu:ToggleMenuService, private zone: NgZone, 
     private as:ActionService,
-    private user:UserService
+    private user:UserService,
+    private state:StateService
     ){
       this.examChoiceName = store.currentChoice.name; //TODO fix code to update exam choice
   }
@@ -26,6 +28,9 @@ export class AppComponent implements OnInit, AfterViewInit  {
   ngOnInit(){
     //this.menu.opened
     window['appComp']=this;
+    this.state.state$.subscribe(state=>{
+      this.examChoiceName = state.currentChoice.name
+    })
   }
   mode = new FormControl('over');
 

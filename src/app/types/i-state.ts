@@ -1,4 +1,4 @@
-import { IChapter } from './i-exam-choice';
+import { IChapter, IExamChoice } from './i-exam-choice';
 import { IScheme } from './i-scheme';
 import { IQuestionsList } from './i-questions-list';
 
@@ -7,5 +7,7 @@ export interface IState {
     selectedChapters?:number[];
     currentScheme?:IScheme;
     arrayTable?:any //todo change type,
-    questionsList?:IQuestionsList
+    questionsList?:IQuestionsList,
+    currentChoice?:IExamChoice,
+    choices?:IExamChoice[]
 }
