@@ -31,9 +31,7 @@ export class GlobalService{
         return this.state_;
     }
 
-    updateState(param){
-        let choices = param.choices.choices; //TODO optmise in ExamChoiceControllerAuthi@updateCurrentChoice
-        let currentChoice = param.choices.currentChoice;
+    updateChoices({currentChoice,choices}){
         this.state_.updateState(state=>{
             state.currentChoice = currentChoice;
             state.choices = choices;

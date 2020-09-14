@@ -51,7 +51,7 @@ export class StateService {
         ]
       ],
       currentChoice:{
-        "id": 0,
+        "id": '0',
         "name": "",
         "db_prefix": ""
       }
