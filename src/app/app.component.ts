@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit  {
     private as:ActionService,
     private user:UserService
     ){
-      this.examChoiceName = store.currentChoice.name;
+      this.examChoiceName = store.currentChoice.name; //TODO fix code to update exam choice
   }
 
   ngOnInit(){

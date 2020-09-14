@@ -16,7 +16,7 @@ export const Urls = {
   apiBase: "http://qpw_manage.test/api/",
   relativeURL: "authi/",  
   everyQuery:
-    '&exam_choice=8th_mat_cb_en'+ //TODO Exam Choice Selection fromm scheme
+    'exam_choice=8th_mat_cb_en'+ //TODO Exam Choice Selection fromm scheme
     '&api_token=57844f2390c771454ba190b4f5242b45'+
     '&XDEBUG_SESSION_START'
 }
