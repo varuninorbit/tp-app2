@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { INode } from "src/app/types/i-node";
+import { ActionService } from 'src/app/services/action.service';
 
 @Component({
   selector: "app-dynamic-drop",
@@ -33,13 +34,18 @@ export class DynamicDropComponent implements OnInit {
   blankSelectedChoice: INode[] = [{ name: "", node: [] }];
   selectedChoice: INode[] = [];
 
-  constructor() {
+  constructor(private ac: ActionService) {
+    window['dynamicDrop']=this;
     this.node=[];
     this.selectedChoice = this.blankSelectedChoice;
   }
 
   selected(selectedChoice: INode[]) {
     this.selectedChoice = selectedChoice; // so that if inner node does not exist lenght prop can be 0
+    if(!this.DoesInnerNodeExists()){
+      // this is the leaf 
+      this.addNewChoice(selectedChoice);
+    }
   }
 
   DoesInnerNodeExists(): boolean {
@@ -50,4 +56,8 @@ export class DynamicDropComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  addNewChoice(selectedChoice){
+    this.ac.get('AExamChoice')('addChoiceToList')(selectedChoice[0].id).subscribe(()=> {})
+  }
 }

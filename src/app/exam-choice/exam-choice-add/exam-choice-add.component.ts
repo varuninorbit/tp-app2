@@ -11,7 +11,8 @@ export class ExamChoiceAddComponent implements OnInit {
   node: INode[];
   
   constructor( private examChoice: ExamChoiceService, 
-    private examChoiceHierarchy: ExamChoiceServiceHierarchy) {
+    private examChoiceHierarchy: ExamChoiceServiceHierarchy
+    ) {
     
       examChoiceHierarchy.examChoiceHierarchy.subscribe(node=>{
       this.node = [node];
