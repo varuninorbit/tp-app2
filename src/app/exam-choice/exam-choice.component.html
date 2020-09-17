@@ -1,16 +1,19 @@
-<app-card [param]="{title:currentChoice.name,rightCaption:'Selected Choice'}">  
+<app-card [param]="{title:currentChoice.name,rightCaption:'Selected Choice'}">
     <p class="mb-1"></p>
     <small></small>
 </app-card>
-<div class="list-group" >
-    <div (click)="openChoicesDialog(choice)" *ngFor="let choice of choices" href="#" class="list-group-item list-group-item-action ">
-        <strong>{{choice.name}}</strong>
-    </div> 
-  </div>
+<div class="list-group">
+    <div *ngFor="let choice of choices">
+        <div [hidden]="choice.id == currentChoice.id" 
+        (click)="openChoicesDialog(choice)" href="#" class="list-group-item list-group-item-action ">
+            <strong >{{choice.name}}</strong>
+        </div>
+    </div>
+</div>
 
 <app-bottom-nav>
-    <a type="button"  routerLink="exam-choice-add" class="btn btn-lg btn-outline-light float-left"
-    style="margin-left: 10px;">
-        Add Choice        
+    <a type="button" routerLink="exam-choice-add" class="btn btn-lg btn-outline-light float-left"
+        style="margin-left: 10px;">
+        Add Choice
     </a>
 </app-bottom-nav>
