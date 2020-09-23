@@ -14,6 +14,7 @@ import { MaterialModule } from './material/material.module';
 import { ExamChoiceService } from './exam-choice/exam-choice.service';
 import { TriggerHttpInterceptor } from './interceptors/trigger-http.interceptor';
 import { TriggerService } from './_services/trigger.service';
+import { ResconService } from './rescon.service';
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog],
   imports: [
@@ -24,7 +25,7 @@ import { TriggerService } from './_services/trigger.service';
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
-    ExamChoiceService, TriggerService 
+    ExamChoiceService, TriggerService, ResconService
   ],
   entryComponents:[]
 })

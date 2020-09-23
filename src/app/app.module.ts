@@ -57,14 +57,12 @@ export class MyHammerConfig extends HammerGestureConfig {
     }),
     SchemeModule,
     GlobalModule,
-    ExamChoiceModule,
-
-    SafePipeModule
+    ExamChoiceModule    
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
-    ,GlobalModule, SafePipeModule
+    ,GlobalModule
   ],
   providers: [
     ExamChoiceService,

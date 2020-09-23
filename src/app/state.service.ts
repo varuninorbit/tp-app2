@@ -52,7 +52,7 @@ export class StateService {
       ],
       currentChoice:{
         "id": '0',
-        "name": "",
+        "name": "Exam Choice",
         "db_prefix": ""
       }
     };

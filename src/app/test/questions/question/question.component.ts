@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild,NgZone } from '@angular/core';
 import { IQuestion } from 'src/app/types/i-question';
-import {DomSanitizer } from '@angular/platform-browser';
 import { MathJaxDirective } from 'ngx-mathjax';
 
 
@@ -35,9 +34,7 @@ export class QuestionComponent implements OnInit {
   question_question:any;
   question_answer:any;
 
-  constructor(private sanitizer: DomSanitizer, private zone: NgZone) {
-    
-   }
+
 
   ngOnInit() {
     //console.log('question component instance', this)

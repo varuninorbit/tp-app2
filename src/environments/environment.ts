@@ -20,3 +20,47 @@ export const Urls = {
     '&api_token=57844f2390c771454ba190b4f5242b45'+
     '&XDEBUG_SESSION_START'
 }
+
+export let state={
+  chapters:[
+  ],
+  selectedChapters:[],
+  currentScheme:{
+    id:0,
+    description:'',
+    name:''
+  },
+  arrayTable:[
+    [
+      "chapter_id",
+      "category_id",
+      "marks",
+      "no"
+    ],
+    [
+      [
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        7,
+        1,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        0,
+        5
+      ]
+    ]
+  ],
+  currentChoice:{
+    "id": '0',
+    "name": "Exam Choice",
+    "db_prefix": ""
+  }
+};
