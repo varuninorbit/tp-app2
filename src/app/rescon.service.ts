@@ -27,6 +27,7 @@ export class ResconService {
     }
 
     fetch(){
+        //fetch resource from index
         let i=0;
         this.resource$.next(this.resources[i]);
     }
