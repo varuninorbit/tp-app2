@@ -21,24 +21,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
 import { MathJaxModule } from "ngx-mathjax";
 import { GlobalService } from "./_services/global.service";
-import * as Hammer from "hammerjs";
 import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
 import { SafePipeModule } from 'safe-pipe';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-@Injectable()
-export class MyHammerConfig extends HammerGestureConfig {
-  buildHammer(element: HTMLElement) {
-    let mc = new Hammer(element, {
-      touchAction: "pan-y",
-    });
-    return mc;
-  }
-  overrides = <any>{
-    swipe: { direction: Hammer.DIRECTION_ALL }
-  };
-}
 
 @NgModule({
   imports: [
@@ -69,11 +55,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   ],
   providers: [
     ExamChoiceService,
-    AlertService,
-    //ToggleMenuService,
-    //SelectedOptionsService,
-    // {provide:HAMMER_GESTURE_CONFIG,useClass:HammerGestureConfig},
-    { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig },
+    AlertService,   
     GlobalService,
     ActionService
   ]
