@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   template: `
   <h1>Question selection</h1>
   
-<hr>
 
   `,
   styleUrls: ['./test.component.css']
