@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Injectable } from "@angular/core";
 import {
   BrowserModule,
   HAMMER_GESTURE_CONFIG,
@@ -27,6 +27,7 @@ import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
 import { SafePipeModule } from 'safe-pipe';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+@Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
