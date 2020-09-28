@@ -21,6 +21,7 @@ import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
 import { SafePipeModule } from 'safe-pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { SafePipeModule } from 'safe-pipe';
     }),
     SchemeModule,
     GlobalModule,
-    ExamChoiceModule
+    ExamChoiceModule,
+    NgbModule
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
