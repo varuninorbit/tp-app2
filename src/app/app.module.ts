@@ -25,9 +25,8 @@ import * as Hammer from "hammerjs";
 import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
-import { SafePipeModule } from 'safe-pipe';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { NgbPackModule } from './ngb-pack/ngb-pack.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     let mc = new Hammer(element, {
@@ -59,13 +58,12 @@ export class MyHammerConfig extends HammerGestureConfig {
     SchemeModule,
     GlobalModule,
     ExamChoiceModule,
-    NgbPackModule   
+    NgbModule
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
-    ,GlobalModule,
-    NgbPackModule
+    ,GlobalModule, NgbModule
   ],
   providers: [
     ExamChoiceService,

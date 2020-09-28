@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-test',
   template: `
   <h1>Question selection</h1>
-<ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+  
 <hr>
 
   `,
@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
    
-  time:any;
+  time = {hour: 13, minute: 30};
 
   constructor() { }
 
