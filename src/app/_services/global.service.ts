@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { store } from 'src/app/_services/store.service.js';
+import { ResconService } from '../rescon.service';
 import { StateService } from '../state.service';
+import { LiteralService } from './literal.service';
 @Injectable()
 export class GlobalService{
     get window(){
         return window;
     }
 
-    constructor(private state_: StateService){
+    constructor(private state_: StateService, 
+        private literal_:LiteralService,
+        private rescon:ResconService ){
         
     }
 
@@ -39,6 +43,7 @@ export class GlobalService{
         });
     }
 
-
-    
+    get literal(){
+        return this.literal_;
+    }    
 }

@@ -22,49 +22,49 @@ export class ArrayTableService {
     return [this.colNames(jsonTable), this.jsonTableToMatrix(jsonTable)];
   }
 
-  f(x,mappingArr){
+  f(x, mappingArr) {
     /*  mappingArr = 
       [3, 7, 4],
       [6, 9, 10]
   
       f(3,mappingArr) => 6
-    */  
+    */
     return mappingArr[1][mappingArr[0].indexOf(x)];
   }
-  
-  
-  
-    /*  mappingArr = 
-      [3, 7, 4],
-      [6, 9, 10]
-  
-      f(3,mappingArr) => 6
-    */  
-  
-    /*
-      replaceColDataInArrayTable('chapter_id',at,mappingArr)    
-    */
-  
-  replaceColDataInArrayTable(replaceColName,arrayTable,mappingArr) {
-      let colNames = arrayTable[0];
-      let matrix = arrayTable[1];
-      let replacement_id_index = colNames.indexOf(replaceColName)
-      
-      matrix = matrix.map((item,idx)=>{
-          let x = item[replacement_id_index];
-          let y = this.f(x,mappingArr);
-          item[replacement_id_index]= y;
-          return item;        
-      })
-   } 
 
 
-  iDArray( CheckboxArray ){
 
-    return [...CheckboxArray].map((item,i)=>{
-         return (Boolean(item))?i:false;
-     }).filter(i=>i)
- }
+  /*  mappingArr = 
+    [3, 7, 4],
+    [6, 9, 10]
+ 
+    f(3,mappingArr) => 6
+  */
+
+  /*
+    replaceColDataInArrayTable('chapter_id',at,mappingArr)    
+  */
+
+  replaceColDataInArrayTable(replaceColName, arrayTable, mappingArr) {
+    let colNames = arrayTable[0];
+    let matrix = arrayTable[1];
+    let replacement_id_index = colNames.indexOf(replaceColName)
+
+    matrix = matrix.map((item, idx) => {
+      let x = item[replacement_id_index];
+      let y = this.f(x, mappingArr);
+      item[replacement_id_index] = y;
+      return item;
+    })
+  }
+
+
+  iDArray(CheckboxArray) {
+
+    return [...CheckboxArray].map((item, i) => {
+      return (Boolean(item)) ? i : false;
+    }).filter(i => i)
+  }
   //   index      =>  0    1          3                   7        
   //CheckboxArray = [null,null,null,true,null,null,null,true,null,null];
   //IDArray(CheckboxArray) => [3, 7]
@@ -91,11 +91,12 @@ export class ArrayTableService {
     let col_index = arrayTable[0].indexOf(col_name);
     return arrayTable[1].map((row, indx) => {
       return row[col_index];
-    }).filter(item=>item);
+    }).filter(item => item);
   }
 
 
   //used in above function to get the block index of question from its id
+  //TODO function need to change out of body
   blockOf(questionID, questionsList) {
     return questionsList[questionID].blk;
   }

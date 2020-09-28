@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { MathJaxModule } from 'ngx-mathjax';
 import { SafePipeModule } from 'safe-pipe';
 import { SchemeCreateService } from './scheme-create.service';
+import { ShrimComponent } from './shrim/shrim.component';
 
 @NgModule({
-  declarations: [SchemeRoutingModule.components],
+  declarations: [SchemeRoutingModule.components, ShrimComponent],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 

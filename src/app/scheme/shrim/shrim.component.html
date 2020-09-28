@@ -1,0 +1,94 @@
+<div class="col-12">
+
+    <form id="">
+        <div class="form-group">
+            <label></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Name</div>
+                </div>
+                <input id="name" name="name" placeholder="Test Paper Name" type="text" required="required"
+                    class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input [(ngModel)]="pinChecked" name="pin-check" id="pin-check_0" type="checkbox"
+                        class="custom-control-input" value="pin-password" aria-describedby="pin-checkHelpBlock">
+                    <label for="pin-check_0" class="custom-control-label">Pin</label>
+                </div>
+                <span id="pin-checkHelpBlock" class="form-text text-muted">If unchecked, students can open this test
+                    without passowrd.</span>
+            </div>
+        </div>
+
+
+        <div [hidden]="!pinChecked" class="form-group">
+            <label></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-asterisk"></i>
+                    </div>
+                </div>
+                <input id="pin" name="pin" placeholder="Numeric Pin Password" type="text" class="form-control">
+            </div>
+        </div>
+
+    </form>
+<!-- scheme -->
+    <mat-card class="card">
+        <mat-card-title> JEE Single chapter</mat-card-title>
+        <mat-card-content>
+            ID <span>21</span><br>
+            Description <span>This scheme contains 30 MCQ Questions</span>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="card">
+        <mat-card-title> Author </mat-card-title>
+        <mat-card-content>
+            Name<span>Varun Sharma</span><br>
+            email <span>varuninorbit@gmail.com</span>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-title> Marking Rules </mat-card-title>
+        <mat-card-content>
+            MCQ<span>Right +3 Wrong -1</span><br>
+            True and False<span>Right +1 wrong -1</span>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-title>Conset</mat-card-title>
+        <mat-card-content>
+            Test Time<span>29th September 9AM</span><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Test date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field><br>
+
+            True and False<span>Right +1 wrong -1</span>
+            Duration<span>60 minutes</span>
+           Result declaration <span>Instant</span>
+        </mat-card-content>
+
+
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-title>Instructions</mat-card-title>
+        <mat-card-content>
+            <span>Attemp all question</span><br>
+            <span>The delay is submission will not be considered</span>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

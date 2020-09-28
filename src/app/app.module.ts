@@ -1,9 +1,5 @@
-import { NgModule, Injectable } from "@angular/core";
-import {
-  BrowserModule,
-  HAMMER_GESTURE_CONFIG,
-  HammerGestureConfig
-} from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
@@ -44,14 +40,12 @@ import { SafePipeModule } from 'safe-pipe';
     }),
     SchemeModule,
     GlobalModule,
-    ExamChoiceModule,
-
-    SafePipeModule
+    ExamChoiceModule
   ],
   declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
-    ,GlobalModule, SafePipeModule
+    ,GlobalModule
   ],
   providers: [
     ExamChoiceService,

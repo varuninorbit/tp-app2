@@ -6,6 +6,7 @@ import { ActionService } from './services/action.service';
 import { UserService } from './user.service';
 import { store } from 'src/app/_services/store.service.js';
 import { StateService } from './state.service';
+import { GlobalService } from './_services';
 
 @Component({
   selector: 'my-app',
@@ -20,9 +21,13 @@ export class AppComponent implements OnInit, AfterViewInit  {
   constructor(private menu:ToggleMenuService, private zone: NgZone, 
     private as:ActionService,
     private user:UserService,
-    private state:StateService
+    private state:StateService,
+    private gs:GlobalService
     ){
-      this.examChoiceName = store.currentChoice.name; //TODO fix code to update exam choice
+      let choiceName = this.gs.literal.resolve(store)('currentChoice.name'); //TODO fix code to update exam choice
+      if(!choiceName){
+        this.examChoiceName = 'Exam Choice';
+      }
   }
 
   ngOnInit(){

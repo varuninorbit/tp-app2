@@ -5,10 +5,12 @@ import { ChapcilComponent } from './chapcil/chapcil.component';
 import { ChikooComponent } from './chikoo/chikoo.component';
 import { QuestionComponent } from '../test/questions/question/question.component';
 import { ErrorReportComponent } from './error-report/error-report.component';
+import { ShrimComponent } from './shrim/shrim.component';
 
 const routes: Routes = [
   {path: '', component: SchemeComponent},
   {path: "scheme", component: SchemeComponent},
+  {path: "shrim", component: ShrimComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},
 ];
