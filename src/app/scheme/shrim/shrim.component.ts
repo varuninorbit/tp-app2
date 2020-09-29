@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShrimComponent implements OnInit {
   time = {hour: 10, minute: 0};
-
+  timeDuration = {hour: 1, minute: 0};
+  resultTime = {hour:0, minute: 0};
   pinChecked=true;
+  resultInstantCheck_q=true;
 
-  constructor() { }
+  constructor() { 
+    window['shrim'] = this;
+  }
 
   ngOnInit(): void {
   }

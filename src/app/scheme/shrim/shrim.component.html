@@ -79,12 +79,32 @@
                 Duration<ngb-timepicker [(ngModel)]="timeDuration" [minuteStep]="10" ></ngb-timepicker>
              </div>
 
-            True and False<span>Right +1 wrong -1</span><br>
-            Duration<span>60 minutes</span>
-           Result declaration <span>Instant</span>
+             <hr>
+
+             <div class="form-group">
+                <div>
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input [(ngModel)]="resultInstantCheck_q" name="result-instant-check-check" 
+                        id="result-instant-check-check_0" type="checkbox"
+                            class="custom-control-input" value="resultInstantCheck_q" 
+                            aria-describedby="result-instant-check-checkHelpBlock">
+                        <label for="result-instant-check-check_0" class="custom-control-label">result-instant-check</label>
+                    </div>
+                    
+                </div>
+
+                <mat-form-field 
+                *ngIf="!resultInstantCheck_q"
+                appearance="fill">
+                <mat-label>Set date and time for result decleration</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <ngb-timepicker [(ngModel)]="resultTime" [minuteStep]="5" meridian="meridian"></ngb-timepicker>   
+                </mat-form-field>
+            </div>           
+           
         </mat-card-content>
-
-
     </mat-card>
 
     <mat-card class="card">
