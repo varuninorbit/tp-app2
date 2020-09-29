@@ -15,12 +15,15 @@ import { ExamChoiceService } from './exam-choice/exam-choice.service';
 import { TriggerHttpInterceptor } from './interceptors/trigger-http.interceptor';
 import { TriggerService } from './_services/trigger.service';
 import { ResconService } from './rescon.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog],
   imports: [
-    CommonModule, NotifierModule, MaterialModule
+    CommonModule, NotifierModule, MaterialModule, NgbModule
   ],
-  exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog],
+  exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
+  NgbModule
+  ],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},

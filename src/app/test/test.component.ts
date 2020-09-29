@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-  <h1>Question selection</h1>
   
-
   `,
   styleUrls: ['./test.component.css']
 })

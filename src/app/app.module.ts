@@ -20,8 +20,8 @@ import { GlobalService } from "./_services/global.service";
 import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
-import { SafePipeModule } from 'safe-pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExpComponent } from './exp/exp.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -41,10 +41,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     SchemeModule,
     GlobalModule,
-    ExamChoiceModule,
-    NgbModule
+    ExamChoiceModule
   ],
-  declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
+  declarations: [AppComponent, AppRoutingModule.components, AlertComponent, ExpComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
     ,GlobalModule
@@ -53,7 +52,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ExamChoiceService,
     AlertService,   
     GlobalService,
-    ActionService
+    ActionService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-IN'}
   ]
 })
 export class AppModule {}

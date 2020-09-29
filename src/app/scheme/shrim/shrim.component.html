@@ -66,15 +66,17 @@
     <mat-card class="card">
         <mat-card-title>Conset</mat-card-title>
         <mat-card-content>
-            Test Time<span>29th September 9AM</span><br>
+            Test Time<br>
             <mat-form-field appearance="fill">
-                <mat-label>Test date</mat-label>
+                <mat-label>Test date and time</mat-label>
                 <input matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
+
               </mat-form-field><br>
 
-            True and False<span>Right +1 wrong -1</span>
+            True and False<span>Right +1 wrong -1</span><br>
             Duration<span>60 minutes</span>
            Result declaration <span>Instant</span>
         </mat-card-content>

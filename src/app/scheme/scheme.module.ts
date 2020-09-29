@@ -10,13 +10,14 @@ import { MathJaxModule } from 'ngx-mathjax';
 import { SafePipeModule } from 'safe-pipe';
 import { SchemeCreateService } from './scheme-create.service';
 import { ShrimComponent } from './shrim/shrim.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 
-    SafePipeModule
+    SafePipeModule, NgbModule
   ],
   providers:[
     ActionService, ArrayTableService, SchemeCreateService
