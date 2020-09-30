@@ -16,13 +16,15 @@ import { TriggerHttpInterceptor } from './interceptors/trigger-http.interceptor'
 import { TriggerService } from './_services/trigger.service';
 import { ResconService } from './rescon.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog],
+  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent],
   imports: [
-    CommonModule, NotifierModule, MaterialModule, NgbModule
+    CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
-  NgbModule
+  NgbModule, CheckboxComponent
   ],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,

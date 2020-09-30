@@ -41,81 +41,9 @@
     </form>
     <hr>
 <!-- scheme -->
-    <mat-card class="card">
-        <mat-card-title> JEE Single chapter</mat-card-title>
-        <mat-card-content>
-            ID <span>21</span><br>
-            Description <span>This scheme contains 30 MCQ Questions</span>
-        </mat-card-content>
-    </mat-card>
-    
-    <mat-card class="card">
-        <mat-card-title> Author </mat-card-title>
-        <mat-card-content>
-            Name<span>Varun Sharma</span><br>
-            email <span>varuninorbit@gmail.com</span>
-        </mat-card-content>
-    </mat-card>
+    <scheme-test-details></scheme-test-details>
 
-    <mat-card class="card">
-        <mat-card-title>Instructions</mat-card-title>
-        <mat-card-content>
-            <span>Attemp all question</span><br>
-            <span>The delay is submission will not be considered</span>
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card">
-        <mat-card-title> Marking Rules </mat-card-title>
-        <mat-card-content>
-            MCQ<span>Right +3 Wrong -1</span><br>
-            True and False<span>Right +1 wrong -1</span>
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card">
-        <mat-card-title>Conset</mat-card-title>
-        <mat-card-content>
-            Test Time<br>
-            <mat-form-field appearance="fill">
-                <mat-label>Test date and time</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
-
-              </mat-form-field><br>
-             <div class="card-header" style="width: 237px;">
-                Duration<ngb-timepicker [(ngModel)]="timeDuration" [minuteStep]="10" ></ngb-timepicker>
-             </div>
-
-             <hr>
-
-             <div class="form-group">
-                <div>
-                    <div class="custom-control custom-checkbox custom-control-inline">
-                        <input [(ngModel)]="resultInstantCheck_q" name="result-instant-check-check" 
-                        id="result-instant-check-check_0" type="checkbox"
-                            class="custom-control-input" value="resultInstantCheck_q" 
-                            aria-describedby="result-instant-check-checkHelpBlock">
-                        <label for="result-instant-check-check_0" class="custom-control-label">result-instant-check</label>
-                    </div>
-                    
-                </div>
-
-                <mat-form-field 
-                *ngIf="!resultInstantCheck_q"
-                appearance="fill">
-                <mat-label>Set date and time for result decleration</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <ngb-timepicker [(ngModel)]="resultTime" [minuteStep]="5" meridian="meridian"></ngb-timepicker>   
-                </mat-form-field>
-            </div>           
-           
-        </mat-card-content>
-    </mat-card>    
+    <scheme-conset></scheme-conset>
 </div>
 
 <app-bottom-nav></app-bottom-nav>
