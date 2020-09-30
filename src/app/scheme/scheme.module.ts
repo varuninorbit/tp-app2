@@ -11,9 +11,10 @@ import { SafePipeModule } from 'safe-pipe';
 import { SchemeCreateService } from './scheme-create.service';
 import { ShrimComponent } from './shrim/shrim.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TestDetailsComponent } from './test-details/test-details.component';
 
 @NgModule({
-  declarations: [SchemeRoutingModule.components, ShrimComponent],
+  declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent],
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 

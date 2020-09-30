@@ -74,6 +74,13 @@ export class ResconService {
         return this;
     }
 
+    directoryToIterableDirectory(){
+        // this.iterableDirectory = Object.keys(this.directory).map(i=>{
+        //     directory[i].from=i;
+        //     return directory[i];
+        //   })
+    }
+
 
 
 }
