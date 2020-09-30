@@ -3,6 +3,7 @@ import { store } from 'src/app/_services/store.service.js';
 import { ResconService } from '../rescon.service';
 import { StateService } from '../state.service';
 import { LiteralService } from './literal.service';
+import * as _ from 'underscore';
 @Injectable()
 export class GlobalService{
     get window(){
@@ -45,5 +46,9 @@ export class GlobalService{
 
     get literal(){
         return this.literal_;
-    }    
+    }   
+    
+    get _(){
+        return _;
+    }
 }
