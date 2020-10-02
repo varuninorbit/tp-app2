@@ -1,8 +1,7 @@
 
 <mat-card class="card">
-    <mat-card-title>Conset</mat-card-title>
-    <app-checkbox label='Result instant checked' [(checked)]="resultInstantCheck_q"></app-checkbox>
-    
+    <mat-card-title>Date and Time</mat-card-title>    
+    <mat-checkbox [(ngModel)]="resultInstantCheck_q">Instant Result</mat-checkbox>
 
     <mat-form-field *ngIf="!resultInstantCheck_q" appearance="fill">
         <mat-label>Set date and time for result decleration</mat-label>
@@ -12,21 +11,9 @@
         <ngb-timepicker [(ngModel)]="resultTime" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
     </mat-form-field>
 
-    <hr>
-
     <mat-card-content>
-        Test Time<br>
-        <mat-form-field appearance="fill">
-            <mat-label>Test date and time</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
-
-        </mat-form-field><br>
-        <div class="card-header" style="width: 237px;">
-            Duration<ngb-timepicker [(ngModel)]="timeDuration" [minuteStep]="10"></ngb-timepicker>
-        </div>        
+        <p>Test Time 10: 00 AM 23 October 2020</p>
+        <p>Test Duration 1 hour</p>           
     </mat-card-content>
 </mat-card>
 

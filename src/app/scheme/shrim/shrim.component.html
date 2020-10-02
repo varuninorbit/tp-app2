@@ -13,36 +13,29 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input [(ngModel)]="pinChecked" name="pin-check" id="pin-check_0" type="checkbox"
-                        class="custom-control-input" value="pin-password" aria-describedby="pin-checkHelpBlock">
-                    <label for="pin-check_0" class="custom-control-label">Pin</label>
-                </div>
-                <span id="pin-checkHelpBlock" class="form-text text-muted">If unchecked, students can open this test
-                    without passowrd.</span>
-            </div>
-        </div>
-
-
-        <div [hidden]="!pinChecked" class="form-group">
-            <label></label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fa fa-asterisk"></i>
-                    </div>
-                </div>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PIN
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Set pin password                           
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                Empty pin means no pin is required to open test.
                 <input id="pin" name="pin" placeholder="Numeric Pin Password" type="text" class="form-control">
-            </div>
-        </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+       
 
     </form>
     <hr>
 <!-- scheme -->
     <scheme-test-details></scheme-test-details>
-
+<hr>
     <scheme-conset></scheme-conset>
 </div>
 
