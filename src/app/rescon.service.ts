@@ -10,19 +10,7 @@ import { property } from 'underscore';
 export class ResconService {    
     resource$ = new BehaviorSubject<any>(null);
 
-    directory={
-        "web": {
-          "chapter": 3, "marks": 1
-        },
-        "state": {
-          "chapter": 5, "marks": 2
-        },
-        "store": {
-          "chapter": 2, "marks": 3
-        }
-      };
-
-    iterableDirectory: IterableDirectoryRow[]=[
+    directory: DirectoryRow[]=[
         {chapter:3, marks:1, from:'state'},     //state
         {chapter:1, marks:2, from:'store'},     //store
         {chapter:2, marks:3, from: 'web' }      //web
@@ -54,38 +42,28 @@ export class ResconService {
 
     //returns refrence name from directory
     private latest(resourceName:string) :string{
-        return this.iterableDirectory.sort((i,j)=>{
+        return this.directory.sort((i,j)=>{
             return (i[resourceName]<j[resourceName])?1:-1;
            })[0].from;           
     }
 
-    Updatedirectory(directoryRow: IterableDirectoryRow){
+    Updatedirectory(directoryRow: DirectoryRow){
         let from = directoryRow.from;
         this.directory[this.findIndexNoOf(from)]=directoryRow;
         return this;
     }
 
     private findIndexNoOf(resourceName): number{
-        return this.iterableDirectory.findIndex(row=> row.from===resourceName)
+        return this.directory.findIndex(row=> row.from===resourceName)
     }
 
     updateIndexOf(resourceName:string,property:string,newVal:number){
         this.directory[this.findIndexNoOf(resourceName)][property]=newVal;
         return this;
     }
-
-    directoryToIterableDirectory(){
-        // this.iterableDirectory = Object.keys(this.directory).map(i=>{
-        //     directory[i].from=i;
-        //     return directory[i];
-        //   })
-    }
-
-
-
 }
 
-interface IterableDirectoryRow {
+interface DirectoryRow {
     from:string; //resouce name
     chapter?:number; //property
     marks?:number;   //property

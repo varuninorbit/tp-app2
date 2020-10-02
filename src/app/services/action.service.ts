@@ -1,21 +1,24 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Urls } from "../../environments/environment";
 import { Observable } from "rxjs";
+import { ApiGroupVersion } from './api-group-version.service';
 @Injectable({
   providedIn: "root",
 })
 export class ActionService {
   hemta:Hemta; //headers meta queries and defaults
-
-  constructor(private http: HttpClient) {
+  headers: HttpHeaders;
+  constructor(private http: HttpClient, private apiGroupSv: ApiGroupVersion) {
     window['ac'] = this;
     window['http'] = http;
     this.hemta = {
       baseURL:Urls.apiBase,
       everyQuery:Urls.everyQuery,
-      relativeURL:Urls.relativeURL
+      relativeURL:Urls.relativeURL,
+      apiGroup:Urls.apiGroup
     };
+    this.headers = new HttpHeaders();
   }
 
   UpdateHemta(callback){
@@ -23,8 +26,12 @@ export class ActionService {
     return this;
   }
 
+  SetApiGroup(apiGroup:string){
+    this.hemta.apiGroup=apiGroup;
+  }
+
   private get url(){
-    return `${this.hemta.baseURL}${this.hemta.relativeURL}`;
+    return `${this.hemta.baseURL}${this.hemta.relativeURL}${this.hemta.apiGroup}`;
   }
 
   get(ControllerName: string, keyval = false,query='') {
@@ -73,6 +80,7 @@ export class ActionService {
 
 interface Hemta{
   headers?:string[];
+  apiGroup?:string;
   everyQuery?:string; //shoud start with &
   query?:string;
   baseURL:string;

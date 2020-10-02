@@ -14,7 +14,8 @@ export const Urls = {
   //base: "http://192.168.0.103:3001/"
   //for api url
   apiBase: "http://qpw_manage.test/api/",
-  relativeURL: "authi/",  
+  relativeURL: "authi/",
+  apiGroup:'http://qpw_manage.test/apigroup/',  
   everyQuery:
     'exam_choice=8th_mat_cb_en'+ //TODO Exam Choice Selection fromm scheme
     '&api_token=57844f2390c771454ba190b4f5242b45'+
