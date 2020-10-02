@@ -7,84 +7,94 @@ import { ApiGroupVersion } from './api-group-version.service';
   providedIn: "root",
 })
 export class ActionService {
-  hemta:Hemta; //headers meta queries and defaults
+  hemta: Hemta; //headers meta queries and defaults
   headers: HttpHeaders;
-  constructor(private http: HttpClient, private apiGroupSv: ApiGroupVersion) {
+  constructor(private http: HttpClient, private apiGroup: ApiGroupVersion) {
     window['ac'] = this;
     window['http'] = http;
     this.hemta = {
-      baseURL:Urls.apiBase,
-      everyQuery:Urls.everyQuery,
-      relativeURL:Urls.relativeURL,
-      apiGroup:Urls.apiGroup
+      baseURL: Urls.apiBase,
+      everyQuery: Urls.everyQuery,
+      relativeURL: Urls.relativeURL,
+      apiGroup: 'default/'
     };
     this.headers = new HttpHeaders();
   }
 
-  UpdateHemta(callback){
+  UpdateHemta(callback) {
     this.hemta = callback(this.hemta);
     return this;
   }
 
-  SetApiGroup(apiGroup:string){
-    this.hemta.apiGroup=apiGroup;
-  }
 
-  private get url(){
+
+  private get url() {
     return `${this.hemta.baseURL}${this.hemta.relativeURL}${this.hemta.apiGroup}`;
   }
 
-  get(ControllerName: string, keyval = false,query='') {
+  get(ControllerName: string, keyval = false, query = '') {
     //action name callback
     return (ActionName: string) => {
       let actionUrl = `${this.url}${ControllerName}/${ActionName}`;
 
       if (keyval) {
         //keval callback
-        return (data:any):Observable<any> =>{
-          return this.http.get(actionUrl+'/keyval'+'?'+this._(query),{params: data})
+        return (data: any): Observable<any> => {
+          return this.http.get(actionUrl + '/keyval' + '?' + this._(query), { params: data })
         }
       } else {
         //params callback
         return (...params: string[]): Observable<any> => {
-          let q = params.join('&')+'&'+query;
-          return this.http.get(actionUrl+'?'+this._(q));
+          let q = params.join('&') + '&' + query;
+          return this.http.get(actionUrl + '?' + this._(q));
         };
       }
     };
   }
 
-  post(ControllerName: string, keyval = false,query='') {
+  post(ControllerName: string, keyval = false, query = '') {
     //action name callback
     return (ActionName: string) => {
       let actionUrl = `${this.url}${ControllerName}/${ActionName}`;
 
       if (keyval) {
         //keval callback
-        return (data:any):Observable<any> =>{ //todo type correction
-          return this.http.post(actionUrl+'/keyval'+'?'+this._(query),data)
+        return (data: any): Observable<any> => { //todo type correction
+          return this.http.post(actionUrl + '/keyval' + '?' + this._(query), data)
         }
       } else {
         //params callback
-        return (...params: string[]|any): Observable<any> => { //todo type correction          
-          return this.http.post(actionUrl+'?'+this._(query),params);
+        return (...params: string[] | any): Observable<any> => { //todo type correction          
+          return this.http.post(actionUrl + '?' + this._(query), params);
         }
       }
     };
   }
 
-  private _(query){
+  private _(query) {
     return `${query}${this.hemta.everyQuery}`;
+  }
+
+  SetApiGroup(apiGroupName,resourceName, callback) {
+    this.UpdateHemta(hemta => {
+      this.apiGroup.version(apiGroupName).subscribe(r => {
+        hemta.apiGroup = apiGroupName + '/';
+        hemta.everyQuery += '&v' + r[resourceName];
+        callback(this)
+      })
+      return hemta;
+    })
+    return this;
   }
 }
 
-interface Hemta{
-  headers?:string[];
-  apiGroup?:string;
-  everyQuery?:string; //shoud start with &
-  query?:string;
-  baseURL:string;
-  relativeURL:string;
+interface Hemta {
+  headers?: string[];
+  apiGroup?: string;
+  everyQuery?: string; //shoud start with &
+  query?: string;
+  baseURL: string;
+  relativeURL: string;
 }
 
 abstract class ActionAPI {
