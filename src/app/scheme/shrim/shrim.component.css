@@ -1,0 +1,6 @@
+::ng-deep .date-time-dialog-class .mat-dialog-container {    
+    padding: unset;   
+    box-sizing: border-box;
+    overflow: auto;    
+    width: auto;
+}

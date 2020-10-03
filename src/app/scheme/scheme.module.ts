@@ -13,9 +13,12 @@ import { ShrimComponent } from './shrim/shrim.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { ConsetComponent } from './conset/conset.component';
+import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.component';
 
 @NgModule({
-  declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent],
+  declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
+    DateTimeDialogComponent],
+  entryComponents:[DateTimeDialogComponent],  
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 
