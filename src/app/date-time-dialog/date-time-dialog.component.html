@@ -2,13 +2,14 @@
     <mat-card-title>Date and Time</mat-card-title> 
     <mat-form-field>
         <mat-label>Set date and time for result decleration</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
     </mat-form-field>
-
     <mat-card-content>
-      
+       {{ dateString }}
+       {{ calander }}
     </mat-card-content>
+    <button mat-raised-button [mat-dialog-close]="date">Ok</button>
 </mat-card>
