@@ -2,27 +2,29 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Urls } from "../../environments/environment";
 import { Observable } from "rxjs";
-import { ApiGroupVersion } from './api-group-version.service';
 @Injectable({
   providedIn: "root",
 })
 export class ActionService {
   hemta: Hemta; //headers meta queries and defaults
   headers: HttpHeaders;
-  constructor(private http: HttpClient, private apiGroup: ApiGroupVersion) {
+  apiGroupName='default';
+  cache='' //empty string means no cache. cache='&cache' for caching
+  constructor(private http: HttpClient) {
     window['ac'] = this;
     window['http'] = http;
     this.hemta = {
       baseURL: Urls.apiBase,
       everyQuery: Urls.everyQuery,
       relativeURL: Urls.relativeURL,
-      apiGroup: 'default/'
+      apiGroup: 'default/',
+      version:'0'
     };
     this.headers = new HttpHeaders();
   }
 
   UpdateHemta(callback) {
-    this.hemta = callback(this.hemta);
+    callback(this.hemta);
     return this;
   }
 
@@ -40,12 +42,14 @@ export class ActionService {
       if (keyval) {
         //keval callback
         return (data: any): Observable<any> => {
+          this.setCachingHemta(ControllerName+'.'+ActionName)          
           return this.http.get(actionUrl + '/keyval' + '?' + this._(query), { params: data })
         }
       } else {
         //params callback
         return (...params: string[]): Observable<any> => {
           let q = params.join('&') + '&' + query;
+          this.setCachingHemta(ControllerName+'.'+ActionName)
           return this.http.get(actionUrl + '?' + this._(q));
         };
       }
@@ -72,18 +76,23 @@ export class ActionService {
   }
 
   private _(query) {
-    return `${query}${this.hemta.everyQuery}`;
+    return `${query}${this.hemta.everyQuery}&ver=${this.hemta.version}${this.cache}`;
   }
 
-  SetApiGroup(apiGroupName,resourceName, callback) {
-    this.UpdateHemta(hemta => {
-      this.apiGroup.version(apiGroupName).subscribe(r => {
-        hemta.apiGroup = apiGroupName + '/';
-        hemta.everyQuery += '&v' + r[resourceName];
-        callback(this)
-      })
-      return hemta;
+  //here ver={version name} is only for caching purpose till now
+  // for request cahing 
+  //use ac.CachedApiGroup({group name})('AExp')('chapter')('cache').subscribe(r=>console.log(r))
+  setCachingHemta(resourceName) {
+    this.UpdateHemta(hemta=>{           
+      //let resourceName = 'chapters';
+      hemta.apiGroup = this.apiGroupName + '/';
+      hemta.version= window['apiVIndex'][this.apiGroupName][resourceName] || 0;
     })
+  }  
+  
+  CachedApiGroup(apiGroupName='default'){
+    this.cache='&cache';
+    this.apiGroupName=apiGroupName;
     return this;
   }
 }
@@ -93,6 +102,7 @@ interface Hemta {
   apiGroup?: string;
   everyQuery?: string; //shoud start with &
   query?: string;
+  version?:string;
   baseURL: string;
   relativeURL: string;
 }

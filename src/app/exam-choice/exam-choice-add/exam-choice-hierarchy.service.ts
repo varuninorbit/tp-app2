@@ -8,7 +8,6 @@ export class ExamChoiceServiceHierarchy {
     examChoiceHierarchy: Observable<any>; //TODO change type
   
   constructor(private ac:ActionService) {
-    
     this.examChoiceHierarchy  = ac.get('AExamChoice')('hierarchy')();   
   }
 }
