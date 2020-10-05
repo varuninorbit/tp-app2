@@ -92,7 +92,7 @@ export class ActionService {
   
   CachedApiGroup(apiGroupName='default'){
     this.cache='&cache';
-    this.apiGroupName=apiGroupName;
+    this.apiGroupName=apiGroupName; //TODO bug name is not set, http://localhost:4200/exam-choice
     return this;
   }
 }
