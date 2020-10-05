@@ -47,6 +47,13 @@ export class DateTimeDialogComponent implements OnInit {
     return {hour:this.date.getHours(), minute: this.date.getMinutes()};
   }
 
+  onDateChange(){
+    this.time.hour=10;
+    this.time.minute=0;
+    this.date.setHours(10);
+    this.date.setMinutes(0);
+  }
+
 }
 
 
