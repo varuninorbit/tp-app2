@@ -28,7 +28,7 @@ export class Action2Service {
     return `${this.hemta.baseURL}${this.hemta.relativeURL}`;
   }
 
-  get=(hemta_:Hemta=null)=>(resource:string)=>{
+  get=(hemta_:Hemta={})=>(resource:string)=>{
       let r = resource.split('.');
       let ControllerName = r[0];
       let ActionName = r[1];
@@ -63,7 +63,7 @@ interface Hemta {
   baseURL?: string;
   relativeURL?: string;
   keyval?:boolean;
-  cache:string;
+  cache?:string;
 }
 
 abstract class ActionAPI {
