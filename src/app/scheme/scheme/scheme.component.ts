@@ -23,7 +23,8 @@ export class SchemeComponent implements OnInit {
     private gs: GlobalService
     ) { 
     window['scheme']= this;
-    this.AScheme = ac.CachedApiGroup('8th_mat_cb_en').get('ASchema');
+    //this.AScheme = ac.CachedApiGroup('8th_mat_cb_en').get('ASchema'); TODO cached
+    this.AScheme = ac.get('ASchema');
     
   }
 
