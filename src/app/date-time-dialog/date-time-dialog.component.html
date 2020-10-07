@@ -1,15 +1,17 @@
 <mat-card class="card">
-    <mat-card-title>Date and Time</mat-card-title> 
-    <mat-form-field>
+    <mat-card-title>{{data.title}}</mat-card-title> 
+    <mat-form-field [hidden]="!data.calander">
         <mat-label>Set date and time for result decleration</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="date" (ngModelChange)="onDateChange()">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="calander" (ngModelChange)="onDateTimeChange()">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" meridian="meridian"></ngb-timepicker>
+        <mat-datepicker #picker></mat-datepicker>        
     </mat-form-field>
     <mat-card-content>
-       {{ dateString }}
-       {{ calander }}
+        <div [hidden]="!data.timer">
+            <ngb-timepicker [(ngModel)]="time" [minuteStep]="5" [meridian]="true" (ngModelChange)="onDateTimeChange()"
+            ></ngb-timepicker>
+            {{ dateString }}
+        </div>
     </mat-card-content>
     <button mat-raised-button [mat-dialog-close]="date">Ok</button>
 </mat-card>

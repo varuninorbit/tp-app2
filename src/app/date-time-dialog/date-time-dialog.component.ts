@@ -9,19 +9,21 @@ import * as moment from 'moment';
 export class DateTimeDialogComponent implements OnInit {
   time={hour:0, minute: 0}
   date:Date;
+  calander:Date;
   moment_:any;
   constructor(
     public dialogRef: MatDialogRef<DateTimeDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Date
+    @Inject(MAT_DIALOG_DATA) public data: { title:string, calander:boolean, timer:boolean,date:Date}
   ) { 
     window['dtd']= this;
     this.moment_ = moment;
   }
 
   ngOnInit(): void {
-    this.date = this.data;
-    this.momentFromDate();
-    this.time= this.timePickerTime;
+    this.calander = this.copyDate(this.data.date);
+    this.date = this.copyDate(this.data.date); // for moment and response data
+    this.time = this.copyTime();
+   // this.momentFromDate();    
   }
 
   // onCloseClick(): void {
@@ -35,23 +37,21 @@ export class DateTimeDialogComponent implements OnInit {
   get dateString():string
   {
     this.momentFromDate();
-    return this.moment_.format('h:mm A, Do MMMM  YYYY') + '';
+    return this.moment_.format('dddd Do MMMM  YYYY') + '';
+  } 
+
+  onDateTimeChange(){
+    //update date
+    this.date = this.copyDate(this.calander);
+    this.date.setHours(this.time.hour);
+    this.date.setMinutes(this.time.minute);
   }
 
-  get calander(): string{
-    this.momentFromDate();
-    return this.moment_.calendar()+ '';
+  private copyDate(date:Date){
+    return new Date( date.toISOString() )
   }
-
-  get timePickerTime(){
-    return {hour:this.date.getHours(), minute: this.date.getMinutes()};
-  }
-
-  onDateChange(){
-    this.time.hour=10;
-    this.time.minute=0;
-    this.date.setHours(10);
-    this.date.setMinutes(0);
+  private copyTime(){
+    return {hour:this.data.date.getHours(), minute: this.data.date.getMinutes()};
   }
 
 }

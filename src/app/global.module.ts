@@ -18,13 +18,14 @@ import { ResconService } from './rescon.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
+import { NumberSpinnerComponent } from './number-spinner/number-spinner.component';
 @NgModule({
-  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent],
+  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent, NumberSpinnerComponent],
   imports: [
     CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
-  NgbModule, CheckboxComponent
+  NgbModule, CheckboxComponent, NumberSpinnerComponent
   ],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,

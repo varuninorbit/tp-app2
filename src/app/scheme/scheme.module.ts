@@ -28,7 +28,7 @@ import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.co
     ActionService, ArrayTableService, SchemeCreateService
   ]
 })
-export class SchemeModule { }
+export class SchemeModule {  }
 
 // import app-nav
 
