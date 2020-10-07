@@ -1,13 +1,13 @@
 //TODO Obselete file
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { ActionService } from 'src/app/services/action.service';
+import { Action2Service } from 'src/app/services/action2.service';
 
 @Injectable()
 export class ExamChoiceServiceHierarchy {
     examChoiceHierarchy: Observable<any>; //TODO change type
   
-  constructor(private ac:ActionService) {
-    this.examChoiceHierarchy  = ac.CachedApiGroup('default').get('AExamChoice')('hierarchy')();   
+  constructor(private ac:Action2Service) {
+    this.examChoiceHierarchy  = ac.get({apiGroup:'default',cache:'&cache'})('AExamChoice.hierarchy')();   
   }
 }
