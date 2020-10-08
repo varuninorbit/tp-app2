@@ -14,11 +14,8 @@ export class ErrorReportComponent implements OnInit {
   otherChecked_q=false;
 
   categories: {id:number; name:string}[];
-  chapters:{id:number; chapter:string}[];
-
-  
-  form={chapter:null,category:null,marks:null,other:null};
-  
+  chapters:{id:number; chapter:string}[];  
+  form={chapter:null,category:null,marks:null,other:null}; 
   
   @Input() questionID:number;
   

@@ -10,7 +10,7 @@ import { ShrimComponent } from './shrim/shrim.component';
 const routes: Routes = [
   {path: '', component: SchemeComponent},
   {path: "scheme", component: SchemeComponent},
-  {path: "shrim", component: ShrimComponent},
+  {path: "scheme/shrim", component: ShrimComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},
 ];
