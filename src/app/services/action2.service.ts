@@ -9,8 +9,8 @@ import { GlobalService } from '../_services';
 export class Action2Service {
   hemta: Hemta; //headers meta queries and defaults
   headers: HttpHeaders;
-  apiGroupName='default';
-  cache='' //empty string means no cache. cache='&cache' for caching
+  apiGroupName = 'default';
+  cache = '' //empty string means no cache. cache='&cache' for caching
   constructor(private http: HttpClient, private gs: GlobalService) {
     window['ac2'] = this;
     this.hemta = {
@@ -18,9 +18,9 @@ export class Action2Service {
       everyQuery: Urls.everyQuery,
       relativeURL: Urls.relativeURL,
       apiGroup: 'default',
-      version:'0',
-      keyval:false,
-      cache:'' //&cache
+      version: '0',
+      keyval: false,
+      cache: '' //&cache
     };
   }
 
@@ -28,30 +28,50 @@ export class Action2Service {
     return `${this.hemta.baseURL}${this.hemta.relativeURL}`;
   }
 
-  get=(hemta_:Hemta={})=>(resource:string)=>{
-      let r = resource.split('.');
-      let ControllerName = r[0];
-      let ActionName = r[1];
-      let hemta:Hemta = this.gs.newOrDefaultValue(hemta_,this.hemta,'');
-      let actionUrl = `${this.url}${hemta.apiGroup}/${ControllerName}/${ActionName}`;
-      let version= window['apiVIndex'][hemta.apiGroup][resource] || hemta.version;      
-      let query = `${hemta.query}${hemta.everyQuery}&ver=${version}${hemta.cache}`;
+  get = (hemta_: Hemta = {}) => (resource: string) => {
+    let r = resource.split('.');
+    let ControllerName = r[0];
+    let ActionName = r[1];
+    let hemta: Hemta = this.gs.newOrDefaultValue(hemta_, this.hemta, '');
+    let actionUrl = `${this.url}${hemta.apiGroup}/${ControllerName}/${ActionName}`;
+    let version = window['apiVIndex'][hemta.apiGroup][resource] || hemta.version;
+    let query = `${hemta.query}${hemta.everyQuery}&ver=${version}${hemta.cache}`;
 
-      if (hemta.keyval) {
-        //keval callback
-        return (data: any): Observable<any> => {       
-          return this.http.get(actionUrl + '/keyval' + '?' + query, { params: data })
-        }
-      } else {
-        //params callback
-        return (...params: string[]): Observable<any> => {
-          let q = params.join('&') + '&' + query;
-          return this.http.get(actionUrl + '?' + q);
-        };
+    if (hemta.keyval) {
+      //keval callback
+      return (data: any): Observable<any> => {
+        return this.http.get(actionUrl + '/keyval' + '?' + query, { params: data })
       }
+    } else {
+      //params callback
+      return (...params: string[]): Observable<any> => {
+        let q = params.join('&') + '&' + query;
+        return this.http.get(actionUrl + '?' + q);
+      };
+    }
   }
 
- 
+  post = (hemta_: Hemta = {}) => (resource: string) => {
+    let r = resource.split('.');
+    let ControllerName = r[0];
+    let ActionName = r[1];
+    let hemta: Hemta = this.gs.newOrDefaultValue(hemta_, this.hemta, '');
+    let actionUrl = `${this.url}${hemta.apiGroup}/${ControllerName}/${ActionName}`;
+    let query = `${hemta.query}${hemta.everyQuery}`;
+
+    if (hemta.keyval) {
+      //keval callback
+      return (data: any): Observable<any> => { //todo type correction
+        return this.http.post(actionUrl + '/keyval' + '?' + query, data)
+      }
+    } else {
+      //params callback
+      return (...params: string[] | any): Observable<any> => { //todo type correction          
+        return this.http.post(actionUrl + '?' + query, params);
+      }
+    }
+  }
+
 }
 
 interface Hemta {
@@ -59,11 +79,11 @@ interface Hemta {
   apiGroup?: string;
   everyQuery?: string; //shoud start with &
   query?: string;
-  version?:string;
+  version?: string;
   baseURL?: string;
   relativeURL?: string;
-  keyval?:boolean;
-  cache?:string;
+  keyval?: boolean;
+  cache?: string;
 }
 
 abstract class ActionAPI {
