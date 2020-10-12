@@ -1,6 +1,7 @@
 <span>Schemes</span>
+
 <mat-accordion>
-    <mat-expansion-panel hideToggle 
+    <mat-expansion-panel hideToggle [class]="{'selected-expansion':isSelected(scheme.id)}"
     (click)="select(scheme)"
     *ngFor="let scheme of schemes">
       <mat-expansion-panel-header>
