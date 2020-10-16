@@ -1,0 +1,31 @@
+<p>lavi works!</p>
+<div class="border p-1 section">
+    <div (mouseover)="showPluti.section=true" (mouseout)="showPluti.section=false">
+        <app-pluti [hidden]="!showPluti.section"></app-pluti>
+        <h3>Section A </h3>
+    </div>
+    <div class="border p-1 marks">
+        <div (mouseover)="showPluti.marks=true" (mouseout)="showPluti.marks=false">
+            <app-pluti [hidden]="!showPluti.marks"></app-pluti>
+            <h4>Marks 2</h4>
+        </div>
+        <div class="border p-1 chapter">
+            <table class="table">
+                <tr>
+                    <th>Chapter</th>
+                    <th>QNo</th>
+                    <th>Mks</th>
+                    <th></th>
+                </tr>
+                <tr (mouseover)="showPluti.chapter=true" (mouseout)="showPluti.chapter=false">
+                    <td>Motion in 1D (3)</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>
+                        <app-pluti [hidden]="!showPluti.chapter"></app-pluti>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

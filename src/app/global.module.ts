@@ -19,13 +19,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
 import { NumberSpinnerComponent } from './number-spinner/number-spinner.component';
+import { PlutiComponent } from './pluti/pluti.component';
 @NgModule({
-  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent, NumberSpinnerComponent],
+  declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent, 
+    NumberSpinnerComponent, PlutiComponent
+  ],
   imports: [
     CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
-  NgbModule, CheckboxComponent, NumberSpinnerComponent
+  NgbModule, CheckboxComponent, NumberSpinnerComponent, PlutiComponent
   ],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,

@@ -14,10 +14,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { ConsetComponent } from './conset/conset.component';
 import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.component';
+import { LaviComponent } from './lavi/lavi.component';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
-    DateTimeDialogComponent],
+    DateTimeDialogComponent, LaviComponent],
   entryComponents:[DateTimeDialogComponent],  
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,

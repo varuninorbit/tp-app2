@@ -6,10 +6,12 @@ import { ChikooComponent } from './chikoo/chikoo.component';
 import { QuestionComponent } from '../test/questions/question/question.component';
 import { ErrorReportComponent } from './error-report/error-report.component';
 import { ShrimComponent } from './shrim/shrim.component';
+import { LaviComponent } from './lavi/lavi.component';
 
 const routes: Routes = [
   {path: '', component: SchemeComponent},
   {path: "scheme", component: SchemeComponent},
+  {path: "lavi", component: LaviComponent},
   {path: "scheme/shrim", component: ShrimComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},
