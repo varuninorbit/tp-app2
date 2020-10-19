@@ -1,13 +1,16 @@
 <div *ngFor="let section of laviState.sections" class="border p-1 section">
     <div (mouseover)="section.showPluti=true" (mouseout)="section.showPluti=false">
-        <app-pluti [hidden]="!section.showPluti"></app-pluti>
+        <app-pluti 
+        (buttonClick)="click('section',$event)"  [hidden]="!section.showPluti"></app-pluti>
         <h3>Section {{section.name}}</h3>
     </div>
     <div *ngFor="let mark of section.marks" class="border p-1 marks">
         <div 
         (mouseover)="mark.showPluti=true" 
         (mouseout)="mark.showPluti=false">
-            <app-pluti [hidden]="!mark.showPluti"></app-pluti>
+            <app-pluti [hidden]="!mark.showPluti"
+            (buttonClick)="click('mark',$event)"
+            ></app-pluti>
             <h4>Marks {{mark.value}}</h4>
         </div>
         <div class="border p-1 chapter">
@@ -26,7 +29,8 @@
                     <td>{{chapter.questionsNo}}</td>
                     <td>{{chapter.questionsNo * mark.value}}</td>
                     <td>
-                        <app-pluti [hidden]="!chapter.showPluti"></app-pluti>
+                        <app-pluti 
+                        (buttonClick)="click('chapter-'+chapter.name,$event)"  [hidden]="!chapter.showPluti"></app-pluti>
                     </td>
                 </tr>
             </table>

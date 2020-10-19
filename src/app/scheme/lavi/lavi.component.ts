@@ -84,6 +84,10 @@ export class LaviComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  click(...event){
+    console.log(event);
+  }
+
 }
 
 declare module namespace {
