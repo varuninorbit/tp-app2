@@ -1,13 +1,14 @@
-<p>lavi works!</p>
-<div class="border p-1 section">
-    <div (mouseover)="showPluti.section=true" (mouseout)="showPluti.section=false">
-        <app-pluti [hidden]="!showPluti.section"></app-pluti>
-        <h3>Section A </h3>
+<div *ngFor="let section of laviState.sections" class="border p-1 section">
+    <div (mouseover)="section.showPluti=true" (mouseout)="section.showPluti=false">
+        <app-pluti [hidden]="!section.showPluti"></app-pluti>
+        <h3>Section {{section.name}}</h3>
     </div>
-    <div class="border p-1 marks">
-        <div (mouseover)="showPluti.marks=true" (mouseout)="showPluti.marks=false">
-            <app-pluti [hidden]="!showPluti.marks"></app-pluti>
-            <h4>Marks 2</h4>
+    <div *ngFor="let mark of section.marks" class="border p-1 marks">
+        <div 
+        (mouseover)="mark.showPluti=true" 
+        (mouseout)="mark.showPluti=false">
+            <app-pluti [hidden]="!mark.showPluti"></app-pluti>
+            <h4>Marks {{mark.value}}</h4>
         </div>
         <div class="border p-1 chapter">
             <table class="table">
@@ -17,12 +18,15 @@
                     <th>Mks</th>
                     <th></th>
                 </tr>
-                <tr (mouseover)="showPluti.chapter=true" (mouseout)="showPluti.chapter=false">
-                    <td>Motion in 1D (3)</td>
-                    <td>5</td>
-                    <td>10</td>
+                <tr 
+                *ngFor="let chapter of mark.chapters"
+                (mouseover)="chapter.showPluti=true" 
+                (mouseout)="chapter.showPluti=false">
+                    <td>{{chapter.name}} ({{chapter.no}})</td>
+                    <td>{{chapter.questionsNo}}</td>
+                    <td>{{chapter.questionsNo * mark.value}}</td>
                     <td>
-                        <app-pluti [hidden]="!showPluti.chapter"></app-pluti>
+                        <app-pluti [hidden]="!chapter.showPluti"></app-pluti>
                     </td>
                 </tr>
             </table>
