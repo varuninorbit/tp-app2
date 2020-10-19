@@ -15,67 +15,22 @@ export class LaviComponent implements OnInit {
   laviState: namespace.LaviState = {
     sections: [
       {
-        name: 'A', showPluti: false,
-        marks: [
+        name: 'Section A', showPluti: false,
+        categories: [
           {
-            value: '2', showPluti: false,
-            chapters: [
+            name: 'MCQ', showPluti: false,
+            marks: [
               {
-                name: 'Motion in 2D', no: '3'
-                , questionsNo: 5, showPluti: false
-              },
-              {
-                name: 'Motion in Plane', no: '4'
-                , questionsNo: 3, showPluti: false
-              }
-            ]
-          },
-          {
-            value: '2', showPluti: false,
-            chapters: [
-              {
-                name: 'Motion in 2D', no: '3'
-                , questionsNo: 5, showPluti: false
-              },
-              {
-                name: 'Motion in Plane', no: '4'
-                , questionsNo: 3, showPluti: false
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: 'A', showPluti: false,
-        marks: [
-          {
-            value: '2', showPluti: false,
-            chapters: [
-              {
-                name: 'Motion in 2D', no: '3'
-                , questionsNo: 5, showPluti: false
-              },
-              {
-                name: 'Motion in Plane', no: '4'
-                , questionsNo: 3, showPluti: false
-              }
-            ]
-          },
-          {
-            value: '2', showPluti: false,
-            chapters: [
-              {
-                name: 'Motion in 2D', no: '3'
-                , questionsNo: 5, showPluti: false
-              },
-              {
-                name: 'Motion in Plane', no: '4'
-                , questionsNo: 3, showPluti: false
+                value: '2', showPluti: false,
+                chapters: [
+                  { name: 'Mottion in 2D', no: '3', questionsNo: 4, showPluti: false }
+                ]
               }
             ]
           }
         ]
       }
+      // { name: 'Section B', showPluti: false }
     ]
   }
 
@@ -84,7 +39,7 @@ export class LaviComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  click(...event){
+  click(...event) {
     console.log(event);
   }
 
@@ -105,10 +60,16 @@ declare module namespace {
     chapters: Chapter[];
   }
 
-  export interface Section {
+  export interface Category {
     name: string;
     showPluti: boolean;
     marks: Mark[];
+  }
+
+  export interface Section {
+    name: string;
+    showPluti: boolean;
+    categories: Category[];
   }
 
   export interface LaviState {
