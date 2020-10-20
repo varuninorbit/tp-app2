@@ -1,17 +1,19 @@
-<div *ngFor="let section of laviState.sections" class="border p-1 section">
-    <div (mouseover)="section.showPluti=true" (mouseout)="section.showPluti=false">
-        <app-pluti (buttonClick)="click('section',$event)" [hidden]="!section.showPluti"></app-pluti>
-        <h3>Section {{section.name}}</h3>
+<div *ngFor="let section of laviState.sections; index as i" class="border p-1 section">
+    <div (mouseover)="section.showPluti=true" (mouseout)="section.showPluti=false; edit(sectionName,section)">
+        <app-pluti (buttonClick)="click(laviState.sections,i,$event)" [hidden]="!section.showPluti"></app-pluti>
+        <h3 (dblclick)="section.edit=!section.edit" [class.edit]="section.edit"
+        [attr.contenteditable]="section.edit" #sectionName>{{section.name}}</h3>
     </div>
 
-    <div *ngFor="let category of section.categories" class="border p-1 section">
+    <div *ngFor="let category of section.categories; index as i" class="border p-1 section">
         <div (mouseover)="category.showPluti=true" (mouseout)="category.showPluti=false">
-            <app-pluti (buttonClick)="click('section',$event)" [hidden]="!category.showPluti"></app-pluti>
-            <h3>Section {{category.name}}</h3>
+            <app-pluti (buttonClick)="click(section.categories,i,$event)" [hidden]="!category.showPluti"></app-pluti>
+            <h3 (dblclick)="category.edit=!category.edit"            
+            >{{category.name}}</h3>
         </div>
-        <div *ngFor="let mark of category.marks" class="border p-1 marks">
+        <div *ngFor="let mark of category.marks; index as i" class="border p-1 marks">
             <div (mouseover)="mark.showPluti=true" (mouseout)="mark.showPluti=false">
-                <app-pluti [hidden]="!mark.showPluti" (buttonClick)="click('mark',$event)"></app-pluti>
+                <app-pluti [hidden]="!mark.showPluti" (buttonClick)="click(category.marks,i,$event)"></app-pluti>
                 <h4>Marks {{mark.value}}</h4>
             </div>
             <div class="border p-1 chapter">
@@ -22,13 +24,13 @@
                         <th>Mks</th>
                         <th></th>
                     </tr>
-                    <tr *ngFor="let chapter of mark.chapters" (mouseover)="chapter.showPluti=true"
+                    <tr *ngFor="let chapter of mark.chapters; index as i" (mouseover)="chapter.showPluti=true"
                         (mouseout)="chapter.showPluti=false">
                         <td>{{chapter.name}} ({{chapter.no}})</td>
                         <td>{{chapter.questionsNo}}</td>
                         <td>{{chapter.questionsNo * mark.value}}</td>
                         <td>
-                            <app-pluti (buttonClick)="click('chapter-'+chapter.name,$event)"
+                            <app-pluti (buttonClick)="click(mark.chapters,i,$event)"
                                 [hidden]="!chapter.showPluti"></app-pluti>
                         </td>
                     </tr>
