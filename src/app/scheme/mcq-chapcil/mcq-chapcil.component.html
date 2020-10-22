@@ -1,0 +1,28 @@
+<span>Choose Chapters</span>
+<h3>{{scheme?.name}}</h3>
+<p>{{scheme?.description}}</p>
+<div class="row">
+  <div *ngFor="let idx of chaptersCountArray; index as i">
+    <div class="col-10">
+      <label>Chapter {{i + 1}}</label>
+    <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" 
+    name="chapter" (change)="change()">
+      <option value="0">Chapter {{idx+1}}</option>
+      <option *ngFor="let chapter of chapters" 
+      [disabled]="isDisabled(chapter.id)" 
+      [value]="chapter.id">
+        {{chapter.chapter}}</option>
+    </select>
+
+    <input class="form-control" type="number" [value]="5"/>   
+    </div>
+   </div>
+</div>
+<button class="btn btn-primary" (click)="addChapter()">Add Chapter</button>
+
+
+<app-bottom-nav>
+  <a type="button" routerLink='/scheme/chikoo' class="btn btn-primary btn-lg float-left">
+    <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+  </a>
+</app-bottom-nav>

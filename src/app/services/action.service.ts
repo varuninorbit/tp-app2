@@ -2,18 +2,19 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Urls } from "../../environments/environment";
 import { Observable } from "rxjs";
+import { ApiTokenService } from './api-token.service';
 @Injectable({
   providedIn: "root",
 })
 export class ActionService {
   hemta:Hemta; //headers meta queries and defaults
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private api: ApiTokenService) {
     window['ac'] = this;
     window['http'] = http;
     this.hemta = {
       baseURL:Urls.apiBase,
-      everyQuery:Urls.everyQuery,
+      everyQuery:Urls.everyQuery+`&api_token=${api.token}`,
       relativeURL:Urls.relativeURL
     };
   }

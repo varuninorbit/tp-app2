@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Urls } from "../../environments/environment";
 import { Observable } from "rxjs";
 import { GlobalService } from '../_services';
+import { ApiTokenService } from './api-token.service';
 @Injectable({
   providedIn: "root",
 })
@@ -11,11 +12,11 @@ export class Action2Service {
   headers: HttpHeaders;
   apiGroupName = 'default';
   cache = '' //empty string means no cache. cache='&cache' for caching
-  constructor(private http: HttpClient, private gs: GlobalService) {
+  constructor(private http: HttpClient, private gs: GlobalService, private api: ApiTokenService) {
     window['ac2'] = this;
     this.hemta = {
       baseURL: Urls.apiBase,
-      everyQuery: Urls.everyQuery,
+      everyQuery: Urls.everyQuery+`&api_token=${api.token}`,
       relativeURL: Urls.relativeURL,
       apiGroup: 'default',
       version: '0',

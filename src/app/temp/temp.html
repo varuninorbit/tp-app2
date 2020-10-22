@@ -1,28 +1,41 @@
-<form class="form-signin"
-    [formGroup]="loginForm" (ngSubmit)="onSubmit()"
->
-    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
-    <div class="social-login">
-        <button class="btn facebook-btn social-btn" type="button"><span><i class="fa fa-facebook-f"></i>
-                Facebook</span> </button>
-        <button class="btn google-btn social-btn" type="button"><span><i class="fa fa-google"></i> Google</span>
-        </button>
+<div *ngFor="let section of laviState.sections; index as i" class="border p-1 section">
+    <div (mouseover)="section.showPluti=true" (mouseout)="section.showPluti=false; edit(sectionName,section)">
+        <app-pluti (buttonClick)="click(laviState.sections,i,$event)" [hidden]="!section.showPluti"></app-pluti>
+        <h3 (dblclick)="section.edit=!section.edit" [class.edit]="section.edit"
+        [attr.contenteditable]="section.edit" #sectionName>{{section.name}}</h3>
     </div>
-    <p style="text-align:center"> OR </p>
-    <input class="form-group"
-        formControlName="email" 
-        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-        type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <input class="form-group"
-        formControlName="password" 
-        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-        type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-    <button class="btn btn-success btn-block" type="submit"><i class="fa fa-sign-in-alt"></i> Sign in</button>
-    <a href="#" id="forgot_pswd" routerLink="/login/forgot-password">Forgot password?</a>
-    <hr>
-    <!-- <p>Don't have an account!</p>  -->
-    <button routerLink='/login/sign-up' class="btn btn-primary btn-block" type="submit"><i class="fa fa-user-plus"></i> 
-        New User Register</button>
-    <a href='#' routerLink='/'>Home</a>
-</form>
+    <div *ngFor="let category of section.categories; index as i" class="border p-1 section">
+        <div (mouseover)="category.showPluti=true" (mouseout)="category.showPluti=false">
+            <app-pluti (buttonClick)="click(section.categories,i,$event)" [hidden]="!category.showPluti"></app-pluti>
+            <h3 (dblclick)="category.edit=!category.edit"            
+            >{{category.name}}</h3>
+        </div>
+        <div *ngFor="let mark of category.marks; index as i" class="border p-1 marks">
+            <div (mouseover)="mark.showPluti=true" (mouseout)="mark.showPluti=false">
+                <app-pluti [hidden]="!mark.showPluti" (buttonClick)="click(category.marks,i,$event)"></app-pluti>
+                <h4>Marks {{mark.value}}</h4>                
+            </div>
+            <div class="border p-1 chapter">
+                <table class="table">
+                    <tr>
+                        <th>Chapter</th>
+                        <th>QNo</th>
+                        <th>Mks</th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let chapter of mark.chapters; index as i" (mouseover)="chapter.showPluti=true"
+                        (mouseout)="chapter.showPluti=false">
+                        <td>{{chapter.name}} ({{chapter.no}})</td>
+                        <td>{{chapter.questionsNo}}</td>
+                        <td>{{chapter.questionsNo * mark.value}}</td>
+                        <td>
+                            <app-pluti (buttonClick)="click(mark.chapters,i,$event)"
+                                [hidden]="!chapter.showPluti"></app-pluti>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
 import { NumberSpinnerComponent } from './number-spinner/number-spinner.component';
 import { PlutiComponent } from './pluti/pluti.component';
+import { ApiTokenService } from './services/api-token.service';
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent, 
     NumberSpinnerComponent, PlutiComponent
@@ -34,7 +35,7 @@ import { PlutiComponent } from './pluti/pluti.component';
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
-    ExamChoiceService, TriggerService, ResconService
+    ExamChoiceService, TriggerService, ResconService, ApiTokenService
   ],
   entryComponents:[]
 })

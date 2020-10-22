@@ -7,6 +7,7 @@ import { QuestionComponent } from '../test/questions/question/question.component
 import { ErrorReportComponent } from './error-report/error-report.component';
 import { ShrimComponent } from './shrim/shrim.component';
 import { LaviComponent } from './lavi/lavi.component';
+import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
 
 const routes: Routes = [
   {path: '', component: SchemeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "lavi", component: LaviComponent},
   {path: "scheme/shrim", component: ShrimComponent},
   {path: "scheme/chapcil", component: ChapcilComponent},
+  {path: "scheme/mcq-chapcil", component: McqChapcilComponent},
   {path: "scheme/chikoo", component: ChikooComponent},
 ];
 
@@ -25,6 +27,6 @@ const routes: Routes = [
 export class SchemeRoutingModule {
   static components = [
     SchemeComponent, ChapcilComponent, ChikooComponent, 
-    QuestionComponent, ErrorReportComponent
+    QuestionComponent, ErrorReportComponent, McqChapcilComponent
   ]
 }
