@@ -10,7 +10,7 @@ import { LaviComponent } from './lavi/lavi.component';
 import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
 
 const routes: Routes = [
-  {path: '', component: SchemeComponent},
+  {path: '', component: McqChapcilComponent},
   {path: "scheme", component: SchemeComponent},
   {path: "lavi", component: LaviComponent},
   {path: "scheme/shrim", component: ShrimComponent},

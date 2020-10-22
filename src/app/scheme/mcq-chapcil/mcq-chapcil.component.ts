@@ -6,6 +6,7 @@ import { StateService } from 'src/app/state.service';
 import { ArrayTableService } from '../array-table.service';
 import * as _ from 'underscore';
 import { NotifierService } from 'angular-notifier';
+import { GlobalService } from 'src/app/_services';
 
 
 
@@ -17,124 +18,128 @@ import { NotifierService } from 'angular-notifier';
 export class McqChapcilComponent implements OnInit {
 
   private AScheme;
-  scheme: IScheme;
-  chapters: IChapter[];
+  scheme: IScheme= {
+    "id": 8,
+    "name": "JEE Three Chapters Test",
+    "description": "Jee Single chapter containing 30 Mcq questions.",
+    "table": [
+      {
+        "chapter_id": 1,
+        "category_id": 1,
+        "marks": 1,
+        "no": 5
+      }
+    ]
+  };
+  chaptersBag:IChapter[]= [
+    {
+      "id": '1',
+      "chapter": "Unit 1(Rational Numbers)"
+    },
+    {
+      "id": '2',
+      "chapter": "Unit 2(Data Handling)"
+    },
+    {
+      "id": '3',
+      "chapter": "Unit 3(Square-Square Root & Cube-Cube Root)"
+    },
+    {
+      "id": '4',
+      "chapter": "Unit 4(Linear Equation In One Variable)"
+    },
+    {
+      "id": '5',
+      "chapter": "Unit 5(Understanding Quadrilaterals & Practical Geometry)"
+    },
+    {
+      "id": '6',
+      "chapter": "Unit 6(Visualising The Solid Shapes)"
+    },
+    {
+      "id": '7',
+      "chapter": "Unit 7(Algebraic Expression, Identities & Factorisation)"
+    },
+    {
+      "id": '8',
+      "chapter": "Unit 8(Exponents & Powers)"
+    },
+    {
+      "id": '9',
+      "chapter": "Unit 9(Comparing Quantities)"
+    },
+    {
+      "id": '10',
+      "chapter": "Unit 10(Direct & Inverse Proportions)"
+    },
+    {
+      "id": '11',
+      "chapter": "Unit 11(Mensuration)"
+    },
+    {
+      "id": '12',
+      "chapter": "Unit 12(Introduction To Graphs)"
+    },
+    {
+      "id": '13',
+      "chapter": "Unit 13(Playing With Numbers)"
+    }
+  ];
+
+  chaptersTray:IChapter[]=[];
+
+  arrayTAble= [
+    [
+      "chapter_id",
+      "category_id",
+      "marks",
+      "no"
+    ],
+    [
+      [ 1, 1, 1, 5  ],
+      [ 2, 1, 1, 5  ]
+    ]
+  ];
+  
 
   chaptersCountArray = [];
   //selectedOptions=[null,1,2,3,4];
 
-  selectedChaptersID = [];
+  selectedChaptersID = [1];
   //set initially to 
   constructor(private ac: ActionService,
     private stateService: StateService,
     private arrayTableHelper: ArrayTableService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private gs: GlobalService
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);
   }
 
   ngOnInit(): void {
-    let schemeID = this.stateService.state.currentScheme.id;
-    //load chapters and scheme 
-    this.AScheme('schter')(schemeID).subscribe(({ scheme, chapters }) => {
-      this.chapters = chapters;
-      this.scheme =
-      {
-        "id": 8,
-        "name": "JEE Three Chapters Test",
-        "description": "Jee Single chapter containing 30 Mcq questions.",
-        "table": [
-          {
-            "chapter_id": 1,
-            "category_id": 1,
-            "marks": 1,
-            "no": 10
-          }
-        ]
-      };
-      this.updateState();
-      this.chaptersCountArray_();
-      this.selectedChaptersID = this.getSelectedChaptersFromArrayTable();
-      this.change();
-    })
+  }
+ 
 
-    //set selected chapter from stored state
-    //this.selectedChapters = this.stateService.state.selectedChapters;
-    //this.autoSelectCheckboxFromStoredArrayTable();   
+  bagToTray(selectedChapterElem){
+    let chapterID = selectedChapterElem.value;
+    let chapterIndex = this.chaptersBag.findIndex(chapter=>chapter.id==chapterID);
+    this.chaptersTray.push(this.chaptersBag.splice(chapterIndex,1)[0]);
   }
 
-  init_(): void {
-    let schemeID = this.stateService.state.currentScheme.id;
-    //load chapters and scheme     
-    this.updateState();
-    this.chaptersCountArray_();
-    this.selectedChaptersID = this.getSelectedChaptersFromArrayTable();
-    this.change();
+  trayToBag(chapterID) {
+    let chapterIndex = this.chaptersTray.findIndex(chapter=>chapter.id==chapterID);
+    this.chaptersBag.push(this.chaptersTray.splice(chapterIndex,1)[0]);
   }
 
-  updateState() {
-    this.stateService.updateState(state => {
-      state.arrayTable = this.arrayTableHelper.arrayTable(this.scheme.table)
-      state.chapters = this.chapters;
-      state.currentScheme = this.scheme;
-      return state;
-    });
+  isDisabled(chapterID:string):boolean{
+    let chapterID_:number = parseInt(chapterID);
+    if(this.selectedChaptersID.indexOf(chapterID_)>=0){
+      return true;
+    }else{
+      return false;
+    }    
   }
-
-
-  isDisabled(index: (number)) {
-    //index = index + ''; //no to string cast
-    return (this.selectedChaptersID.indexOf(index) != -1) ? true : false;
-  }
-
-  chaptersCount() {
-    // changes state of this.selectedChaptersID
-    return this.getSelectedChaptersFromArrayTable().length
-  }
-
-  chaptersCountArray_() {
-    return this.chaptersCountArray = [...Array(this.chaptersCount()).keys()];
-  }
-
-  getSelectedChaptersFromArrayTable() {
-    return _.unique(this.arrayTableHelper.iDColfrom(this.stateService.state.arrayTable, 'chapter_id'))
-  }
-
-  calculateMappingArray(): [number[], number[]] {
-    let newArray = this.selectedChaptersID; //.map(i=>parseInt(i));
-    let oldArray = this.getSelectedChaptersFromArrayTable();
-    return [oldArray, newArray];
-  }
-
-  change() {
-    //showNotification( 'success', 'Notification successfully opened.' )
-    //this.notifier.notify('success','Test message');
-    //convert selectedChaptersID: string[] to number[]
-    this.selectedChaptersID = this.selectedChaptersID.map(i => parseInt(i));
-    this.updateArrayTableFromChangedChapterIDS();
-  }
-
-  updateArrayTableFromChangedChapterIDS() {
-    let at = this.stateService.state.arrayTable;
-    let ah = this.arrayTableHelper;
-    at = ah.replaceColDataInArrayTable('chapter_id', at, this.calculateMappingArray())
-  }
-
-  addChapter(){
-    let no = this.scheme.table.length;
-    let chapter_id = this.scheme.table[no-1].chapter_id;
-    chapter_id++;
-    this.scheme.table.push({
-      "chapter_id": chapter_id,
-      "category_id": 1,
-      "marks": 1,
-      "no": 10
-    });
-
-    this.init_();
-  }
-
 }
 
 

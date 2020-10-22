@@ -11,7 +11,7 @@ export interface Marks {}
 
 
 export interface IChapter{
-    name: string;
+    chapter: string;
     id: string;
 }
 

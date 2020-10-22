@@ -6,10 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./number-spinner.component.css']
 })
 export class NumberSpinnerComponent implements OnInit {
-  value=60;
+  
   @Input('min') minValue: number;
   @Input('max') maxValue: number;
   @Input() step:number;
+  @Input() value=60;
 
   @Output('getValue') valueEmit = new EventEmitter<number>();
 

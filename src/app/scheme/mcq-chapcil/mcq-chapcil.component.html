@@ -1,24 +1,18 @@
 <span>Choose Chapters</span>
 <h3>{{scheme?.name}}</h3>
 <p>{{scheme?.description}}</p>
-<div class="row">
-  <div *ngFor="let idx of chaptersCountArray; index as i">
-    <div class="col-10">
-      <label>Chapter {{i + 1}}</label>
-    <select class="form-control" [(ngModel)]="selectedChaptersID[idx]" 
-    name="chapter" (change)="change()">
-      <option value="0">Chapter {{idx+1}}</option>
-      <option *ngFor="let chapter of chapters" 
-      [disabled]="isDisabled(chapter.id)" 
-      [value]="chapter.id">
-        {{chapter.chapter}}</option>
+<select #selectedChapterElem      
+    (change)="bagToTray(selectedChapterElem)">
+      <option>Choose A Chapter</option>      
+      <option  *ngFor="let chapter of chaptersBag" [value]="chapter.id"      
+      >{{chapter.chapter}}</option>
     </select>
-
-    <input class="form-control" type="number" [value]="5"/>   
-    </div>
-   </div>
+<div >
+  <div *ngFor="let chapter of chaptersTray">
+    <p>{{chapter.chapter}} <span (click)="trayToBag(chapter.id)">[x]</span></p>
+  </div>
 </div>
-<button class="btn btn-primary" (click)="addChapter()">Add Chapter</button>
+<button class="btn btn-primary">Add Chapter</button>
 
 
 <app-bottom-nav>
