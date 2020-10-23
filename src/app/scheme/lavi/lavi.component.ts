@@ -75,7 +75,7 @@ export class LaviComponent implements OnInit {
   }
 
   add(obj:any,i:number){
-    console.log('adding',i)
+    console.log('adding',obj,i)
   }
 
   click2(obj:any, i:number, whichButton:string, sectionName): void {
@@ -92,7 +92,11 @@ export class LaviComponent implements OnInit {
   
   toggleEdit(whatever){
     whatever.edit=!whatever.edit
-  }   
+  }
+  
+  sectionModify(idx,event){
+    console.log(idx,event)
+  }
 }
 
 declare module namespace {
