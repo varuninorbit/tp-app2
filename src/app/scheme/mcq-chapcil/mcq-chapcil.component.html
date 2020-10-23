@@ -1,17 +1,30 @@
 <span>Choose Chapters</span>
 <h3>{{scheme?.name}}</h3>
 <p>{{scheme?.description}}</p>
-<select #selectedChapterElem      
-    (change)="bagToTray(selectedChapterElem)">
-      <option>Choose A Chapter</option>      
-      <option  *ngFor="let chapter of chaptersBag" [value]="chapter.id"      
-      >{{chapter.chapter}}</option>
-    </select>
-<div >
-  <div *ngFor="let chapter of chaptersTray">
-    <p>{{chapter.chapter}} <span (click)="trayToBag(chapter.id)">[x]</span></p>
-  </div>
+
+<div>
+  <table class="table">
+    <tr>
+      <th>Chapter</th>
+      <th>Questions No.</th>
+      <th>Remove</th>
+    </tr>
+    <tr *ngFor="let chapter of chaptersTray">
+      <td>{{chapter.chapter}}</td>
+      <td>
+        <input min='1' max='100' type='number' class="form-control" 
+        [(ngModel)]="questionsNo[chapter.id]"
+        ></td>
+      <td><span class="fa fa-times" (click)="trayToBag(chapter.id)"></span></td>
+    </tr>
+  </table>
 </div>
+
+<select #selectedChapterElem class="form-control" (change)="bagToTray(selectedChapterElem)">
+  <option>Choose A Chapter</option>
+  <option *ngFor="let chapter of chaptersBag" [value]="chapter.id">{{chapter.chapter}}</option>
+</select>
+
 <button class="btn btn-primary">Add Chapter</button>
 
 

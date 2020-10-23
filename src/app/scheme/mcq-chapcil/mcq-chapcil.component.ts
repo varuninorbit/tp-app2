@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
-import { IChapter } from 'src/app/types/i-exam-choice';
 import { StateService } from 'src/app/state.service';
 import { ArrayTableService } from '../array-table.service';
 import * as _ from 'underscore';
@@ -31,7 +30,7 @@ export class McqChapcilComponent implements OnInit {
       }
     ]
   };
-  chaptersBag:IChapter[]= [
+  chaptersBag:Chapter[]= [
     {
       "id": '1',
       "chapter": "Unit 1(Rational Numbers)"
@@ -86,7 +85,8 @@ export class McqChapcilComponent implements OnInit {
     }
   ];
 
-  chaptersTray:IChapter[]=[];
+  chaptersTray:Chapter[]=[];
+
 
   arrayTAble= [
     [
@@ -104,6 +104,10 @@ export class McqChapcilComponent implements OnInit {
 
   chaptersCountArray = [];
   //selectedOptions=[null,1,2,3,4];
+  questionsNo:{
+    chapterID:string,
+    qno:number
+  }[] =[];
 
   selectedChaptersID = [1];
   //set initially to 
@@ -131,15 +135,12 @@ export class McqChapcilComponent implements OnInit {
     let chapterIndex = this.chaptersTray.findIndex(chapter=>chapter.id==chapterID);
     this.chaptersBag.push(this.chaptersTray.splice(chapterIndex,1)[0]);
   }
+ 
+}
 
-  isDisabled(chapterID:string):boolean{
-    let chapterID_:number = parseInt(chapterID);
-    if(this.selectedChaptersID.indexOf(chapterID_)>=0){
-      return true;
-    }else{
-      return false;
-    }    
-  }
+interface Chapter{
+  chapter: string;
+  id: string;
 }
 
 
