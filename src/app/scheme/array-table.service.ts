@@ -101,6 +101,11 @@ export class ArrayTableService {
     return questionsList[questionID].blk;
   }
 
+  stringArrayTointArray(arr:string[]): number[] {
+    return arr.map(i=>parseInt(i));
+  }
+
+
 }
 
 /*

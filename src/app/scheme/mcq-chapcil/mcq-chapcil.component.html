@@ -1,9 +1,9 @@
 <span>Choose Chapters</span>
-<h3>{{scheme?.name}}</h3>
-<p>{{scheme?.description}}</p>
+<h3>Custom MCQ Test</h3>
+<p>Choose chapters and no of Questions</p>
 
 <div>
-  <table class="table">
+  <table class="table" id="noTable">
     <tr>
       <th>Chapter</th>
       <th>Questions No.</th>
@@ -13,7 +13,7 @@
       <td>{{chapter.chapter}}</td>
       <td>
         <input min='1' max='100' type='number' class="form-control" 
-        [(ngModel)]="questionsNo[chapter.id]"
+        [value]='5'
         ></td>
       <td><span class="fa fa-times" (click)="trayToBag(chapter.id)"></span></td>
     </tr>
@@ -24,8 +24,6 @@
   <option>Choose A Chapter</option>
   <option *ngFor="let chapter of chaptersBag" [value]="chapter.id">{{chapter.chapter}}</option>
 </select>
-
-<button class="btn btn-primary">Add Chapter</button>
 
 
 <app-bottom-nav>

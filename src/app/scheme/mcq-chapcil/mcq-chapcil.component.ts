@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+/*
+TODO
+1. Keep last no of questions in memory
+2. Sort chaptersbag array according to id
+3. Load chapters from AC
+4. Save state so it can be retrieved when pressed back button
+*/
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { IScheme } from 'src/app/types/i-scheme';
 import { StateService } from 'src/app/state.service';
@@ -14,22 +21,11 @@ import { GlobalService } from 'src/app/_services';
   templateUrl: './mcq-chapcil.component.html',
   styleUrls: ['./mcq-chapcil.component.css']
 })
-export class McqChapcilComponent implements OnInit {
+export class McqChapcilComponent implements OnInit, OnDestroy {
 
+  @ViewChild('chapterNmarks') chapterNmarksElemRef: ElementRef;
   private AScheme;
-  scheme: IScheme= {
-    "id": 8,
-    "name": "JEE Three Chapters Test",
-    "description": "Jee Single chapter containing 30 Mcq questions.",
-    "table": [
-      {
-        "chapter_id": 1,
-        "category_id": 1,
-        "marks": 1,
-        "no": 5
-      }
-    ]
-  };
+
   chaptersBag:Chapter[]= [
     {
       "id": '1',
@@ -86,20 +82,6 @@ export class McqChapcilComponent implements OnInit {
   ];
 
   chaptersTray:Chapter[]=[];
-
-
-  arrayTAble= [
-    [
-      "chapter_id",
-      "category_id",
-      "marks",
-      "no"
-    ],
-    [
-      [ 1, 1, 1, 5  ],
-      [ 2, 1, 1, 5  ]
-    ]
-  ];
   
 
   chaptersCountArray = [];
@@ -108,8 +90,6 @@ export class McqChapcilComponent implements OnInit {
     chapterID:string,
     qno:number
   }[] =[];
-
-  selectedChaptersID = [1];
   //set initially to 
   constructor(private ac: ActionService,
     private stateService: StateService,
@@ -135,6 +115,32 @@ export class McqChapcilComponent implements OnInit {
     let chapterIndex = this.chaptersTray.findIndex(chapter=>chapter.id==chapterID);
     this.chaptersBag.push(this.chaptersTray.splice(chapterIndex,1)[0]);
   }
+
+  private getQuesionsNoArray(){
+    let inputs = document.querySelectorAll('#noTable > tr > td > input')
+    let vals =[];
+    inputs.forEach((i)=>{vals.push(i['value'])})
+    return vals;
+  }
+
+  private getChapterTrayIDArray(){
+    return this.chaptersTray.map(i=>i.id);
+  }
+
+  getArrayTable(){
+    let toIntArr = this.arrayTableHelper.stringArrayTointArray;
+    let chapters = toIntArr(this.getChapterTrayIDArray());
+    let nos = toIntArr(this.getQuesionsNoArray());
+    let fixedVal = Array(chapters.length).fill(1);
+    return [
+      ["chapter_id", "category_id", "marks", "no"] ,
+      this.gs._.zip(chapters, fixedVal, fixedVal, nos)    
+    ];
+  }
+
+  ngOnDestroy(): void {    
+    this.stateService.state.arrayTable = this.getArrayTable()
+  }
  
 }
 
@@ -143,12 +149,3 @@ interface Chapter{
   id: string;
 }
 
-
-/*
-todo
-1 import componet into the routes
-    .1 route => /chapsil
-    .2
-
-2 fake data in component
-*/
