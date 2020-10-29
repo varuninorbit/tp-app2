@@ -6,13 +6,15 @@ import { StateService } from 'src/app/state.service';
 import { ArrayTableService } from '../array-table.service';
 import * as _ from 'underscore';
 import { NotifierService } from 'angular-notifier';
+import { ChapcilStateService } from './chapcil-state.service';
 
 
 
 @Component({
   selector: 'app-chapcil',
   templateUrl: './chapcil.component.html',
-  styleUrls: ['./chapcil.component.css']
+  styleUrls: ['./chapcil.component.css'],
+  providers:[ChapcilStateService]
 })
 export class ChapcilComponent implements OnInit {
 
@@ -28,7 +30,8 @@ export class ChapcilComponent implements OnInit {
   constructor(private ac: ActionService,
     private stateService: StateService,
     private arrayTableHelper: ArrayTableService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private chapcilState: ChapcilStateService
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);    

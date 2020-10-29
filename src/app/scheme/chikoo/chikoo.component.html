@@ -1,20 +1,23 @@
 <p>Questions List</p>
 <div [hidden]="showErrorComponent_q">
-    <div *ngFor="let question of questionsList; let i = index" (mouseover)="showBud[i]=true"
+    <div *ngFor="let question of st.questionsList; let i = index" (mouseover)="showBud[i]=true"
         (mouseout)="showBud[i]=false" class="border bottom-bar breadcrumb" mathjax>
 
         <strong>({{i+1}})&nbsp;</strong>
         <app-question [attr.contenteditable]="edit==i" [question]="question" [class.bg-light]="edit==i"></app-question>
-
         <!-- bud controls hides or shows via [hideBud] property -->
         <div [hidden]="isBudHidden(i)" class="btn-block btn-group btn-group-sm">
             <a (click)="changeQuestion(question,i)" class="btn btn-outline-primary"><span
                     class="fa fa-refresh"></span></a>
             <a (click)="toggleEdit(i)" class="btn btn-outline-primary"><span class="fa fa-pencil"></span></a>
-            <a (click)="openErrorDialog(question)" class="btn btn-outline-primary"><span class="fa fa-warning"
-                ></span></a>
+            <a (click)="openErrorDialog(question)" class="btn btn-outline-primary"><span
+                    class="fa fa-warning"></span></a>
         </div>
         <hr>
+        <div>
+            <p class="blockquote-footer">Chapter {{getChapter(question.chapter_id)}}</p>
+            <p class="blockquote-footer">Category {{getCategory(question.category_id)}}</p>
+        </div>
     </div>
 </div>
 

@@ -9,11 +9,11 @@
       <th>Questions No.</th>
       <th>Remove</th>
     </tr>
-    <tr *ngFor="let chapter of chaptersTray">
+    <tr *ngFor="let chapter of st.chaptersTray">
       <td>{{chapter.chapter}}</td>
       <td>
         <input min='1' max='100' type='number' class="form-control" 
-        [value]='5'
+        [value]='5' (change)='questionsNoChanged()'
         ></td>
       <td><span class="fa fa-times" (click)="trayToBag(chapter.id)"></span></td>
     </tr>
@@ -22,7 +22,7 @@
 
 <select #selectedChapterElem class="form-control" (change)="bagToTray(selectedChapterElem)">
   <option>Choose A Chapter</option>
-  <option *ngFor="let chapter of chaptersBag" [value]="chapter.id">{{chapter.chapter}}</option>
+  <option *ngFor="let chapter of st.chaptersBag" [value]="chapter.id">{{chapter.chapter}}</option>
 </select>
 
 

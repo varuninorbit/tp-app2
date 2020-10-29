@@ -42,8 +42,8 @@ export class ExamChoiceComponent implements OnInit {
         return state;
       })
 
-      this.store.currentChoice = currentChoice;
-      this.store.choices = choices;
+      //this.store.currentChoice = currentChoice;
+      //this.store.choices = choices;
     })
 
     this.updateChoices();

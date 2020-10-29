@@ -11,6 +11,7 @@ import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
 
 const routes: Routes = [
   {path: '', component: McqChapcilComponent},
+  //{path: '', component: ChikooComponent},
   {path: "scheme", component: SchemeComponent},
   {path: "lavi", component: LaviComponent},
   {path: "scheme/shrim", component: ShrimComponent},

@@ -24,7 +24,9 @@ export class AppComponent implements OnInit, AfterViewInit  {
     private state:StateService,
     private gs:GlobalService
     ){
-      let choiceName = this.gs.literal.resolve(store)('currentChoice.name'); //TODO fix code to update exam choice
+      window['app'] = this;
+      //let choiceName = this.gs.literal.resolve(store)('currentChoice.name'); //TODO fix code to update exam choice
+      let choiceName = this.state.state_.currentChoice.name;
       if(!choiceName){
         this.examChoiceName = 'Exam Choice';
       }

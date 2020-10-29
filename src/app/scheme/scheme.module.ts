@@ -15,6 +15,7 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { ConsetComponent } from './conset/conset.component';
 import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.component';
 import { LaviComponent } from './lavi/lavi.component';
+import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam-choice-attributes.service';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
@@ -26,7 +27,7 @@ import { LaviComponent } from './lavi/lavi.component';
     SafePipeModule, NgbModule
   ],
   providers:[
-    ActionService, ArrayTableService, SchemeCreateService
+    ActionService, ArrayTableService, SchemeCreateService, ExamChoiceAttributesService
   ]
 })
 export class SchemeModule {  }

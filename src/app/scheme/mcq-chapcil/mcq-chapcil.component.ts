@@ -13,92 +13,39 @@ import { ArrayTableService } from '../array-table.service';
 import * as _ from 'underscore';
 import { NotifierService } from 'angular-notifier';
 import { GlobalService } from 'src/app/_services';
+import { McqChapcilStateService } from '../chapcil/mcq-chapcil-state.service';
 
 
 
 @Component({
   selector: 'scheme-mcq-chapcil',
   templateUrl: './mcq-chapcil.component.html',
-  styleUrls: ['./mcq-chapcil.component.css']
+  styleUrls: ['./mcq-chapcil.component.css'],
+  providers: [McqChapcilStateService]
 })
 export class McqChapcilComponent implements OnInit, OnDestroy {
 
   @ViewChild('chapterNmarks') chapterNmarksElemRef: ElementRef;
   private AScheme;
 
-  chaptersBag:Chapter[]= [
-    {
-      "id": '1',
-      "chapter": "Unit 1(Rational Numbers)"
-    },
-    {
-      "id": '2',
-      "chapter": "Unit 2(Data Handling)"
-    },
-    {
-      "id": '3',
-      "chapter": "Unit 3(Square-Square Root & Cube-Cube Root)"
-    },
-    {
-      "id": '4',
-      "chapter": "Unit 4(Linear Equation In One Variable)"
-    },
-    {
-      "id": '5',
-      "chapter": "Unit 5(Understanding Quadrilaterals & Practical Geometry)"
-    },
-    {
-      "id": '6',
-      "chapter": "Unit 6(Visualising The Solid Shapes)"
-    },
-    {
-      "id": '7',
-      "chapter": "Unit 7(Algebraic Expression, Identities & Factorisation)"
-    },
-    {
-      "id": '8',
-      "chapter": "Unit 8(Exponents & Powers)"
-    },
-    {
-      "id": '9',
-      "chapter": "Unit 9(Comparing Quantities)"
-    },
-    {
-      "id": '10',
-      "chapter": "Unit 10(Direct & Inverse Proportions)"
-    },
-    {
-      "id": '11',
-      "chapter": "Unit 11(Mensuration)"
-    },
-    {
-      "id": '12',
-      "chapter": "Unit 12(Introduction To Graphs)"
-    },
-    {
-      "id": '13',
-      "chapter": "Unit 13(Playing With Numbers)"
-    }
-  ];
-
-  chaptersTray:Chapter[]=[];
+  st={
+    chaptersBag:[],
+    chaptersTray: [],
+    questionsNo:[]
+  }; 
   
-
-  chaptersCountArray = [];
-  //selectedOptions=[null,1,2,3,4];
-  questionsNo:{
-    chapterID:string,
-    qno:number
-  }[] =[];
   //set initially to 
   constructor(private ac: ActionService,
     private stateService: StateService,
     private arrayTableHelper: ArrayTableService,
     private notifier: NotifierService,
-    private gs: GlobalService
+    private gs: GlobalService, 
+    private stateManager: McqChapcilStateService
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);
+    this.stateManager.setStateObject(this.st);
+    this.loadChapters();
   }
 
   ngOnInit(): void {
@@ -107,13 +54,15 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
 
   bagToTray(selectedChapterElem){
     let chapterID = selectedChapterElem.value;
-    let chapterIndex = this.chaptersBag.findIndex(chapter=>chapter.id==chapterID);
-    this.chaptersTray.push(this.chaptersBag.splice(chapterIndex,1)[0]);
+    let chapterIndex = this.st.chaptersBag.findIndex(chapter=>chapter.id==chapterID);
+    this.st.chaptersTray.push(this.st.chaptersBag.splice(chapterIndex,1)[0]);
+    this.updateQuestionsNoToState();
   }
 
   trayToBag(chapterID) {
-    let chapterIndex = this.chaptersTray.findIndex(chapter=>chapter.id==chapterID);
-    this.chaptersBag.push(this.chaptersTray.splice(chapterIndex,1)[0]);
+    let chapterIndex = this.st.chaptersTray.findIndex(chapter=>chapter.id==chapterID);
+    this.st.chaptersBag.push(this.st.chaptersTray.splice(chapterIndex,1)[0]);
+    this.updateQuestionsNoToState();
   }
 
   private getQuesionsNoArray(){
@@ -124,7 +73,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   }
 
   private getChapterTrayIDArray(){
-    return this.chaptersTray.map(i=>i.id);
+    return this.st.chaptersTray.map(i=>i.id);
   }
 
   getArrayTable(){
@@ -141,6 +90,20 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {    
     this.stateService.state.arrayTable = this.getArrayTable()
   }
+
+  loadChapters(){
+    this.stateManager.init();
+  }
+
+  questionsNoChanged(){
+    this.updateQuestionsNoToState();
+  }
+
+  updateQuestionsNoToState(){
+    setTimeout(() => {
+      this.st.questionsNo = this.getQuesionsNoArray();
+    })
+  } 
  
 }
 

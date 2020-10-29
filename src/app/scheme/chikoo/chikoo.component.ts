@@ -6,6 +6,8 @@ import { LiteralService } from 'src/app/_services/literal.service';
 import { SchemeCreateService } from '../scheme-create.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorReportComponent } from '../error-report/error-report.component';
+import { ExamChoiceAttributesService } from 'src/app/exam-choice/exam-choice-add/exam-choice-attributes.service';
+import { GlobalService } from 'src/app/_services';
 
 @Component({
   selector: 'app-chikoo',
@@ -19,35 +21,40 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   
   showErrorComponent_q=false;
   errorQuestionID:number;
+  st ={chapters:[], categories:[], questionsList:[]};
 
   constructor(private ac:ActionService, private state: StateService,
     private li:LiteralService,
     private sc:SchemeCreateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private attrib: ExamChoiceAttributesService,
+    private gs: GlobalService
     ) { 
     window['chikoo']=this;
-    this.getQuestionsFromServer();
+    //this.getQuestionsFromServer();
+    this.loadState();
     this.showBud=[];    
     this.edit=-1;
   }
 
   ngOnInit(): void {
+   //this.getAttribs();
   }
 
   changeQuestion(question,i){
-    let notIn = this.questionsList.map(i=>i.id);
+    let notIn = this.st.questionsList.map(i=>i.id);
 
     let scheme = this.sc.friendSchemeForSingleQuestion(question,this.state.state.arrayTable);
     this.ac.post('AQuestion')
     ('singleFriendQuestion')(scheme,notIn)
     .subscribe(r=>{
-      if(this.questionsList[i].id != r[0][0].id){
+      if(this.st.questionsList[i].id != r[0][0].id){
         
         //use original value of block
-        let blk = this.questionsList[i].blk;
+        let blk = this.st.questionsList[i].blk;
         r[0][0].blk = blk;
 
-        this.questionsList[i] = r[0][0];
+        this.st.questionsList[i] = r[0][0];
       }
     })
   }
@@ -56,8 +63,16 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     let arrayTable = this.state.state.arrayTable;
     this.ac.post('ASchema',true)
     ('loadQuestions')({scheme:arrayTable}).subscribe(questionsList=>{
-      this.questionsList = questionsList;
+      this.st.questionsList = questionsList;
     })  
+  }
+
+  loadState(){
+    this.st = this.gs.store()['chikoo'];
+  }
+
+  saveState(){
+    this.gs.store()['chikoo']= this.st;
   }
 
   reloadQuestions(){
@@ -96,6 +111,22 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
         question:question
       }
     });
+  }
+
+  getAttribs(){
+    this.attrib.observable.subscribe(({chapters,categories})=>{
+      this.st.chapters= chapters;
+      this.st.categories= categories;
+    })
+  }
+
+  getChapter(id){
+    let chapter =  this.st.chapters[id-1];
+    return chapter.chapter;
+  }
+
+  getCategory(id){
+    return this.st.categories[id-1].name
   }
 
 }
