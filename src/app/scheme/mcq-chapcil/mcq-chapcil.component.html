@@ -9,11 +9,11 @@
       <th>Questions No.</th>
       <th>Remove</th>
     </tr>
-    <tr *ngFor="let chapter of st.chaptersTray">
+    <tr *ngFor="let chapter of st.chaptersTray; let i = index;">
       <td>{{chapter.chapter}}</td>
       <td>
         <input min='1' max='100' type='number' class="form-control" 
-        [value]='5' (change)='questionsNoChanged()'
+        [value]='st.questionsNo[i]' (change)='questionsNoChanged()'
         ></td>
       <td><span class="fa fa-times" (click)="trayToBag(chapter.id)"></span></td>
     </tr>
