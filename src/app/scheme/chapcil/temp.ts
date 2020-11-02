@@ -4,43 +4,40 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { SubStateService } from 'src/app/sub-state.service';
-import { GlobalService } from 'src/app/_services';
 import { StateService } from 'src/app/state.service';
+import { GlobalService } from 'src/app/_services';
 @Injectable({
   providedIn: "root",
 })
-export class McqChapcilStateService extends SubStateService{
+export class McqChapcilStateService {
+  //initial state
   public defaultState = {
     chaptersBag: [],
     chaptersTray: [],
     questionsNo: []
   };
 
-  st: any;
+  public state= Object.assign({}, this.defaultState);
 
-  constructor(
-    public rootSateService: StateService, 
-    public gs: GlobalService)
-  {
+  stateName = 'mcqChapcil';
 
-    super(rootSateService, gs);
-    
-    this.st = super.SetDefaultState(this.defaultState).
-    SetParentState(this.rootSateService.state_).
-    SetStateName('mcqChapcil').
-    Init().
-    state;
+  constructor(private rootSateService: StateService, 
+    private gs: GlobalService) {}
 
-    if(this.st.chaptersBag.length===0){
+  Init(){
+    this.AttachToParent();
+    //load chapters if bag is empty;
+    if(this.state.chaptersBag.length===0){
       this.LOAD_CHAPTERS;
     }
+    return this;
   }
 
+ 
 
   get LOAD_CHAPTERS() {
-    if(this.st.chaptersBag)
-    this.st.chaptersBag = [
+    if(this.state.chaptersBag)
+    this.state.chaptersBag = [
       {
         "id": '1',
         "chapter": "Unit 1(Rational Numbers)"
@@ -97,4 +94,25 @@ export class McqChapcilStateService extends SubStateService{
     return this;
   }
 
+
+  parentState() {
+    return this.rootSateService.state_;
+  }
+
+  AttachToParent() {
+    //substate does not exist create it
+    if (this.parentState()[this.stateName] == undefined) {
+      this.parentState()[this.stateName] = this.state;
+    }else{
+      this.state = this.parentState()[this.stateName];
+    }
+    return this;
+  }
+
+  default_state_q(){
+    return (this.gs._.isMatch(this.state,this.defaultState))
+    ?true
+    :false;
+  }
 }
+

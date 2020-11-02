@@ -37,7 +37,7 @@ import { ApiTokenService } from './services/api-token.service';
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
-    ExamChoiceService, TriggerService, ResconService, ApiTokenService
+    ExamChoiceService, TriggerService, ResconService, ApiTokenService    
   ],
   entryComponents:[]
 })
