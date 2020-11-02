@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog.component';
 import { GlobalService } from '../_services';
 import { StateService } from '../state.service';
+import { Cacheable } from 'ts-cacheable';
 @Component({
   selector: "app-exam-choice",
   templateUrl: "./exam-choice.component.html",
@@ -18,6 +19,7 @@ export class ExamChoiceComponent implements OnInit {
   currentChoice: IExamChoice;
   node: INode[];
   store: any; //TODO Change type.
+  cacheBuster=1;
   constructor(private examChoiceService: ExamChoiceService, private user: UserService,
     private ac: ActionService, private dialog: MatDialog,
     private gs: GlobalService, private state: StateService
@@ -32,7 +34,7 @@ export class ExamChoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ac.get('AExamChoice')('choices')().subscribe(({ choices, currentChoice }) => {
+    this.userChoices().subscribe(({ choices, currentChoice }) => {
 
       //update state 
       //TODO 3 assignments of same data
@@ -67,6 +69,8 @@ export class ExamChoiceComponent implements OnInit {
       if (result === 'delete-choice') {
         this.ac.get('AExamChoice')('deleteChoice')(choice.id).subscribe(()=> {})
       }
+      
+      this.CACHE_BUSTING.updateChoices();
     });
   }
 
@@ -78,7 +82,17 @@ export class ExamChoiceComponent implements OnInit {
     this.state.state$.subscribe(({ choices, currentChoice }) => {
       this.choices = choices;
       this.currentChoice = currentChoice;
-    });
+    });    
+  }
+
+  @Cacheable()
+  userChoices(){
+    return this.ac.get('AExamChoice')('choices')(String(this.cacheBuster));
+  }
+
+  get CACHE_BUSTING(){ 
+    this.cacheBuster++;
+    return this;
   }
 
 

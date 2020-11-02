@@ -89,6 +89,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {    
     this.stateService.state.arrayTable = this.getArrayTable()
+    this.stateManager.state = this.st;
   }
 
   loadChapters(){
