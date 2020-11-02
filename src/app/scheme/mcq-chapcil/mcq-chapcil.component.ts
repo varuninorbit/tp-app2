@@ -28,11 +28,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   @ViewChild('chapterNmarks') chapterNmarksElemRef: ElementRef;
   private AScheme;
 
-  st={
-    chaptersBag:[],
-    chaptersTray: [],
-    questionsNo:[]
-  }; 
+  st:any;
   
   //set initially to 
   constructor(private ac: ActionService,
@@ -43,9 +39,8 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
     private stateManager: McqChapcilStateService
   ) {
     this.AScheme = ac.get('ASchema');
-    console.log(window['chapcil'] = this);
-    this.stateManager.setStateObject(this.st);
-    this.loadChapters();
+    console.log(window['chapcil'] = this);        
+    this.st = this.stateManager.Init().state;
   }
 
   ngOnInit(): void {
@@ -92,9 +87,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
     this.stateManager.state = this.st;
   }
 
-  loadChapters(){
-    this.stateManager.init();
-  }
+ 
 
   questionsNoChanged(){
     this.updateQuestionsNoToState();
@@ -105,6 +98,8 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
       this.st.questionsNo = this.getQuesionsNoArray();
     })
   } 
+
+
  
 }
 
