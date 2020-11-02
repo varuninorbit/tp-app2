@@ -5,27 +5,29 @@ import { ActionService } from 'src/app/services/action.service';
 @Component({
   selector: "app-dynamic-drop",
   template: `
-    <div class="breadcrumb">
-      <button
-        type="button"
-        class="btn btn-block  dropdown-toggle"
-        data-toggle="dropdown"
-      >
-        {{ node[0].name }}
-      </button>
-      <div class="dropdown-menu">
-        <a
-          class="dropdown-item"
-          (click)="selected([x])"
-          *ngFor="let x of node[0].node"
-        >
-          {{ x.name }}
-        </a>
-      </div>
-    </div>
-    <div *ngIf="DoesInnerNodeExists()">
-      <app-dynamic-drop [node]="selectedChoice"></app-dynamic-drop>
-    </div>
+<div *ngIf="node">
+<div class="breadcrumb">
+<button
+  type="button"
+  class="btn btn-block  dropdown-toggle"
+  data-toggle="dropdown"
+>
+  {{ node[0].name }}
+</button>
+<div class="dropdown-menu">
+  <a
+    class="dropdown-item"
+    (click)="selected([x])"
+    *ngFor="let x of node[0].node"
+  >
+    {{ x.name }}
+  </a>
+</div>
+</div>
+<div *ngIf="DoesInnerNodeExists()">
+<app-dynamic-drop [node]="selectedChoice"></app-dynamic-drop>
+</div>
+</div>
   `,
   styles: []
 })
