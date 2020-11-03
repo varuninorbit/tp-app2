@@ -1,27 +1,39 @@
 /*******************************
- * State loader for McqComponent
+ * Sub state class
+ * This attaches sub state to a parent state.
+ * state_ is tansformation point.
+ *  any changes will be emitted. These changes are present in 
+ *  state$ BehaviorSubject observable.
  */
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { StateService } from 'src/app/state.service';
 import { GlobalService } from 'src/app/_services';
 @Injectable({
     providedIn: "root",
 })
-export abstract class SubStateService {
-    //initial state, transformation point
+export abstract class SubStateService {    
     defaultState: any;
-    state: any;
+    state_: any;
     stateName = '';
     parentState_:any;
+    state$:BehaviorSubject<any>; 
 
-    constructor() {        
+    constructor() {  
+        this.state$ = new BehaviorSubject<any>(this.state_);      
+    }
+
+    set state(state_){
+        this.state$.next(state_);
+    }
+
+    get state(){
+        return this.state$.getValue();
     }
 
     SetDefaultState(defaultState) {
-        this.defaultState = defaultState;
-        this.state = Object.assign({}, this.defaultState);
+        this.defaultState = defaultState;        
         return this;
     }
 
@@ -36,11 +48,11 @@ export abstract class SubStateService {
     }
 
     Init() {        
-        this.state = Object.assign({}, this.defaultState)
-        this.AttachToParent();
+        this.
+        CopyDefaultStateToState().
+        AttachToParent();
         return this;
     }
-
 
     parentState() {
         return this.parentState_;
@@ -55,5 +67,20 @@ export abstract class SubStateService {
         }
         return this;
     }
+
+    CopyDefaultStateToState(){ 
+        this.state = Object.assign({}, this.defaultState);
+        return this;
+    }
+
+    UpdateState(callback){
+        this.state$.next(callback(this.state));
+    }
+
+    get EMIT_STATE(){ 
+        this.state$.next(this.state);
+        return this;
+    }
+
 }
 

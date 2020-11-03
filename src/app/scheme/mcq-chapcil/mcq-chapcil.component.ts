@@ -40,7 +40,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);        
-    this.st = this.stateManager.st;
+    this.st = this.stateManager.state;
   }
 
   ngOnInit(): void {

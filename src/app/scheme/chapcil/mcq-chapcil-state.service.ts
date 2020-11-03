@@ -17,30 +17,29 @@ export class McqChapcilStateService extends SubStateService{
     questionsNo: []
   };
 
-  st: any;
+
 
   constructor(
     private rootSateService: StateService, 
-   private gs: GlobalService)
+    private gs: GlobalService)
   {
-
     super();
     
-    this.st = super.SetDefaultState(this.defaultState).
-    SetParentState(this.rootSateService.state_).
-    SetStateName('mcqChapcil').
-    Init().
-    state;
+   super.
+      SetDefaultState(this.defaultState).
+      SetParentState(this.rootSateService.state_).
+      SetStateName('mcqChapcil').
+      Init()
 
-    if(this.st.chaptersBag.length===0){
+    if(this.state.chaptersBag.length===0){
       this.LOAD_CHAPTERS;
     }
   }
 
 
   get LOAD_CHAPTERS() {
-    if(this.st.chaptersBag)
-    this.st.chaptersBag = [
+    if(this.state.chaptersBag)
+    this.state.chaptersBag = [
       {
         "id": '1',
         "chapter": "Unit 1(Rational Numbers)"
