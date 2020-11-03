@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { IState } from './types/i-state';
 import { BehaviorSubject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })

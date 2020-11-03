@@ -4,8 +4,12 @@ import { ResconService } from '../rescon.service';
 import { StateService } from '../state.service';
 import { LiteralService } from './literal.service';
 import * as _ from 'underscore';
+import * as Tree from 'tree-model';
+
 @Injectable()
 export class GlobalService{
+    private tree_;
+
     get window(){
         return window;
     }
@@ -13,6 +17,7 @@ export class GlobalService{
     constructor(private state_: StateService, 
         private literal_:LiteralService,
         private rescon:ResconService ){
+    this.tree_ = new Tree();        
         
     }
 
@@ -50,5 +55,9 @@ export class GlobalService{
     
     get _(){
         return _;
+    }
+
+    get tree(){
+        return this.tree_;
     }
 }

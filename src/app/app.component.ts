@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { store } from 'src/app/_services/store.service.js';
 import { StateService } from './state.service';
 import { GlobalService } from './_services';
+import { RootStateService } from './root-state.service';
 
 @Component({
   selector: 'my-app',
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit, AfterViewInit  {
     private as:ActionService,
     private user:UserService,
     private state:StateService,
-    private gs:GlobalService
+    private gs:GlobalService,
+    private rootStateService: RootStateService
     ){
       window['app'] = this;
       //let choiceName = this.gs.literal.resolve(store)('currentChoice.name'); //TODO fix code to update exam choice
