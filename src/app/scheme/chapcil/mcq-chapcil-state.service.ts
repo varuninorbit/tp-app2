@@ -1,9 +1,22 @@
 /*******************************
  * State loader for McqComponent
+ * 
+ * two types of assignment are possible in the component.
+ * 
+ * 1. 
+ * this.st = this.stateManager.state;
+ * 
+ * 2.  
+ * this.stateManager.state$.subscribe(state=>{
+      this.st = state;
+    });
+
+    3. To emit state events
+    we can use 
+    this.stateManager.EMIT_STATE;    
  */
 import { Injectable } from "@angular/core";
 import { SubStateService } from 'src/app/sub-state.service';
-import { GlobalService } from 'src/app/_services';
 import { StateService } from 'src/app/state.service';
 @Injectable({
   providedIn: "root",
@@ -16,10 +29,8 @@ export class McqChapcilStateService extends SubStateService{
   };
 
 
-
   constructor(
-    private rootSateService: StateService, 
-    private gs: GlobalService)
+    private rootSateService: StateService)
   {
     super();
     
