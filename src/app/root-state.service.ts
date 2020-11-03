@@ -45,5 +45,9 @@ export class RootStateService {
     get allChildrenName(){
         return this.root.all().map(node=>node.model.name);
     }
+
+    getNodesOfName(name){
+        return this.root.all(node=>node.model.name==name);
+    }
 }
 

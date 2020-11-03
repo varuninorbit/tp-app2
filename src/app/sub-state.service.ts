@@ -6,10 +6,7 @@
  *  state$ BehaviorSubject observable.
  */
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
-import { StateService } from 'src/app/state.service';
-import { GlobalService } from 'src/app/_services';
 @Injectable({
     providedIn: "root",
 })
@@ -19,8 +16,10 @@ export abstract class SubStateService {
     stateName = '';
     parentState_:any;
     state$:BehaviorSubject<any>; 
+    rootStateService:any;
 
-    constructor() {  
+    constructor() { 
+        this.rootStateService = window['rootStateService'];
         this.state$ = new BehaviorSubject<any>(this.state_);      
     }
 
@@ -50,7 +49,8 @@ export abstract class SubStateService {
     Init() {        
         this.
         CopyDefaultStateToState().
-        AttachToParent();
+        AttachToParent().
+        Attach()
         return this;
     }
 
@@ -66,6 +66,18 @@ export abstract class SubStateService {
             this.state = this.parentState()[this.stateName];
         }
         return this;
+    }
+
+    Attach(){
+      let node = this.rootStateService.getNodesOfName(this.stateName)[0];
+      if(node!=undefined) {
+       if(node.model.state==undefined){
+        node.model.state = this.state;
+       }else{
+        this.state = node.model.state;
+       }
+      }
+      return this;
     }
 
     CopyDefaultStateToState(){ 
