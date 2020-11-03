@@ -13,14 +13,10 @@ export abstract class SubStateService {
     //initial state, transformation point
     defaultState: any;
     state: any;
-    rootStateService: any;
-    gs:any;
     stateName = '';
     parentState_:any;
 
-    constructor(
-        rootSateService: StateService,
-        gs: GlobalService) {        
+    constructor() {        
     }
 
     SetDefaultState(defaultState) {
@@ -28,9 +24,6 @@ export abstract class SubStateService {
         this.state = Object.assign({}, this.defaultState);
         return this;
     }
-
-
-
 
     public SetStateName(stateName: string) {
         this.stateName = stateName;

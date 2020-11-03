@@ -20,11 +20,11 @@ export class McqChapcilStateService extends SubStateService{
   st: any;
 
   constructor(
-    public rootSateService: StateService, 
-    public gs: GlobalService)
+    private rootSateService: StateService, 
+   private gs: GlobalService)
   {
 
-    super(rootSateService, gs);
+    super();
     
     this.st = super.SetDefaultState(this.defaultState).
     SetParentState(this.rootSateService.state_).
