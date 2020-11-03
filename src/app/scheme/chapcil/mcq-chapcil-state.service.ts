@@ -1,6 +1,6 @@
 /*******************************
  * State loader for McqComponent
- * 
+gi * 
  * two types of assignment are possible in the component.
  * 
  * 1. 
