@@ -36,7 +36,6 @@ export class McqChapcilStateService extends SubStateService{
     
    super.
       SetDefaultState(this.defaultState).
-      SetParentState(this.rootSateService.state_).
       SetStateName('mcqChapcil').
       Init()
 

@@ -47,7 +47,6 @@ export class ExamChoiceStateService extends SubStateService{
     super();
    super.
       SetDefaultState(this.defaultState).
-      SetParentState(this.rootSateService.state_).
       SetStateName('examChoiceState').
       Init();
 

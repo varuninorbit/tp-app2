@@ -41,31 +41,15 @@ export abstract class SubStateService {
         return this;
     }
 
-    public SetParentState(parentState) {
-        this.parentState_ = parentState;
-        return this;
-    }
-
     Init() {        
         this.
         CopyDefaultStateToState().
-        AttachToParent().
         Attach()
         return this;
     }
 
-    parentState() {
-        return this.parentState_;
-    }
-
-    AttachToParent() {
-        //substate does not exist create it
-        if (this.parentState()[this.stateName] == undefined) {
-            this.parentState()[this.stateName] = this.state;
-        } else {
-            this.state = this.parentState()[this.stateName];
-        }
-        return this;
+    get parent() {
+        return this.rootStateService.getNodesOfName(this.stateName)[0].parent;
     }
 
     Attach(){
