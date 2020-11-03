@@ -2,8 +2,6 @@
  * State loader for McqComponent
  */
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
 import { SubStateService } from 'src/app/sub-state.service';
 import { GlobalService } from 'src/app/_services';
 import { StateService } from 'src/app/state.service';

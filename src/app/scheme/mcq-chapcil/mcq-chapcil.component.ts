@@ -34,13 +34,15 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   constructor(private ac: ActionService,
     private stateService: StateService,
     private arrayTableHelper: ArrayTableService,
-    private notifier: NotifierService,
     private gs: GlobalService, 
     private stateManager: McqChapcilStateService
   ) {
     this.AScheme = ac.get('ASchema');
     console.log(window['chapcil'] = this);        
-    this.st = this.stateManager.state;
+    //this.st = this.stateManager.state;
+    this.stateManager.state$.subscribe(state=>{
+      this.st = state;
+    });
   }
 
   ngOnInit(): void {
@@ -84,7 +86,6 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {    
     this.stateService.state.arrayTable = this.getArrayTable()
-    this.stateManager.state = this.st;
   }
 
  
@@ -96,6 +97,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   updateQuestionsNoToState(){
     setTimeout(() => {
       this.st.questionsNo = this.getQuesionsNoArray();
+      this.st.EMIT_STATE;
     })
   } 
 
