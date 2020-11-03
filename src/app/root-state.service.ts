@@ -19,12 +19,22 @@ export class RootStateService {
     root: any;
 
     constructor(private gs: GlobalService) {
-        window['rootStateService'] = this;
+        window['rootStateService'] = this; //don't remove this line
         this.treeInit();
     }
 
     treeInit() {
         this.root = this.gs.tree.parse(this.structure)
+    }
+
+    
+
+    get allChildrenName(){
+        return this.root.all().map(node=>node.model.name);
+    }
+
+    getNodesOfName(name){
+        return this.root.all(node=>node.model.name==name);
     }
 
     get structure() {
@@ -40,14 +50,6 @@ export class RootStateService {
                 }
             ]
         };
-    }
-
-    get allChildrenName(){
-        return this.root.all().map(node=>node.model.name);
-    }
-
-    getNodesOfName(name){
-        return this.root.all(node=>node.model.name==name);
     }
 }
 

@@ -12,8 +12,7 @@ import { ExamChoiceStateService } from './exam-choice-state.service';
 @Component({
   selector: "app-exam-choice",
   templateUrl: "./exam-choice.component.html",
-  styleUrls: ["./exam-choice.component.css"],
-  providers: [ExamChoiceStateService]
+  styleUrls: ["./exam-choice.component.css"]
 })
 export class ExamChoiceComponent implements OnInit {
   choices: Array<IExamChoice>;
@@ -25,7 +24,7 @@ export class ExamChoiceComponent implements OnInit {
   constructor(private stateManager: ExamChoiceStateService, 
     private user: UserService,
     private ac: ActionService, private dialog: MatDialog,
-    private gs: GlobalService, private state: StateService
+    private state: StateService
   ) {
     
     window['examChoice'] = this;    

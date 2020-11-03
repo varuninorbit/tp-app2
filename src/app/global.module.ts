@@ -22,6 +22,7 @@ import { NumberSpinnerComponent } from './number-spinner/number-spinner.componen
 import { PlutiComponent } from './pluti/pluti.component';
 import { ApiTokenService } from './services/api-token.service';
 import { RootStateService } from './root-state.service';
+import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { RootStateService } from './root-state.service';
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
-    ExamChoiceService, TriggerService, ResconService, ApiTokenService, RootStateService    
+    ExamChoiceService, //TODO Check if it is redundant.
+    TriggerService, ResconService, ApiTokenService, RootStateService,
+    ExamChoiceStateService
   ],
   entryComponents:[]
 })
