@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ExamChoiceService } from "./exam-choice.service";
 import { IExamChoice } from "../types/i-exam-choice";
 import { INode } from "../types/i-node";
 import { UserService } from "../user.service";
@@ -7,35 +8,40 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog.component';
 import { GlobalService } from '../_services';
 import { StateService } from '../state.service';
-import { ExamChoiceStateService } from './exam-choice-state.service';
 
 @Component({
   selector: "app-exam-choice",
   templateUrl: "./exam-choice.component.html",
-  styleUrls: ["./exam-choice.component.css"],
-  providers: [ExamChoiceStateService]
+  styleUrls: ["./exam-choice.component.css"]
 })
 export class ExamChoiceComponent implements OnInit {
   choices: Array<IExamChoice>;
   currentChoice: IExamChoice;
   node: INode[];
   store: any; //TODO Change type.
-  st:any; 
-
-  constructor(private stateManager: ExamChoiceStateService, 
-    private user: UserService,
+  cacheBuster=1;
+  constructor(private examChoiceService: ExamChoiceService, private user: UserService,
     private ac: ActionService, private dialog: MatDialog,
     private gs: GlobalService, private state: StateService
   ) {
-    
-    window['examChoice'] = this;    
+    this.currentChoice = {
+      name: '',
+      id: '',
+      db_prefix: ''
+    };
+    window['examChoice'] = this;
+    this.store = gs.store();
   }
 
-  
+  st = {
+    currentChoice:{},
+    choices: []
+  }
 
   ngOnInit() {
-    this.stateManager.state$.subscribe(state=>{
-      this.st = state;
+    this.userChoices().subscribe(({ choices, currentChoice }) => {    
+      this.st.choices = choices;
+      this.st.currentChoice = currentChoice;
     })
   }
 
@@ -56,17 +62,28 @@ export class ExamChoiceComponent implements OnInit {
       }
       if (result === 'delete-choice') {
         this.ac.get('AExamChoice')('deleteChoice')(choice.id).subscribe(()=> {})
-      }     
+      }
+      
+      this.CACHE_BUSTING.updateChoices();
     });
   }
 
-
-
   updateChoices() {
     this.state.state$.subscribe(({ choices, currentChoice }) => {
-      this.choices = choices;
-      this.currentChoice = currentChoice;
+      this.st.choices = choices;
+      this.st.currentChoice = currentChoice;
     });    
   }
+
+
+  userChoices(){
+    return this.ac.get('AExamChoice')('choices')(String(this.cacheBuster));
+  }
+
+  get CACHE_BUSTING(){ 
+    this.cacheBuster++;
+    return this;
+  }
+
 
 }

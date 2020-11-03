@@ -15,7 +15,7 @@ import { GlobalService } from 'src/app/_services';
 })
 export abstract class SubStateService {    
     defaultState: any;
-    state_: any;
+    state_: {};
     stateName = '';
     parentState_:any;
     state$:BehaviorSubject<any>; 
