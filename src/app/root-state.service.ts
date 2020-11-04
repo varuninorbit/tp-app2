@@ -49,5 +49,9 @@ export class RootStateService {
             ]
         };
     }
+
+    getSateOf(name: string){
+        return this.getNodesOfName(name)[0].model.state;
+    }
 }
 
