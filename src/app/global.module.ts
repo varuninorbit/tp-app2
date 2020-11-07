@@ -23,7 +23,6 @@ import { PlutiComponent } from './pluti/pluti.component';
 import { ApiTokenService } from './services/api-token.service';
 import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
-import { SubStateService } from './sub-state.service';
 
 
 @NgModule({

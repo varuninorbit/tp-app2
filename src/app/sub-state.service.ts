@@ -7,20 +7,18 @@
  */
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { RootStateService } from './root-state.service';
 @Injectable({
     providedIn: "root",
 })
-export abstract class SubStateService {    
+export  class SubStateService {    
     defaultState: any;
     state_: {};
     stateName = '';
     parentState_:any;
     state$:BehaviorSubject<any>; 
-    rootStateService:any;
 
     constructor() { 
-        this.rootStateService = window['rootStateService'];
+        //this.rootStateService = window['rootStateService'];
         this.state$ = new BehaviorSubject<any>(this.state_);      
     }
 
@@ -50,11 +48,11 @@ export abstract class SubStateService {
     }
 
     get parent() {
-        return this.rootStateService.getNodesOfName(this.stateName)[0].parent;
+        return this['rootStateService'].getNodesOfName(this.stateName)[0].parent;
     }
 
     Attach(){
-      let node = this.rootStateService.getNodesOfName(this.stateName)[0];
+      let node = this['rootStateService'].getNodesOfName(this.stateName)[0];
       if(node!=undefined) {
        if(node.model.state==undefined){
         node.model.state = this.state;
@@ -80,7 +78,7 @@ export abstract class SubStateService {
     }
 
     removeChildren(){
-        this.rootStateService.getNodesOfName(this.stateName)[0].children.forEach(node=>{
+        this['rootStateService'].getNodesOfName(this.stateName)[0].children.forEach(node=>{
           delete node.model.state;
         })
     }

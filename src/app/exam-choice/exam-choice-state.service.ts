@@ -20,6 +20,7 @@ import { SubStateService } from 'src/app/sub-state.service';
 import { StateService } from 'src/app/state.service';
 import { ActionService } from '../services/action.service';
 import { Cacheable } from 'ts-cacheable/dist/cjs/cacheable.decorator';
+import { RootStateService } from '../root-state.service';
 @Injectable({
   providedIn: "root",
 })
@@ -42,12 +43,11 @@ export class ExamChoiceStateService extends SubStateService{
   state$:any;
 
 
-  constructor(
-    private sub: SubStateService, 
-    private ac: ActionService)
+  constructor( 
+    private ac: ActionService, private rootStateService: RootStateService)
   {
       super();
-      super.SetDefaultState(this.defaultState).
+      this.SetDefaultState(this.defaultState).
       SetStateName('examChoice').
       Init();
 
@@ -69,8 +69,7 @@ export class ExamChoiceStateService extends SubStateService{
   }
 
   userChoices(){
-    return this.ac
-    .get('AExamChoice')('choices')();
+    return this.ac.get('AExamChoice')('choices')();
   }
 
 

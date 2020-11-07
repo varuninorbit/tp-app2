@@ -37,9 +37,9 @@ export class McqChapcilStateService extends SubStateService {
     questionsNo: []
   };
 
-  constructor(private ac: Action2Service, private sub: SubStateService) {
+  constructor(private ac: Action2Service, private rootStateService: RootStateService) {
       super()
-      super.   
+      this.   
       SetDefaultState(this.defaultState).
       SetStateName('mcqChapcil').
       Init()
@@ -67,6 +67,7 @@ export class McqChapcilStateService extends SubStateService {
     storageStrategy:LocalStorageStrategy,
     cacheBusterObserver: cacheBusterObserver$.asObservable() 
   })
+
   chapters$(){       
     return this.ac.
         get({ apiGroup: this.examChoice(), keyval: true })
