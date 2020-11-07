@@ -10,7 +10,7 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({
     providedIn: "root",
 })
-export  class SubStateService {    
+export  abstract class SubStateService {    
     defaultState: any;
     state_: {};
     stateName = '';
@@ -18,7 +18,6 @@ export  class SubStateService {
     state$:BehaviorSubject<any>; 
 
     constructor() { 
-        //this.rootStateService = window['rootStateService'];
         this.state$ = new BehaviorSubject<any>(this.state_);      
     }
 
@@ -78,10 +77,14 @@ export  class SubStateService {
     }
 
     removeChildren(){
-        this['rootStateService'].getNodesOfName(this.stateName)[0].children.forEach(node=>{
-          delete node.model.state;
-        })
+        //deletes state of all children
+        this['rootStateService'].getNodesOfName('examChoice')[0].children.forEach(node=>{ delete node.model.state; });
+
+        //triggers cashBuster subject observable
+        this['cashBuster$'].next();
     }
+
+    
 
 }
 

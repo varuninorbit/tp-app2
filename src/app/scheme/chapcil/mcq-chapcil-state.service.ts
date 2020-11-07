@@ -81,4 +81,8 @@ export class McqChapcilStateService extends SubStateService {
     //return this.rootStateService.getSateOf('examChoice').currentChoice.db_prefix
     return '8th_mat_cb_en';
   }
+
+  get cashBuster$(){
+    return cacheBusterObserver$;
+  }
 }
