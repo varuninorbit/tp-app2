@@ -21,6 +21,10 @@ import { StateService } from 'src/app/state.service';
 import { ActionService } from '../services/action.service';
 import { Cacheable } from 'ts-cacheable/dist/cjs/cacheable.decorator';
 import { RootStateService } from '../root-state.service';
+import { LocalStorageStrategy } from 'ts-cacheable/dist/cjs/common';
+import { Subject } from 'rxjs';
+
+const cacheBusterObserver$:Subject<any> = new Subject();
 @Injectable({
   providedIn: "root",
 })
@@ -68,6 +72,10 @@ export class ExamChoiceStateService extends SubStateService{
     return this;
   }
 
+  @Cacheable({
+    storageStrategy:LocalStorageStrategy,
+    cacheBusterObserver: cacheBusterObserver$.asObservable() 
+  })
   userChoices(){
     return this.ac.get('AExamChoice')('choices')();
   }
@@ -75,7 +83,6 @@ export class ExamChoiceStateService extends SubStateService{
 
   makeCurrent(choice){
     this.ac.get('AExamChoice')('updateCurrentChoice')(choice.id).subscribe((r)=> {
-      console.log('make current---');      
       this.removeChildren();
     });        
   }
@@ -83,6 +90,10 @@ export class ExamChoiceStateService extends SubStateService{
   delete(choice){
     this.ac.get('AExamChoice')('deleteChoice')(choice.id).subscribe((r)=> {     
     });     
+  }
+
+  get cashBuster$(){
+    return cacheBusterObserver$;
   }
 
 }
