@@ -35,6 +35,10 @@ export class RootStateService {
         return this.root.all(node=>node.model.name==name);
     }
 
+    getAllNodes(){
+       return this.allChildrenName.map(name=>this.getNodesOfName(name)[0].model);
+    }
+
     get structure() {
         return {
             name: 'app',
@@ -53,5 +57,6 @@ export class RootStateService {
     getSateOf(name: string){
         return this.getNodesOfName(name)[0].model.state;
     }
+
 }
 

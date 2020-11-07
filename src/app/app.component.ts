@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.examChoiceState.state$.subscribe(state => {
       this.examChoiceName = state.currentChoice.name;
-    });
+    });    
   }
   mode = new FormControl('over');
 

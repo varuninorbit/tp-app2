@@ -38,7 +38,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
     private stateManager: McqChapcilStateService
   ) {
     this.AScheme = ac.get('ASchema');
-    console.log(window['chapcil'] = this);        
+    window['chapcil'] = this;        
     //this.st = this.stateManager.state;
     this.stateManager.state$.subscribe(state=>{
       this.st = state;

@@ -64,7 +64,8 @@ export class ExamChoiceComponent implements OnInit {
     this.state.state$.subscribe(({ choices, currentChoice }) => {
       this.choices = choices;
       this.currentChoice = currentChoice;
-    });    
+    }); 
+       
   }
 
 }

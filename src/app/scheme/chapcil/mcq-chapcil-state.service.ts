@@ -17,91 +17,67 @@ gi *
  */
 import { Injectable } from "@angular/core";
 import { SubStateService } from 'src/app/sub-state.service';
-import { StateService } from 'src/app/state.service';
+import { Action2Service } from 'src/app/services/action2.service';
+import { RootStateService } from 'src/app/root-state.service';
+import { Cacheable } from 'ts-cacheable/dist/cjs/cacheable.decorator';
+import { LocalStorageStrategy } from 'ts-cacheable/dist/cjs/common';
+import { Subject} from 'rxjs';
+
+const cacheBusterObserver$:Subject<number> = new Subject();
+
 @Injectable({
   providedIn: "root",
 })
-export class McqChapcilStateService extends SubStateService{
+
+export class McqChapcilStateService extends SubStateService {
+  
   public defaultState = {
     chaptersBag: [],
     chaptersTray: [],
     questionsNo: []
   };
 
-
-  constructor(
-    private rootSateService: StateService)
-  {
-    super();
-    
-   super.
+  constructor(private ac: Action2Service, private sub: SubStateService) {
+      super()
+      super.   
       SetDefaultState(this.defaultState).
       SetStateName('mcqChapcil').
       Init()
 
-    if(this.state.chaptersBag.length===0){
+    if (this.state.chaptersBag.length === 0) {
       this.LOAD_CHAPTERS;
-    }
+    }    
   }
 
 
   get LOAD_CHAPTERS() {
-    if(this.state.chaptersBag)
-    this.state.chaptersBag = [
-      {
-        "id": '1',
-        "chapter": "Unit 1(Rational Numbers)"
-      },
-      {
-        "id": '2',
-        "chapter": "Unit 2(Data Handling)"
-      },
-      {
-        "id": '3',
-        "chapter": "Unit 3(Square-Square Root & Cube-Cube Root)"
-      },
-      {
-        "id": '4',
-        "chapter": "Unit 4(Linear Equation In One Variable)"
-      },
-      {
-        "id": '5',
-        "chapter": "Unit 5(Understanding Quadrilaterals & Practical Geometry)"
-      },
-      {
-        "id": '6',
-        "chapter": "Unit 6(Visualising The Solid Shapes)"
-      },
-      {
-        "id": '7',
-        "chapter": "Unit 7(Algebraic Expression, Identities & Factorisation)"
-      },
-      {
-        "id": '8',
-        "chapter": "Unit 8(Exponents & Powers)"
-      },
-      {
-        "id": '9',
-        "chapter": "Unit 9(Comparing Quantities)"
-      },
-      {
-        "id": '10',
-        "chapter": "Unit 10(Direct & Inverse Proportions)"
-      },
-      {
-        "id": '11',
-        "chapter": "Unit 11(Mensuration)"
-      },
-      {
-        "id": '12',
-        "chapter": "Unit 12(Introduction To Graphs)"
-      },
-      {
-        "id": '13',
-        "chapter": "Unit 13(Playing With Numbers)"
-      }
-    ];
+
+    // ac2.get({apiGroup:'8th_mat_cb_en',keyval:true})
+    // ('AExamChoice.attributes')().subscribe(r=>console.log(r))
+    
+    if (this.state.chaptersBag==0) {
+      this.chapters$().subscribe((chapters ) => {
+          this.state.chaptersBag = chapters;
+        })
+    }
     return this;
   }
 
+  @Cacheable({
+    storageStrategy:LocalStorageStrategy,
+    cacheBusterObserver: cacheBusterObserver$.asObservable() 
+  })
+  chapters$(){       
+    return this.ac.
+        get({ apiGroup: this.examChoice(), keyval: true })
+        ('ASchema.chapters')
+        ()
+  }
+
+
+  examChoice(){
+    //TODO: exam choice is giving ''
+    //return this.rootStateService.getSateOf('examChoice').currentChoice.db_prefix
+    return '8th_mat_cb_en';
+  }
 }

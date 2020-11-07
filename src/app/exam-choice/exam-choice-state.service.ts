@@ -19,6 +19,7 @@ import { Injectable } from "@angular/core";
 import { SubStateService } from 'src/app/sub-state.service';
 import { StateService } from 'src/app/state.service';
 import { ActionService } from '../services/action.service';
+import { Cacheable } from 'ts-cacheable/dist/cjs/cacheable.decorator';
 @Injectable({
   providedIn: "root",
 })
@@ -38,15 +39,15 @@ export class ExamChoiceStateService extends SubStateService{
     ]
   };
 
-  cacheBuster=1;
+  state$:any;
+
 
   constructor(
-    private rootSateService: StateService, 
+    private sub: SubStateService, 
     private ac: ActionService)
   {
-    super();
-   super.
-      SetDefaultState(this.defaultState).
+      super();
+      super.SetDefaultState(this.defaultState).
       SetStateName('examChoice').
       Init();
 
@@ -69,12 +70,20 @@ export class ExamChoiceStateService extends SubStateService{
 
   userChoices(){
     return this.ac
-    .get('AExamChoice')('choices')(String(this.cacheBuster));
+    .get('AExamChoice')('choices')();
   }
 
-  get CACHE_BUSTING(){ 
-    this.cacheBuster++;
-    return this;
+
+  makeCurrent(choice){
+    this.ac.get('AExamChoice')('updateCurrentChoice')(choice.id).subscribe((r)=> {
+      console.log('make current---');      
+      this.removeChildren();
+    });        
+  }
+
+  delete(choice){
+    this.ac.get('AExamChoice')('deleteChoice')(choice.id).subscribe((r)=> {     
+    });     
   }
 
 }
