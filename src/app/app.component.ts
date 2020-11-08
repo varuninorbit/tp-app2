@@ -9,7 +9,9 @@ import { StateService } from './state.service';
 import { GlobalService } from './_services';
 import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
-
+import { GlobalCacheConfig } from 'ts-cacheable'; 
+import { LocalStorageStrategy } from 'ts-cacheable'; 
+GlobalCacheConfig.storageStrategy = LocalStorageStrategy;
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',

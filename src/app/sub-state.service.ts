@@ -6,7 +6,7 @@
  *  state$ BehaviorSubject observable.
  */
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 @Injectable({
     providedIn: "root",
 })
@@ -76,12 +76,13 @@ export  abstract class SubStateService {
         return this;
     }
 
-    removeChildren(){
+    get REMOVE_CHILDREN(){
         //deletes state of all children
         this['rootStateService'].getNodesOfName('examChoice')[0].children.forEach(node=>{ delete node.model.state; });
 
         //triggers cashBuster subject observable
         this['cashBuster$'].next();
+        return this;
     }
 
     
