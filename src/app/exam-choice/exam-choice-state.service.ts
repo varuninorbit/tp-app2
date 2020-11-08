@@ -89,6 +89,12 @@ export class ExamChoiceStateService extends SubStateService {
     });
   }
 
+  addNewChoice(selectedChoice){
+    this.ac.get('AExamChoice')('addChoiceToList')(selectedChoice[0].id).subscribe((r)=> {
+      this.makeCurrent(selectedChoice[0]);
+    });
+  }
+
   get cashBuster$() {
     return cacheBusterObserver$;
   }

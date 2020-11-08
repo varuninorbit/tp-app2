@@ -5,7 +5,7 @@
     </app-card>
     <div class="list-group">
         <div *ngFor="let choice of st.choices">
-            <div [hidden]="choice?.id == currentChoice?.id" 
+            <div [hidden]="choice.id == st.currentChoice.id" 
             (click)="openChoicesDialog(choice)" href="#" class="list-group-item list-group-item-action ">
                 <strong >{{choice.name}}</strong>
             </div>
