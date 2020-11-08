@@ -50,10 +50,10 @@ export class ExamChoiceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'make-current') {
-        this.ac.get('AExamChoice')('updateCurrentChoice')(choice.id).subscribe(()=> {})
+        this.stateManager.makeCurrent(choice)
       }
       if (result === 'delete-choice') {
-        this.ac.get('AExamChoice')('deleteChoice')(choice.id).subscribe(()=> {})
+        this.stateManager.delete(choice)
       }     
     });
   }
