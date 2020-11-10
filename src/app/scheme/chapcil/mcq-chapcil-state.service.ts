@@ -20,7 +20,6 @@ import { SubStateService } from 'src/app/sub-state.service';
 import { Action2Service } from 'src/app/services/action2.service';
 import { RootStateService } from 'src/app/root-state.service';
 import { Cacheable } from 'ts-cacheable/dist/cjs/cacheable.decorator';
-import { LocalStorageStrategy } from 'ts-cacheable/dist/cjs/common';
 import { Subject} from 'rxjs';
 
 const cacheBusterObserver$:Subject<number> = new Subject();
@@ -56,21 +55,18 @@ export class McqChapcilStateService extends SubStateService {
     // ('AExamChoice.attributes')().subscribe(r=>console.log(r))
     
     if (this.state.chaptersBag==0) {
-      this.chapters$().subscribe((chapters ) => {
+      this.chapters$(this.examChoice()).subscribe((chapters ) => {
           this.state.chaptersBag = chapters;
         })
     }
     return this;
   }
 
-  @Cacheable({
-    storageStrategy:LocalStorageStrategy,
-    cacheBusterObserver: cacheBusterObserver$.asObservable() 
-  })
+  @Cacheable({cacheBusterObserver: cacheBusterObserver$.asObservable()})
 
-  chapters$(){       
+  chapters$(examChoice){       
     return this.ac.
-        get({ apiGroup: this.examChoice(), keyval: true })
+        get({query:'exam_choice='+examChoice+'&'})
         ('ASchema.chapters')
         ()
   }
@@ -78,8 +74,8 @@ export class McqChapcilStateService extends SubStateService {
 
   examChoice(){
     //TODO: exam choice is giving ''
-    //return this.rootStateService.getSateOf('examChoice').currentChoice.db_prefix
-    return '8th_mat_cb_en';
+    return this.rootStateService.getSateOf('examChoice').currentChoice.db_prefix
+    //return '8th_mat_cb_en';
   }
 
   get cashBuster$(){

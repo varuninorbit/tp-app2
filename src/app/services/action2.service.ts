@@ -35,7 +35,7 @@ export class Action2Service {
     let ActionName = r[1];
     let hemta: Hemta = this.gs.newOrDefaultValue(hemta_, this.hemta, '');
     let actionUrl = `${this.url}${hemta.apiGroup}/${ControllerName}/${ActionName}`;
-    let version = window['apiVIndex'][hemta.apiGroup][resource] || hemta.version;
+    let version = this.gs.literal.resolve(window['apiVIndex'])(hemta.apiGroup+'.'+resource) || hemta.version;
     let query = `${hemta.query}${hemta.everyQuery}&ver=${version}${hemta.cache}`;
 
     if (hemta.keyval) {

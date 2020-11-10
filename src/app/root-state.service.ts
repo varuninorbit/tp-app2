@@ -25,7 +25,12 @@ export class RootStateService {
 
     treeInit() {
         this.root = this.gs.tree.parse(this.structure)
-    }    
+    } 
+    
+    setStructure(structure){
+        this.root = this.gs.tree.parse(structure)
+    }
+    
 
     get allChildrenName(){
         return this.root.all().map(node=>node.model.name);

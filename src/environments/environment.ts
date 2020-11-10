@@ -12,9 +12,7 @@ export const Urls = {
   questionsAPI:"http://192.168.0.102:3001/exp/questionv2?&std=8&sub=mat&p_no=10&q_nos=10&ch=2",
   apiBase: "http://qpw_manage.test/api/",
   relativeURL: "authi/",
-  everyQuery:
-    'exam_choice=8th_mat_cb_en'+ //TODO Exam Choice Selection fromm scheme    
-    '&XDEBUG_SESSION_START'
+  everyQuery:'&XDEBUG_SESSION_START'
 }
 
 export let state={
