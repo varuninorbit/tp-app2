@@ -25,23 +25,23 @@ export class RootStateService {
 
     treeInit() {
         this.root = this.gs.tree.parse(this.structure)
-    } 
-    
-    setStructure(structure){
+    }
+
+    setStructure(structure) {
         this.root = this.gs.tree.parse(structure)
     }
-    
 
-    get allChildrenName(){
-        return this.root.all().map(node=>node.model.name);
+
+    get allChildrenName() {
+        return this.root.all().map(node => node.model.name);
     }
 
-    getNodesOfName(name){
-        return this.root.all(node=>node.model.name==name);
+    getNodesOfName(name) {
+        return this.root.all(node => node.model.name == name);
     }
 
-    getAllNodes(){
-       return this.allChildrenName.map(name=>this.getNodesOfName(name)[0].model);
+    getAllNodes() {
+        return this.allChildrenName.map(name => this.getNodesOfName(name)[0].model);
     }
 
     get structure() {
@@ -52,14 +52,19 @@ export class RootStateService {
                 {
                     name: 'examChoice',
                     children: [
-                        { name:'mcqChapcil'}
+                        {
+                            name: 'mcqChapcil',
+                            children: [
+                                {name:'chikoo'}
+                            ]
+                        }
                     ]
                 }
             ]
         };
     }
 
-    getSateOf(name: string){
+    getSateOf(name: string) {
         return this.getNodesOfName(name)[0].model.state;
     }
 

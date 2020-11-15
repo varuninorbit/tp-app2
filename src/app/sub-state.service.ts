@@ -83,9 +83,7 @@ export  abstract class SubStateService {
         //triggers cashBuster subject observable
         this['cashBuster$'].next();
         return this;
-    }
-
-    
+    }  
 
 }
 

@@ -14,7 +14,7 @@ export class ActionService {
     window['http'] = http;
     this.hemta = {
       baseURL:Urls.apiBase,
-      everyQuery:Urls.everyQuery+`&api_token=${api.token}`,
+      everyQuery:Urls.everyQuery+`&api_token=${api.token}&exam_choice=${this.exam_choice()}`,
       relativeURL:Urls.relativeURL
     };
   }
@@ -69,6 +69,10 @@ export class ActionService {
 
   private _(query){
     return `${query}${this.hemta.everyQuery}`;
+  }
+
+  exam_choice(){
+    return '8th_mat_cb_en';
   }
 }
 

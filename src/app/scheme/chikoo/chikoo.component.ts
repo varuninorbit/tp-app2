@@ -8,11 +8,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorReportComponent } from '../error-report/error-report.component';
 import { ExamChoiceAttributesService } from 'src/app/exam-choice/exam-choice-add/exam-choice-attributes.service';
 import { GlobalService } from 'src/app/_services';
+import { ChikooStateService } from './chikoo-state.service';
 
 @Component({
   selector: 'app-chikoo',
   templateUrl: './chikoo.component.html',
-  styleUrls: ['./chikoo.component.css']
+  styleUrls: ['./chikoo.component.css'],
+  providers: [ChikooStateService]
 })
 export class ChikooComponent implements OnInit, AfterContentChecked ,AfterContentInit{
   questionsList:IQuestionsList[];
@@ -28,17 +30,21 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     private sc:SchemeCreateService,
     private dialog: MatDialog,
     private attrib: ExamChoiceAttributesService,
-    private gs: GlobalService
+    private gs: GlobalService,
+    private sm: ChikooStateService
     ) { 
     window['chikoo']=this;
     //this.getQuestionsFromServer();
     this.loadState();
     this.showBud=[];    
     this.edit=-1;
+
+    this.st = this.sm.state;
+    this.getAttribs();    
   }
 
   ngOnInit(): void {
-   //this.getAttribs();
+   
   }
 
   changeQuestion(question,i){
@@ -60,15 +66,11 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   }
 
   getQuestionsFromServer(){
-    let arrayTable = this.state.state.arrayTable;
-    this.ac.post('ASchema',true)
-    ('loadQuestions')({scheme:arrayTable}).subscribe(questionsList=>{
-      this.st.questionsList = questionsList;
-    })  
+    this.sm.LOAD_QUESTIONS_FROM_SERVER;
   }
 
   loadState(){
-    this.st = this.gs.store()['chikoo'];
+    //this.st = this.gs.store()['chikoo'];
   }
 
   saveState(){
