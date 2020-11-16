@@ -5,7 +5,7 @@ import { ActionService } from '../services/action.service';
 import { ArrayTableService } from '../scheme/array-table.service';
 import { MaterialModule } from '../material/material.module';
 import { GlobalModule } from '../global.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MathJaxModule } from 'ngx-mathjax';
 import { SafePipeModule } from 'safe-pipe';
 import { SchemeCreateService } from './scheme-create.service';
@@ -24,7 +24,7 @@ import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 
-    SafePipeModule, NgbModule
+    SafePipeModule, NgbModule, ReactiveFormsModule
   ],
   providers:[
     ActionService, ArrayTableService, SchemeCreateService, ExamChoiceAttributesService
