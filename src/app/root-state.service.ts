@@ -55,7 +55,8 @@ export class RootStateService {
                         {
                             name: 'mcqChapcil',
                             children: [
-                                {name:'chikoo'}
+                                {name:'chikoo'},
+                                {name:'shrim'},
                             ]
                         }
                     ]

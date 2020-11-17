@@ -1,7 +1,7 @@
 <div class="col-12">
 
     <!-- test name and pin -->
-    <form [formGroup]="shrim">
+    <form id="">
         <div class="form-group">
             <label></label>
             <div class="input-group">
@@ -9,10 +9,9 @@
                     <div class="input-group-text">Name</div>
                 </div>
                 <input id="name" name="name" placeholder="Test Paper Name" type="text" required="required"
-                    class="form-control" formControlName="name">
+                    class="form-control" [(ngModel)]="state.name">
             </div>
         </div>
-  
 
         <mat-accordion>
             <mat-expansion-panel hideToggle>
@@ -25,22 +24,21 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 Empty pin means no pin is required to open test.
-                <input id="pin" name="pin" placeholder="Numeric Pin Password" type="text" class="form-control"
-                formControlName="pin"
-                >
+                <input [(ngModel)]="state.pin"
+                id="pin" name="pin" placeholder="Numeric Pin Password" type="text" class="form-control">
             </mat-expansion-panel>
         </mat-accordion>
 
 
-    </form>     
+       
 
-    
+    </form>
     <hr>
 <!-- scheme -->
     
     <scheme-test-details></scheme-test-details>
 <hr>
-    <!-- <scheme-conset></scheme-conset> -->
+    <scheme-conset></scheme-conset>
 </div>
 
 <app-bottom-nav></app-bottom-nav>
