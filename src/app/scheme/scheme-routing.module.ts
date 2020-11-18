@@ -8,10 +8,10 @@ import { ErrorReportComponent } from './error-report/error-report.component';
 import { ShrimComponent } from './shrim/shrim.component';
 import { LaviComponent } from './lavi/lavi.component';
 import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
+import { StepaComponent } from './stepa/stepa.component';
 
 const routes: Routes = [
-  {path: '', component: McqChapcilComponent},
-  //{path: '', component: ChikooComponent},
+  {path: '', component: StepaComponent},
   {path: "scheme", component: SchemeComponent},
   {path: "lavi", component: LaviComponent},
   {path: "scheme/shrim", component: ShrimComponent},

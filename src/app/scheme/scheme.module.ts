@@ -16,10 +16,11 @@ import { ConsetComponent } from './conset/conset.component';
 import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.component';
 import { LaviComponent } from './lavi/lavi.component';
 import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam-choice-attributes.service';
+import { StepaComponent } from './stepa/stepa.component';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
-    DateTimeDialogComponent, LaviComponent],
+    DateTimeDialogComponent, LaviComponent, StepaComponent],
   entryComponents:[DateTimeDialogComponent],  
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
