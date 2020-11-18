@@ -23,6 +23,7 @@ import { PlutiComponent } from './pluti/pluti.component';
 import { ApiTokenService } from './services/api-token.service';
 import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
+import { RedirectGuard } from './_guards/redirect.guard';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service'
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
     ExamChoiceService, //TODO Check if it is redundant.
     TriggerService, ResconService, ApiTokenService, RootStateService,
-    ExamChoiceStateService
+    ExamChoiceStateService,
+    RedirectGuard
   ],
   entryComponents:[]
 })
