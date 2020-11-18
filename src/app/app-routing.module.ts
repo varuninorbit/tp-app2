@@ -12,7 +12,7 @@ const app_routes: Routes = [
       path: 'login',
       canActivate: [RedirectGuard], component: RedirectGuard,
       data: {
-        externalUrl: 'http://qpw_manage.test/login'
+        externalUrl: 'http://qpw_manage.test/login' //TODO: To be removed for production.
       }
     }
 ]
