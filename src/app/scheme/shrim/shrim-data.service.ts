@@ -65,6 +65,10 @@ export class ShrimDataService {
     return "2010-06-09 13:12:01";
   }
 
+  password() {
+    this.rs.getSateOf('shrim').password
+  }
+
 
   tepa(){
     let m = this;
@@ -85,7 +89,8 @@ export class ShrimDataService {
         "submission_time": m.submission_time(),
         "marking_style": m.marking_style(),
         "instructions": m.instructions()
-      }
+      },
+      "password":m.password()
     }
   }
 

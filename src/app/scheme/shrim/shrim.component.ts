@@ -13,7 +13,7 @@ export class ShrimComponent implements OnInit {
   
   state = {
     name:'', 
-    pin:''
+    password:''
   }
 
 

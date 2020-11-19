@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShrimDataService } from '../shrim/shrim-data.service';
 
 @Component({
   selector: 'scheme-test-details',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestDetailsComponent implements OnInit {
 
-  constructor() { }
+  author;
+  scheme;
+
+  constructor(private tepa: ShrimDataService) {
+    this.author = tepa.tepa().author;
+    this.scheme = tepa.tepa().scheme;
+   }
 
   ngOnInit(): void {
   }
