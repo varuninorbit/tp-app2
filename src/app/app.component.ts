@@ -11,6 +11,7 @@ import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
 import { GlobalCacheConfig } from 'ts-cacheable'; 
 import { LocalStorageStrategy } from 'ts-cacheable'; 
+import { Router } from '@angular/router';
 GlobalCacheConfig.storageStrategy = LocalStorageStrategy;
 @Component({
   selector: 'my-app',
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     private state: StateService,
     private gs: GlobalService,
     private rootStateService: RootStateService,//TODO: Optmise: analysis inection.
-    private examChoiceState: ExamChoiceStateService //TODO: Optmise: Shouln't be here technically
+    private examChoiceState: ExamChoiceStateService, //TODO: Optmise: Shouln't be here technically
+    private router: Router
   ) {
     window['app'] = this;
     //let choiceName = this.gs.literal.resolve(store)('currentChoice.name'); //TODO: Optmise fix code to update exam choice      

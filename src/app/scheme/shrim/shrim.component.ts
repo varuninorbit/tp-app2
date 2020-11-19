@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Action2Service } from 'src/app/services/action2.service';
 import { ShrimStateService } from './shrim-state.service';
 @Component({
   selector: 'app-shrim',
@@ -16,13 +17,16 @@ export class ShrimComponent implements OnInit {
   }
 
 
-  constructor(private sm: ShrimStateService) { 
-    window['shrim'] = this;
+  constructor(
+    private sm: ShrimStateService, 
+    private ac: Action2Service) { 
+    
+      window['shrim'] = this;
+
     this.state =this.sm.SetDefaultState(this.state)
     .state;
-  }
 
-  
+  }  
 
   ngOnInit(): void {
   }

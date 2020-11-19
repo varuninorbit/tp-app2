@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExpComponent } from './exp/exp.component';
 import { RedirectGuard } from './_guards/redirect.guard';
 //import { TestComponent } from './test/test.component';
-
 const app_routes: Routes = [    
   
     //{ path: 'chapters', component: ChaptersComponent },
@@ -17,7 +16,9 @@ const app_routes: Routes = [
     }
 ]
 
-@NgModule({
+
+@NgModule(
+  {
   imports: [ RouterModule.forRoot(app_routes)],
   exports: [ RouterModule ],
   declarations: [],
