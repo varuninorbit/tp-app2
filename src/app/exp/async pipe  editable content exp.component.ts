@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable, Observer } from 'rxjs';
   `,
   styleUrls: ['./exp.component.css']
 })
-export class ExpComponent implements OnInit {
+export class xx implements OnInit {
   edit=false;
   editValue='Test value';
   // editValue$ = new Observable<string>((observer: Observer<string>)=>{
