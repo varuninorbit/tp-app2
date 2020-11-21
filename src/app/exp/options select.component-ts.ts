@@ -22,6 +22,6 @@ export class ExpComponent  {
     {right:3,wrong:1},
     {right:4,wrong:0}
   ];
-  selected = {right:3,wrong:0};
+  selected = this.schemes[1];
 
 }
