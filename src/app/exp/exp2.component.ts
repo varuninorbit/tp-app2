@@ -5,13 +5,13 @@ import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-exp',
+  selector: 'app-exp-two',
   template:`
-  <p>Exp 1 </p>
+  <p>Exp 2</p>
   `,
   styleUrls: ['./exp.component.css']
 })
-export class ExpComponent implements OnInit {
+export class Exp2Component implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router
@@ -20,14 +20,7 @@ export class ExpComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        of(params.get('id'))
-      )
-    ).subscribe((d) => {
-      console.log('id->',d)
-    });
-
+    
   }
 
 

@@ -29,14 +29,6 @@ export class ShrimDataService {
   instructions() {
     return 'Attempt all questions'
   }
-  marking_style() {
-    return {
-      "mcq": {
-        "right": 3,
-        "wrong": -1
-      }
-    }
-  }
   author() {
     return {
       "name": "Varun Sharma",
@@ -81,13 +73,18 @@ export class ShrimDataService {
         "type_of_questions": m.type_of_questions(),
         "duration": m.duration(),    
         "instruction":m.instructions(), 
-        "marking_style": m.marking_style()
+        "marking_style": {
+          "mcq": {
+            "right": 3,
+            "wrong": -1
+          }
+        }
       },
       "author": m.author(),
       "institute": m.institute(),
       "conset": {
         "submission_time": m.submission_time(),
-        "marking_style": m.marking_style(),
+        "marking_style": '',
         "instructions": m.instructions()
       },
       "password":m.password()

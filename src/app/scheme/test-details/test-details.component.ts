@@ -17,7 +17,7 @@ export class TestDetailsComponent implements OnInit {
   constructor(private tepa: ShrimDataService) {
     const t = tepa.tepa();
     this.author = t.author;
-    this.scheme = t.scheme;
+    this.scheme = t.scheme;//tepa().scheme.marking_style
     this.selectedMarkingStyle = t.scheme.marking_style
     this.allMarkingStyles = {
       mcq: [

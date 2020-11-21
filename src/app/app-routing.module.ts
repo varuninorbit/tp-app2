@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExpComponent } from './exp/exp.component';
+import { Exp2Component } from './exp/exp2.component';
 import { RedirectGuard } from './_guards/redirect.guard';
 //import { TestComponent } from './test/test.component';
 const app_routes: Routes = [    
   
     //{ path: 'chapters', component: ChaptersComponent },
-    { path: 'exp', component: ExpComponent },
+    //{ path: 'exp', component: ExpComponent },
+    //{ path: 'exp', component: ExpComponent },
+    //{ path: 'exp/:id', component: Exp2Component },
     {
       path: 'login',
       canActivate: [RedirectGuard], component: RedirectGuard,
@@ -26,7 +29,7 @@ const app_routes: Routes = [
 })
 export class AppRoutingModule { 
     static components = [
-      //TestComponent
+      //ExpComponent,Exp2Component
     ];
 }
 

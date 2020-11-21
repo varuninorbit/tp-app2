@@ -20,7 +20,6 @@ import { GlobalService } from "./_services/global.service";
 import { ActionService } from "./services/action.service";
 import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
-import { ExpComponent } from './exp/exp.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
@@ -43,7 +42,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     GlobalModule,
     ExamChoiceModule
   ],
-  declarations: [AppComponent, AppRoutingModule.components, AlertComponent, ExpComponent],
+  declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
     ,GlobalModule
