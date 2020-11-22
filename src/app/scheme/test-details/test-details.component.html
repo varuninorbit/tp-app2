@@ -43,15 +43,14 @@
             <mat-panel-description>                           
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <div *ngIf="selectedMarkingStyle.mcq">
-            Right +{{selectedMarkingStyle.mcq.right}}
-            Wrong -{{selectedMarkingStyle.mcq.wrong}}
+        <div *ngIf="selectedMarkingStyleForMcq">
+            Right +{{selectedMarkingStyleForMcq}}
         </div>
 
         <mat-form-field appearance="fill">
             <mat-label>Select an option</mat-label>
-            <mat-select [(value)]="selectedMarkingStyle.mcq">
-              <mat-option [value]="style" *ngFor="let style of allMarkingStyles.mcq">
+            <mat-select [(value)]="selectedMarkingStyleForMcq">
+              <mat-option [value]="i" *ngFor="let style of allMarkingStyles.mcq; let i = index;">
                 +{{style.right}} -{{style.wrong}}
               </mat-option>
             </mat-select>

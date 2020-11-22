@@ -12,13 +12,12 @@ export class TestDetailsComponent implements OnInit {
   scheme;
   allSchemes;
   allMarkingStyles;
-  selectedMarkingStyle;
 
   constructor(private tepa: ShrimDataService) {
-    const t = tepa.tepa();
+    const t = tepa.tepa;
     this.author = t.author;
     this.scheme = t.scheme;//tepa().scheme.marking_style
-    this.selectedMarkingStyle = t.scheme.marking_style
+    
     this.allMarkingStyles = {
       mcq: [
         { right: 4, wrong: 1 },
@@ -28,10 +27,19 @@ export class TestDetailsComponent implements OnInit {
       mcq2: [],
       tnf: []
     }
+    
     window['testDetails'] = this;
   }
 
   ngOnInit(): void {
+  }  
+
+  get selectedMarkingStyleForMcq(){
+    return this.tepa.tepa.scheme.marking_style.mcq;
+  }
+
+  set selectedMarkingStyleForMcq(value){
+    this.tepa.tepa.scheme.marking_style.mcq = value;
   }
 
 }

@@ -62,35 +62,30 @@ export class ShrimDataService {
   }
 
 
-  tepa(){
-    let m = this;
-    return {
+  tepa={
       "scheme": {
-        "id": m.examChoice().id,
-        "name": m.examChoice().db_prefix,
-        "description": m.description(),
-        "questions_no": m.questionsNo(),
-        "type_of_questions": m.type_of_questions(),
-        "duration": m.duration(),    
-        "instruction":m.instructions(), 
+        "id": this.examChoice().id,
+        "name": this.examChoice().db_prefix,
+        "description": this.description(),
+        "questions_no": this.questionsNo(),
+        "type_of_questions": this.type_of_questions(),
+        "duration": this.duration(),    
+        "instruction":this.instructions(), 
         "marking_style": {
-          "mcq": {
-            "right": 3,
-            "wrong": -1
-          }
+          "mcq": 1
         }
       },
-      "author": m.author(),
-      "institute": m.institute(),
+      "author": this.author(),
+      "institute": this.institute(),
       "conset": {
-        "submission_time": m.submission_time(),
+        "submission_time": this.submission_time(),
         "marking_style": '',
-        "instructions": m.instructions()
+        "instructions": this.instructions()
       },
-      "password":m.password()
+      "password":this.password()
     }
   }
 
-}
+
 
 
