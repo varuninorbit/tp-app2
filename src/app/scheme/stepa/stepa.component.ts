@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ListItemDialogComponent } from 'src/app/list-item-dialog/list-item-dialog.component';
 
 @Component({
   selector: 'app-stepa',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openInstructionsDialog(){
+    const dialogRef = this.dialog.open(ListItemDialogComponent, {
+      width: '250px',
+      data: {test:'test'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog result ->',result);
+    });
   }
 
 }

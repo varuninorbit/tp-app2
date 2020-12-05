@@ -10,15 +10,18 @@ import { LaviComponent } from './lavi/lavi.component';
 import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
 import { StepaComponent } from './stepa/stepa.component';
 import { RedirectGuard } from '../_guards/redirect.guard';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 const routes: Routes = [
   { path: '', component: StepaComponent },
+ // { path: '', component: InstructionsComponent },
   { path: "scheme", component: SchemeComponent },
   { path: "lavi", component: LaviComponent },
   { path: "scheme/shrim", component: ShrimComponent },
   { path: "scheme/chapcil", component: ChapcilComponent },
   { path: "scheme/mcq-chapcil", component: McqChapcilComponent },
-  { path: "scheme/chikoo", component: ChikooComponent }  
+  { path: "scheme/chikoo", component: ChikooComponent },  
+  { path: "scheme/stepa", component: StepaComponent },  
 ];
 
 @NgModule({

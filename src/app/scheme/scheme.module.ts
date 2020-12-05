@@ -17,11 +17,16 @@ import { DateTimeDialogComponent } from '../date-time-dialog/date-time-dialog.co
 import { LaviComponent } from './lavi/lavi.component';
 import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam-choice-attributes.service';
 import { StepaComponent } from './stepa/stepa.component';
+import { InstructionsComponent } from './instructions/instructions.component';
+import { QuestionComponent } from '../test/questions/question/question.component';
+import { ListItemDialogComponent } from '../list-item-dialog/list-item-dialog.component';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
-    DateTimeDialogComponent, LaviComponent, StepaComponent],
-  entryComponents:[DateTimeDialogComponent],  
+    DateTimeDialogComponent, LaviComponent, StepaComponent, InstructionsComponent,
+    ListItemDialogComponent
+  ],
+  entryComponents:[DateTimeDialogComponent, ListItemDialogComponent],  
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 

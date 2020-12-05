@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-exp',
   template:`
-  <p>Exp 1 </p>
+  <button>Instructions</button>
   `,
   styleUrls: ['./exp.component.css']
 })

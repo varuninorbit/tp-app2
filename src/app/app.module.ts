@@ -46,6 +46,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
     ,GlobalModule
+    
   ],
   providers: [
     ExamChoiceService,

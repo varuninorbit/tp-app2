@@ -60,7 +60,8 @@ export class RootStateService {
                             ]
                         }
                     ]
-                }
+                },
+                { name: 'instructions'}
             ]
         };
     }
