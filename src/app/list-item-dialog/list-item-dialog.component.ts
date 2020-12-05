@@ -7,9 +7,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./list-item-dialog.component.css']
 })
 export class ListItemDialogComponent implements OnInit {
+  st:St
+  
 
   constructor(public dialogRef: MatDialogRef<ListItemDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: St) {
+      window['listDiag']= this;
+      this.st = data;
+     }
 
   ngOnInit(): void {
   }
@@ -18,7 +23,21 @@ export class ListItemDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  add(){
-    
+  add(instruction){
+    if(instruction.value==''){ 
+      return ;
+    }
+    this.st.instructions.push(instruction.value);
+    instruction.value = '';
   }
+
+  remove(i:number){
+    this.st.instructions.splice(i,1);
+  }
+}
+
+interface St{
+  instructions: string[];
+  label:string;
+  title:string;
 }

@@ -1,1 +1,24 @@
-<scheme-instructions></scheme-instructions>
+<p>{{st.title}}</p>
+<ol>
+    <li *ngFor="let instruction of st.instructions; index as i">
+        {{instruction}}
+
+        <button (click)="remove(i)"
+        mat-icon-button color="disabled">
+            <mat-icon>clear</mat-icon>
+        </button>
+        </li>
+</ol>
+
+
+<mat-form-field>
+    <mat-label>{{st.label}}</mat-label>
+    <input #instructionInput matInput type="text" />
+</mat-form-field>
+<button (click)="add(instructionInput)" mat-mini-fab color="accent">
+    <mat-icon>add</mat-icon>
+</button>
+<button mat-button [mat-dialog-close]="st.instructions" cdkFocusInitial>Ok</button>
+    
+
+

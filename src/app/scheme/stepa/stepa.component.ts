@@ -17,7 +17,12 @@ export class StepaComponent implements OnInit {
   openInstructionsDialog(){
     const dialogRef = this.dialog.open(ListItemDialogComponent, {
       width: '250px',
-      data: {test:'test'}
+      data: {instructions:[
+        'one', 'two', 'three', 'four', 'five', 'six'
+      ],
+      label: 'Put instructions here',
+      title: 'Instructions'
+    }
     });
 
     dialogRef.afterClosed().subscribe(result => {
