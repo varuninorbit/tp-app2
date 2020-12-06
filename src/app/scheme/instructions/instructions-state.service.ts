@@ -38,16 +38,4 @@ export class InstructionsStateService extends SubStateService {
   get cashBuster$(){
     return cacheBusterObserver$;
   }
-
-  add(instruction){
-    if(instruction==''){ 
-      return ;
-    }
-    this.state.instructions.push(instruction);
-    instruction = '';
-  }
-
-  remove(i:number){
-    this.state.instructions.splice(i,1);
-  }
 }
