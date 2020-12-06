@@ -24,7 +24,6 @@ export class InstructionsComponent implements OnInit {
 
   openInstructionsDialog(){
     const dialogRef = this.dialog.open(ListItemDialogComponent, {
-      width: '250px',
       data: {instructions:this.st.instructions,
       label: 'Put instructions here',
       title: 'Instructions'
