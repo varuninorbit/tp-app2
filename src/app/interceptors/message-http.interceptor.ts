@@ -29,6 +29,14 @@ export class MessageHttpInterceptor implements HttpInterceptor {
             catchError((err: any) => {
                 if(err instanceof HttpErrorResponse) {
                     try {
+                        //TODO: Edit this code
+                        /*
+                        if(err.error.message, err.error.title){
+                            this.notifier.show({
+                                type: 'error', 
+                                message: err.error.message
+                            })
+                        }*/
                         console.error(err.error.message, err.error.title);
                     } catch(e) {
                         console.error('An error occurred', '');

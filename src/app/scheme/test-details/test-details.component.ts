@@ -14,11 +14,8 @@ export class TestDetailsComponent implements OnInit {
   scheme;
   allSchemes;
   allMarkingStyles;
-  instructions=[];
 
-  constructor(private tepa: ShrimDataService,
-    private dialog: MatDialog
-    ) {
+  constructor(private tepa: ShrimDataService) {
     const t = tepa.tepa;
     this.author = t.author;
     this.scheme = t.scheme;//tepa().scheme.marking_style
@@ -45,31 +42,6 @@ export class TestDetailsComponent implements OnInit {
 
   set selectedMarkingStyleForMcq(value){
     this.tepa.tepa.scheme.marking_style.mcq = value;
-  }
-
-  openInstructionsDialog(){
-    const dialogRef = this.dialog.open(ListItemDialogComponent, {
-      width: '250px',
-      data: {instructions:this.instructionsCond(),
-      label: 'Put instructions here',
-      title: 'Instructions'
-    }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result!=undefined){
-        this.instructions = result;
-      }
-    });
-  }
-
-
-  instructionsCond(){
-    if(this.instructions.length==0){
-      return ['test'];
-    }else{
-      return this.instructions;
-    }
   }
 
 }

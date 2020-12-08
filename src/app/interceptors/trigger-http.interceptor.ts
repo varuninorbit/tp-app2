@@ -25,9 +25,12 @@ export class TriggerHttpInterceptor implements HttpInterceptor {
             catchError((err: any) => {
                 if(err instanceof HttpErrorResponse) {
                     try {
-                        //console.error(err.error.message, err.error.title);
+                        if(err.error && err.error.trigger){
+                            this.trigger.hit(err.error.trigger);
+                        }
+                       //console.error(err.error.message, err.error.title);
                     } catch(e) {
-                       // console.error('An error occurred in trigger', '');
+                       //console.error('An error occurred in trigger', '');
                     }
                     //log error 
                 }

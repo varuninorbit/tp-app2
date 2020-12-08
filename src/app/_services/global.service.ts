@@ -60,4 +60,8 @@ export class GlobalService{
     get tree(){
         return this.tree_;
     }
+
+    redirectToLogin(){
+        window.location.href='http://qpw_manage.test/login';
+    }
 }
