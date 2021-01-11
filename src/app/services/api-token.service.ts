@@ -8,6 +8,6 @@ export class ApiTokenService {
   }
 
   get token(): string {
-      return this.gs.store().apiToken; //TODO a register for apiToken type
+      return this.gs.store().user.api_token; //TODO a register for apiToken type
   }
 }
