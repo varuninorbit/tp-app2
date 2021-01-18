@@ -14,3 +14,7 @@ html,head,body {
 .bottom-bar{
     height: 3em;
 }
+
+mat-sidenav-container{
+    position: inherit;
+}

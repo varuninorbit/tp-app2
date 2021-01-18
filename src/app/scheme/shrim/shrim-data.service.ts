@@ -58,7 +58,7 @@ export class ShrimDataService {
   }
 
   password() {
-    this.rs.getSateOf('shrim').password
+    this.rs.getSateOf('shrim').pin;
   }
 
 

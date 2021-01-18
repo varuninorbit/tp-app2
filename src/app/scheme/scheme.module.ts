@@ -18,7 +18,6 @@ import { LaviComponent } from './lavi/lavi.component';
 import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam-choice-attributes.service';
 import { StepaComponent } from './stepa/stepa.component';
 import { InstructionsComponent } from './instructions/instructions.component';
-import { QuestionComponent } from '../test/questions/question/question.component';
 import { ListItemDialogComponent } from '../list-item-dialog/list-item-dialog.component';
 
 @NgModule({

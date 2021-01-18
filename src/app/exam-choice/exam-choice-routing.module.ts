@@ -5,12 +5,12 @@ import { ExamChoiceAddComponent } from "./exam-choice-add/exam-choice-add.compon
 
 const routes: Routes = [  
   {
-    path: "exam-choice",
+    path: "", component: ExamChoiceComponent,
     children: [
-      { path: "", component: ExamChoiceComponent },
       { path: "exam-choice-add", component: ExamChoiceAddComponent },
     ]
-  }
+  },
+  { path: "exam-choice", component: ExamChoiceComponent }
 ];
 
 @NgModule({

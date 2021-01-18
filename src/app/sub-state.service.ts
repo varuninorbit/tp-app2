@@ -52,12 +52,16 @@ export  abstract class SubStateService {
 
     Attach(){
       let node = this['rootStateService'].getNodesOfName(this.stateName)[0];
-      if(node!=undefined) {
-       if(node.model.state==undefined){
+      if(node!=undefined) { //node is defined
+       if(node.model.state==undefined){ //node state is not defined
         node.model.state = this.state;
-       }else{
+       }else{                           //node state is defined
         this.state = node.model.state;
        }
+      }else{ //node is defined       
+        if(node.model.state == undefined){   //state is undefined
+            node.model.state = this.state;
+        }
       }
       return this;
     }
@@ -78,7 +82,13 @@ export  abstract class SubStateService {
 
     get REMOVE_CHILDREN(){
         //deletes state of all children
-        this['rootStateService'].getNodesOfName('examChoice')[0].children.forEach(node=>{ delete node.model.state; });
+        this['rootStateService'].getNodesOfName('examChoice')[0]
+        .children.forEach(node=>
+            node.all().forEach(n=>{
+                if(n.model.state){ delete n.model.state; }
+            })
+        );
+
 
         //triggers cashBuster subject observable
         this['cashBuster$'].next();

@@ -11,8 +11,6 @@ import { ExamChoiceService } from "./exam-choice/exam-choice.service";
 import { AppRoutingModule } from "./app-routing.module";
 //import { LoginModule } from "./login/login.module";
 import { ExamChoiceModule } from "./exam-choice/exam-choice.module";
-import { AlertComponent } from "./_directives";
-import { AlertService } from "./_services";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
 import { MathJaxModule } from "ngx-mathjax";
@@ -29,10 +27,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    
-    AppRoutingModule,
-    
+    MaterialModule,    
+    AppRoutingModule,    
     MathJaxModule.forRoot({
       version: "2.7.5",
       config: "TeX-MML-AM_CHTML",
@@ -42,7 +38,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     GlobalModule,
     ExamChoiceModule
   ],
-  declarations: [AppComponent, AppRoutingModule.components, AlertComponent],
+  declarations: [AppComponent, AppRoutingModule.components],
   bootstrap: [AppComponent],
   exports: [RouterModule, FormsModule, ReactiveFormsModule, MathJaxModule
     ,GlobalModule
@@ -50,7 +46,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   ],
   providers: [
     ExamChoiceService,
-    AlertService,   
     GlobalService,
     ActionService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'}

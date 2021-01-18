@@ -4,7 +4,6 @@ import { ToggleMenuService } from './_services/toggle-menu.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActionService } from './services/action.service';
 import { UserService } from './user.service';
-import { store } from 'src/app/_services/store.service.js';
 import { StateService } from './state.service';
 import { GlobalService } from './_services';
 import { RootStateService } from './root-state.service';
