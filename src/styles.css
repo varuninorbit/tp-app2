@@ -13,3 +13,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: white;
     border: 2px solid chartreuse;
 }
+
+
+.primary-color {
+  color: #007bff
+}
+
+
+fab-bottom-right {
+  position: fixed !important;
+  right: 15px;
+  /* Add this and change value to set the margin you want */
+}
