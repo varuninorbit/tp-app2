@@ -7,6 +7,7 @@
     "app-lan1": "ng serve --host=192.168.1.3 --port=4200",
     "app-lan": "ng serve --host=localhost --port=4200 --deploy-url /tp-app/",
     "build": "ng build --deploy-url /tp-app/",
+    "prod": "ng build --deploy-url /tp-app/ --prod", 
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
