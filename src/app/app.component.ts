@@ -38,12 +38,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     //this.menu.opened
     window['appComp'] = this;
-    this.state.state$.subscribe(state => {
-      this.examChoiceName = state.currentChoice.name
-    })
+    // this.state.state$.subscribe(state => {
+    //   this.examChoiceName = state.currentChoice.name
+    // })
 
     this.examChoiceState.state$.subscribe(state => {
-      this.examChoiceName = state.currentChoice.name;
+      if(state.currentChoice){
+        this.examChoiceName = state.currentChoice.name;
+      }
     });    
   }
   mode = new FormControl('over');

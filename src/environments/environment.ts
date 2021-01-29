@@ -10,7 +10,13 @@ export const environment = {
 export const Urls = {
   host: "http://localhost:3000/",
   questionsAPI:"http://192.168.0.102:3001/exp/questionv2?&std=8&sub=mat&p_no=10&q_nos=10&ch=2",
-  apiBase: "http://qpw_manage.test/api/",
+  base:"http://qpw_manage.test/",
+  get apiBase (){
+    return this.base+'api/';
+  },
+  get login(){
+    return this.base+'login/';
+  },
   relativeURL: "authi/",
   everyQuery:'&XDEBUG_SESSION_START'
 }

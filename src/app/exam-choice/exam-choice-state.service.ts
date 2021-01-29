@@ -48,7 +48,7 @@ export class ExamChoiceStateService extends SubStateService {
   constructor(
     private ac: ActionService, private rootStateService: RootStateService) {
     super();
-    this.SetDefaultState(this.defaultState).
+    this. //SetDefaultState(this.defaultState).
       SetStateName('examChoice').
       Init();
 
@@ -69,6 +69,7 @@ export class ExamChoiceStateService extends SubStateService {
     return this;
   }
 
+  //TODO: Bug fix
   @Cacheable({
     cacheBusterObserver: cacheBusterObserver$.asObservable()
   })

@@ -5,8 +5,8 @@ export const environment = {
 
 export const Urls = {
   host: "http://localhost:3000/",
-  //apiBase: "https://paperabsolute.com/api/",
-  apiBase: "qpw_manage.test/api/",
+  apiBase: "https://paperabsolute.com/api/",
+  //apiBase: "http://qpw_manage.test/api/",
   relativeURL: "authi/",
   everyQuery:''
 }

@@ -1,5 +1,5 @@
 <div>
-    <app-card [param]="{title:st.currentChoice.name,rightCaption:'Selected Choice'}">
+    <app-card *ngIf="st.currentChoice" [param]="{title:st.currentChoice.name,rightCaption:'Selected Choice'}">
         <p class="mb-1"></p>
         <small></small>
     </app-card>

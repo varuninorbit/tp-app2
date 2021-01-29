@@ -8,6 +8,8 @@ export class ApiTokenService {
   }
 
   get token(): string {
-      return this.gs.store().user.api_token; //TODO a register for apiToken type
+      let store =  this.gs.store() ;
+      let Lstore = this.gs.literal.resolve(store);
+      return Lstore('user.api_token');
   }
 }

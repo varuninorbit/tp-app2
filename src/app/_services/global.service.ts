@@ -5,6 +5,7 @@ import { StateService } from '../state.service';
 import { LiteralService } from './literal.service';
 import * as _ from 'underscore';
 import * as Tree from 'tree-model';
+import { Urls } from 'src/environments/environment';
 
 @Injectable()
 export class GlobalService{
@@ -62,6 +63,6 @@ export class GlobalService{
     }
 
     redirectToLogin(){
-        window.location.href='http://qpw_manage.test/login';
+        window.location.href=Urls.login;
     }
 }
