@@ -24,6 +24,7 @@ import { ApiTokenService } from './services/api-token.service';
 import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
 import { RedirectGuard } from './_guards/redirect.guard';
+import { QeditModule } from './qedit/qedit.module';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { RedirectGuard } from './_guards/redirect.guard';
     NumberSpinnerComponent, PlutiComponent
   ],
   imports: [
-    CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule
+    CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule, QeditModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
   NgbModule, CheckboxComponent, NumberSpinnerComponent, PlutiComponent
