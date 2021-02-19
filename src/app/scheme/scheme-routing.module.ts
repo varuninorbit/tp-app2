@@ -9,6 +9,7 @@ import { ErrorReportComponent } from './error-report/error-report.component';
 import { LaviComponent } from './lavi/lavi.component';
 import { McqChapcilComponent } from './mcq-chapcil/mcq-chapcil.component';
 import { StepaComponent } from './stepa/stepa.component';
+import { CustmeComponent } from './custme/custme.component';
 //import { RedirectGuard } from '../_guards/redirect.guard';
 //import { InstructionsComponent } from './instructions/instructions.component';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "scheme/mcq-chapcil", component: McqChapcilComponent },
   { path: "scheme/chikoo", component: ChikooComponent },  
   { path: "scheme/stepa", component: StepaComponent },  
+  { path: "scheme/custme", component: CustmeComponent },  
 ];
 
 @NgModule({

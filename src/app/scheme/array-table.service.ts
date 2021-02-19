@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import * as _ from 'underscore';
 @Injectable({
   providedIn: 'root'
 })
 export class ArrayTableService {
+  constructor(){}
   private from(jsontable) {
     return this.arrayTable(jsontable);
   }
@@ -106,6 +107,41 @@ export class ArrayTableService {
   }
 
 
+  //matrix is array of elements [row1,row2,row3...]
+//matrix = [[1,2,2],[2,2,3],[2,3,3],[1,2,2],[1,2,2],[2,3,3]];
+
+//frequencyMatrix=[];
+// [[row1,f1],[row2,f2]]
+// f is frequency
+
+
+countFrequency(matrix,elem){
+      return matrix.reduce((carry,item)=>{
+  if(_.isEqual(item,elem)){ ++carry ;}
+    return carry;
+  },0)
+}
+
+removeRow(matrix,elem){
+     return matrix.filter((item)=>{
+        return (!_.isEqual(item,elem));
+    })
+}
+
+
+
+frequencyColumn(matrix){
+    let tMatrix = Object.assign([],matrix);
+    let frequencyCol=[];    
+    while(tMatrix.length){
+     let elem= tMatrix[0];
+     frequencyCol.push([elem,this.countFrequency(tMatrix,elem)]);
+     tMatrix = this.removeRow(tMatrix,elem);
+    }
+   return frequencyCol;
+}
+
+
 }
 
 /*
@@ -146,3 +182,5 @@ array_tbl =
   [4,2,3,5]
 ]
 */
+
+

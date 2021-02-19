@@ -19,11 +19,13 @@ import { ExamChoiceAttributesService } from '../exam-choice/exam-choice-add/exam
 import { StepaComponent } from './stepa/stepa.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { ListItemDialogComponent } from '../list-item-dialog/list-item-dialog.component';
+import { CustmeComponent } from './custme/custme.component';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
     DateTimeDialogComponent, LaviComponent, StepaComponent, InstructionsComponent,
-    ListItemDialogComponent
+    ListItemDialogComponent,
+    CustmeComponent
   ],
   entryComponents:[DateTimeDialogComponent, ListItemDialogComponent],  
   imports: [

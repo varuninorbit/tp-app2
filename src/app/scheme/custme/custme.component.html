@@ -1,0 +1,25 @@
+<br>
+<table class="table table-striped">
+    <tr>
+        <th>Q No</th>
+        <th>CHAPTER</th>
+        <th>MARKS</th>
+        <th>CATEGORY</th>
+    </tr>
+    <tr *ngFor="let i of [1,2,3]" (click)="add()">
+        <td>{{i}}</td>
+        <td>1</td>
+        <td>2</td>
+        <td>MCQ</td>
+    </tr>
+</table>
+<button>Add</button>
+
+
+<app-bottom-nav>    
+    <a  type="button" 
+    class="btn btn-primary btn-lg float-left">
+     <span class="fa fa-arrow-right text-light" ></span>
+    </a> 
+</app-bottom-nav>
+ 
