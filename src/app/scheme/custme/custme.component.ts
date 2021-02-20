@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ArrayTableService } from '../array-table.service';
+import { DatrixDialogComponent } from '../datrix-dialog/datrix-dialog.component';
 
 @Component({
   selector: 'app-custme',
@@ -8,20 +10,25 @@ import { ArrayTableService } from '../array-table.service';
 })
 export class CustmeComponent implements OnInit {
 
-  constructor(private ah: ArrayTableService) {
-    window['custme']=this;
-   }
+  constructor(private ah: ArrayTableService, private datrixDialog: MatDialog) {
+    window['custme'] = this;
+  }
 
   ngOnInit(): void {
   }
 
-  add(){
+  add() {
     let csv = confirm('Type separated by comma');
+
+  }
+
+  openDatrixDialog(): void {
+    const dialogRef = this.datrixDialog.open(DatrixDialogComponent);    
   }
 
 }
 
-/* 
+/*
 Q What data marix will be called ?
 A Datrix.
 

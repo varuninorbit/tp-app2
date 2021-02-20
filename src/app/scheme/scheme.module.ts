@@ -20,14 +20,16 @@ import { StepaComponent } from './stepa/stepa.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { ListItemDialogComponent } from '../list-item-dialog/list-item-dialog.component';
 import { CustmeComponent } from './custme/custme.component';
+import { DatrixDialogComponent } from './datrix-dialog/datrix-dialog.component';
 
 @NgModule({
   declarations: [SchemeRoutingModule.components, ShrimComponent, TestDetailsComponent, ConsetComponent, 
     DateTimeDialogComponent, LaviComponent, StepaComponent, InstructionsComponent,
     ListItemDialogComponent,
-    CustmeComponent
+    CustmeComponent,
+    DatrixDialogComponent
   ],
-  entryComponents:[DateTimeDialogComponent, ListItemDialogComponent],  
+  entryComponents:[DateTimeDialogComponent, ListItemDialogComponent, DatrixDialogComponent],  
   imports: [
     CommonModule, SchemeRoutingModule, MaterialModule, GlobalModule,
     FormsModule, MathJaxModule.forChild(), 

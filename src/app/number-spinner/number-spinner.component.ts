@@ -10,7 +10,7 @@ export class NumberSpinnerComponent implements OnInit {
   @Input('min') minValue: number;
   @Input('max') maxValue: number;
   @Input() step:number;
-  @Input() value=60;
+  @Input('start') value=60;
 
   @Output('getValue') valueEmit = new EventEmitter<number>();
 
