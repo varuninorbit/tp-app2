@@ -7,7 +7,6 @@ import { AppComponent } from "./app.component";
 //import { FaIconsComponent } from './nav/fa-icons/fa-icons.component';
 
 import { HttpClientModule } from "@angular/common/http";
-import { ExamChoiceService } from "./exam-choice/exam-choice.service";
 import { AppRoutingModule } from "./app-routing.module";
 //import { LoginModule } from "./login/login.module";
 import { ExamChoiceModule } from "./exam-choice/exam-choice.module";
@@ -45,7 +44,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     
   ],
   providers: [
-    ExamChoiceService,
     GlobalService,
     ActionService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'}

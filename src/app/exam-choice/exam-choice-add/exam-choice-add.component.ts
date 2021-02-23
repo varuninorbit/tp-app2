@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { INode } from "src/app/types/i-node";
-import { ExamChoiceService } from "../exam-choice.service";
 import { ExamChoiceServiceHierarchy } from "./exam-choice-hierarchy.service";
 @Component({
   selector: "app-exam-choice-add",
@@ -10,8 +9,7 @@ import { ExamChoiceServiceHierarchy } from "./exam-choice-hierarchy.service";
 export class ExamChoiceAddComponent implements OnInit {
   node: INode[];
   
-  constructor( private examChoice: ExamChoiceService, 
-    private examChoiceHierarchy: ExamChoiceServiceHierarchy
+  constructor( private examChoiceHierarchy: ExamChoiceServiceHierarchy
     ) {
     
       examChoiceHierarchy.examChoiceHierarchy.subscribe(node=>{

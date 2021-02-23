@@ -11,7 +11,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MessageHttpInterceptor } from './interceptors/message-http.interceptor';
 import { ConfirmDialog } from './confirm-dialog.component';
 import { MaterialModule } from './material/material.module';
-import { ExamChoiceService } from './exam-choice/exam-choice.service';
 import { TriggerHttpInterceptor } from './interceptors/trigger-http.interceptor';
 import { TriggerService } from './_services/trigger.service';
 import { ResconService } from './rescon.service';
@@ -40,7 +39,6 @@ import { RedirectGuard } from './_guards/redirect.guard';
     StateService, UserService, GlobalService, LiteralService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: MessageHttpInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: TriggerHttpInterceptor, multi: true},
-    ExamChoiceService, //TODO Check if it is redundant.
     TriggerService, ResconService, ApiTokenService, RootStateService,
     ExamChoiceStateService,
     RedirectGuard
