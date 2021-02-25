@@ -66,7 +66,7 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
   }
 
   getQuestionsFromServer(){
-    this.sm.LOAD_QUESTIONS_FROM_SERVER;
+    this.sm.LOAD_QUESTIONS_FROM_SERVER();
   }
 
   loadState(){
