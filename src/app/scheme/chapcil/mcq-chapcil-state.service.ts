@@ -44,12 +44,12 @@ export class McqChapcilStateService extends SubStateService {
       Init()
 
     if (this.state.chaptersBag.length === 0) {
-      this.LOAD_CHAPTERS;
+      this.LOAD_CHAPTERS();
     }    
   }
 
 
-  get LOAD_CHAPTERS() {
+  LOAD_CHAPTERS() {
 
     // ac2.get({apiGroup:'8th_mat_cb_en',keyval:true})
     // ('AExamChoice.attributes')().subscribe(r=>console.log(r))

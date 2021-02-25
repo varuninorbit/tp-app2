@@ -19,6 +19,10 @@ import { SchemeModule } from './scheme/scheme.module';
 import { GlobalModule } from './global.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
+import { GlobalCacheConfig } from 'ts-cacheable'; 
+import { LocalStorageStrategy } from 'ts-cacheable'; 
+GlobalCacheConfig.storageStrategy = LocalStorageStrategy;
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -49,4 +53,5 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'}
   ]
 })
+
 export class AppModule {}

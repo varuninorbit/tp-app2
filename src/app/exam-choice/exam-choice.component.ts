@@ -5,7 +5,6 @@ import { UserService } from "../user.service";
 import { ActionService } from '../services/action.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog.component';
-import { GlobalService } from '../_services';
 import { StateService } from '../state.service';
 import { ExamChoiceStateService } from './exam-choice-state.service';
 

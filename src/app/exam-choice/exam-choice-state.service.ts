@@ -50,15 +50,14 @@ export class ExamChoiceStateService extends SubStateService {
     super();
     this. //SetDefaultState(this.defaultState).
       SetStateName('examChoice').
-      Init();
-
+      Init();      
     if (this.state.currentChoice.name == "") {
-      this.LOAD_STATE;
+      this.LOAD_STATE();
     }
   }
 
 
-  get LOAD_STATE() {
+  LOAD_STATE() {
     this.userChoices().subscribe(({ choices, currentChoice }) => {
       this.UpdateState(state => {
         state.choices = choices;
@@ -69,7 +68,6 @@ export class ExamChoiceStateService extends SubStateService {
     return this;
   }
 
-  //TODO: Bug fix
   @Cacheable({
     cacheBusterObserver: cacheBusterObserver$.asObservable()
   })
@@ -81,7 +79,7 @@ export class ExamChoiceStateService extends SubStateService {
   makeCurrent(choice) {
     this.ac.get('AExamChoice')('updateCurrentChoice')(choice.id).subscribe((r) => {
       this.REMOVE_CHILDREN
-      .LOAD_STATE
+      .LOAD_STATE()
     });
   }
 

@@ -48,13 +48,13 @@ export class ChikooStateService extends SubStateService {
 
     if (this.loadingCondition_q()==true) {
       this
-        .LOAD_STATE
-        .LOAD_QUESTIONS_FROM_SERVER
+        .LOAD_STATE()
+        .LOAD_QUESTIONS_FROM_SERVER()
     }
   }
 
 
-  get LOAD_STATE() {
+  LOAD_STATE() {
     //initial code to load state    
     return this;
   }
@@ -63,7 +63,7 @@ export class ChikooStateService extends SubStateService {
     return cacheBusterObserver$;
   }
 
-  get LOAD_QUESTIONS_FROM_SERVER() {
+  LOAD_QUESTIONS_FROM_SERVER() {
     let arrayTable = this.globalState.state.arrayTable;
     this.ac.post('ASchema', true)
       ('loadQuestions')({ scheme: arrayTable }).subscribe(questionsList => {

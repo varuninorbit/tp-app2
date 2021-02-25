@@ -4,9 +4,8 @@ export const environment = {
 }
 
 export const Urls = {
- // host: "http://localhost:3000/",
- // questionsAPI:"http://192.168.0.102:3001/exp/questionv2?&std=8&sub=mat&p_no=10&q_nos=10&ch=2",
-  base:"https://paperabsolute.com/",
+  //base:"https://paperabsolute.com/",
+  base:"http://qpw_manage.test/",
   get apiBase (){
     return this.base+'api/';
   },
@@ -56,7 +55,7 @@ export let state={
   ],
   currentChoice:{
     "id": '0',
-    "name": "Exam Choice",
+    "name": "",
     "db_prefix": ""
   }
 };

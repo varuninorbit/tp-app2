@@ -1,16 +1,13 @@
 //import { basename } from "path";
 
 export const environment = {
-  //apiUrl: "http://192.168.0.103:3000/",
-  //apiUrl: "http://localhost:3000/",
   enableDebug: false,
   production: false
 };
 
 export const Urls = {
-  host: "http://localhost:3000/",
-  questionsAPI:"http://192.168.0.102:3001/exp/questionv2?&std=8&sub=mat&p_no=10&q_nos=10&ch=2",
   base:"http://qpw_manage.test/",
+  //base:"https://paperabsolute.com/",
   get apiBase (){
     return this.base+'api/';
   },
@@ -60,7 +57,7 @@ export let state={
   ],
   currentChoice:{
     "id": '0',
-    "name": "Exam Choice",
+    "name": "",
     "db_prefix": ""
   }
 };
