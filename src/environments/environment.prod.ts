@@ -4,16 +4,16 @@ export const environment = {
 }
 
 export const Urls = {
-  //base:"https://paperabsolute.com/",
-  base:"http://qpw_manage.test/",
+  base:"https://paperabsolute.com/",
+  //base:"http://qpw_manage.test/",
   get apiBase (){
     return this.base+'api/';
   },
   get login(){
     return this.base+'login/';
   },
-  relativeURL: "authi/",
-  everyQuery:'&XDEBUG_SESSION_START'
+  relativeURL: "authi/"
+  //,everyQuery:'&XDEBUG_SESSION_START'
 }
 
 export let state={
