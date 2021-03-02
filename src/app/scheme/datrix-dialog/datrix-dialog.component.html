@@ -1,28 +1,15 @@
 <h1>Datrix</h1>
 
+  {{selected | json}}
   <mat-form-field appearance="fill">
-    <mat-label>Chapter</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+    <mat-label [innerHTML]="name"></mat-label>
+    <mat-select  (selectionChange)="updateValue($event.value)">
+      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Category</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
-    </mat-select>
-  </mat-form-field>
-<br>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]='arrayTable' >Ok</button>
+  </mat-dialog-actions>
 
-<mat-card-content>
-  <mat-label>Marks</mat-label>
-  <div>
-    <app-number-spinner 
-    [step]="1" [min]="1" [max]="10" [start]="1"></app-number-spinner>
-  </div>
-</mat-card-content>
-  
 

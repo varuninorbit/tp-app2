@@ -141,30 +141,44 @@ export class ArrayTableService {
     return frequencyCol;
   }
 
-/* 
-twoValJsonObj(['a',1],['b',2])
-{a: 1, b: 2}
-*/
-  twoValJsonObj(c1,c2){
+  /* 
+  twoValJsonObj(['a',1],['b',2])
+  {a: 1, b: 2}
+  */
+  twoValJsonObj(c1, c2) {
     let o = new Object();
-    o[c1[0]]=c1[1]; o[c2[0]]=c2[1];
+    o[c1[0]] = c1[1]; o[c2[0]] = c2[1];
     return o;
   }
 
   /*
   {e1,e2,e3,e4,e1,e3}=> {e1,e2,e3,e4}
   */
-  uniqueCollection(collection){
-    return [... new Set(collection.map(i=>JSON.stringify(i)))].map(i=>JSON.parse(i as string))
+  uniqueCollection(collection) {
+    return [... new Set(collection.map(i => JSON.stringify(i)))].map(i => JSON.parse(i as string))
   }
 
   /*
   pluck two col unique
   */
-  entityArray(valueSheet,col1Name,col2Name){
-    let collection= valueSheet.map(i=>( this.twoValJsonObj([col1Name,i[col1Name]],[col2Name,i[col2Name]])));
+  entityObject(valueSheet, col1Name, col2Name) {
+    let collection = valueSheet.map(i => (this.twoValJsonObj([col1Name, i[col1Name]], [col2Name, i[col2Name]])));
     return this.uniqueCollection(collection);
   }
+
+  //entityArray(valueSheet,'chapter_name') => ['Rational nos', ...] | UNIQUE
+  entityArray(valueSheet, colName) {
+    return this.uniqueCollection(valueSheet.map(i => i[colName]));
+  }
+
+  /*
+  Returns another subset valuesheet against initial valusheet
+  e.g. valueSheetSubset(valueSheet,'chapter_id',1)
+  */
+  valueSheetSubset(valueSheet, key, value) {
+    return valueSheet.filter(i => (i[key] == value));
+  }
+
 }
 
 /*
