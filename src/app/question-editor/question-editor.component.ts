@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-editor.component.css']
 })
 export class QuestionEditorComponent implements OnInit {
-
-  constructor() { }
+  editor='';
+  constructor() {
+    window['qedit']=this;
+   }
 
   ngOnInit(): void {
   }

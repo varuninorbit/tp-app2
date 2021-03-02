@@ -6,6 +6,7 @@ import { DynamicDropComponent } from './exam-choice-add/dynamic-drop.component';
 import { ExamChoiceService } from './exam-choice.service';
 import { GlobalModule } from '../global.module';
 import { ExamChoiceServiceHierarchy } from './exam-choice-add/exam-choice-hierarchy.service';
+import { ConfirmDialog } from '../confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ExamChoiceServiceHierarchy } from './exam-choice-add/exam-choice-hierar
     ExamChoiceRoutingModule,
     GlobalModule
   ],
-  providers: [ ExamChoiceService, ExamChoiceServiceHierarchy]
+  providers: [ ExamChoiceService, ExamChoiceServiceHierarchy],
+  entryComponents:[ConfirmDialog]
 })
 export class ExamChoiceModule { }
