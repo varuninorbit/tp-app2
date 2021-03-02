@@ -4,7 +4,7 @@ import * as _ from 'underscore';
   providedIn: 'root'
 })
 export class ArrayTableService {
-  constructor(){}
+  constructor() { }
   private from(jsontable) {
     return this.arrayTable(jsontable);
   }
@@ -102,46 +102,69 @@ export class ArrayTableService {
     return questionsList[questionID].blk;
   }
 
-  stringArrayTointArray(arr:string[]): number[] {
-    return arr.map(i=>parseInt(i));
+  stringArrayTointArray(arr: string[]): number[] {
+    return arr.map(i => parseInt(i));
   }
 
 
   //matrix is array of elements [row1,row2,row3...]
-//matrix = [[1,2,2],[2,2,3],[2,3,3],[1,2,2],[1,2,2],[2,3,3]];
+  //matrix = [[1,2,2],[2,2,3],[2,3,3],[1,2,2],[1,2,2],[2,3,3]];
 
-//frequencyMatrix=[];
-// [[row1,f1],[row2,f2]]
-// f is frequency
+  //frequencyMatrix=[];
+  // [[row1,f1],[row2,f2]]
+  // f is frequency
 
 
-countFrequency(matrix,elem){
-      return matrix.reduce((carry,item)=>{
-  if(_.isEqual(item,elem)){ ++carry ;}
-    return carry;
-  },0)
-}
+  countFrequency(matrix, elem) {
+    return matrix.reduce((carry, item) => {
+      if (_.isEqual(item, elem)) { ++carry; }
+      return carry;
+    }, 0)
+  }
 
-removeRow(matrix,elem){
-     return matrix.filter((item)=>{
-        return (!_.isEqual(item,elem));
+  removeRow(matrix, elem) {
+    return matrix.filter((item) => {
+      return (!_.isEqual(item, elem));
     })
-}
+  }
 
 
 
-frequencyColumn(matrix){
-    let tMatrix = Object.assign([],matrix);
-    let frequencyCol=[];    
-    while(tMatrix.length){
-     let elem= tMatrix[0];
-     frequencyCol.push([elem,this.countFrequency(tMatrix,elem)]);
-     tMatrix = this.removeRow(tMatrix,elem);
+  frequencyColumn(matrix) {
+    let tMatrix = Object.assign([], matrix);
+    let frequencyCol = [];
+    while (tMatrix.length) {
+      let elem = tMatrix[0];
+      frequencyCol.push([elem, this.countFrequency(tMatrix, elem)]);
+      tMatrix = this.removeRow(tMatrix, elem);
     }
-   return frequencyCol;
-}
+    return frequencyCol;
+  }
 
+/* 
+twoValJsonObj(['a',1],['b',2])
+{a: 1, b: 2}
+*/
+  twoValJsonObj(c1,c2){
+    let o = new Object();
+    o[c1[0]]=c1[1]; o[c2[0]]=c2[1];
+    return o;
+  }
 
+  /*
+  {e1,e2,e3,e4,e1,e3}=> {e1,e2,e3,e4}
+  */
+  uniqueCollection(collection){
+    return [... new Set(collection.map(i=>JSON.stringify(i)))].map(i=>JSON.parse(i as string))
+  }
+
+  /*
+  pluck two col unique
+  */
+  entityArray(valueSheet,col1Name,col2Name){
+    let collection= valueSheet.map(i=>( this.twoValJsonObj([col1Name,i[col1Name]],[col2Name,i[col2Name]])));
+    return this.uniqueCollection(collection);
+  }
 }
 
 /*
