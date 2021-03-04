@@ -2,8 +2,22 @@
 
   {{selected | json}}
   <mat-form-field appearance="fill">
-    <mat-label [innerHTML]="name"></mat-label>
-    <mat-select  (selectionChange)="updateValue($event.value)">
+    <mat-label [innerHTML]="'Chapter'"></mat-label>
+    <mat-select  [(ngModel)]="selected.chapter" (selectionChange)="chapterChanged()">
+      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selected.chapter" appearance="fill">
+    <mat-label [innerHTML]="'Category'"></mat-label>
+    <mat-select  [(ngModel)]="selected.category" (selectionChange)="categoryChanged()">
+      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selected.category" appearance="fill">
+    <mat-label [innerHTML]="'marks'"  (selectionChange)="marksChanged()"></mat-label>
+    <mat-select  [(ngModel)]="selected.marks">
       <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
     </mat-select>
   </mat-form-field>

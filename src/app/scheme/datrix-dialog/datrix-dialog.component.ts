@@ -10,10 +10,9 @@ import * as _ from 'underscore';
 })
 export class DatrixDialogComponent implements OnInit {
 
-  selected:any =[];
-  options = [[1,2],[2,3],[3,4]];
- 
-  name ='parent';
+  selected:any = {chapter:''};
+  options = [[]];
+
   arrayTable=[[1,2,3],[3,4,5]];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ah: ArrayTableService) {
@@ -28,8 +27,26 @@ export class DatrixDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateValue(value){
-    this.selected[0]=value;
+  chapterChanged(){
+    this.ResetCategory().ResetMarks();
+  }
+
+  categoryChanged(){
+    this.ResetMarks();
+  }
+
+  marksChanged(){
+    
+  }
+
+  ResetCategory(){
+    this.selected.category='';
+    return this;
+  }
+
+  ResetMarks(){
+    this.selected.marks='';
+    return this;
   }
 
 }
