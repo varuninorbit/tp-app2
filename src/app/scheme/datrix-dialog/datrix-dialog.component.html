@@ -1,29 +1,29 @@
-<h1>Datrix</h1>
+<mat-form-field appearance="fill">
+  <mat-label [innerHTML]="'Chapter'"></mat-label>
+  <mat-select [(ngModel)]="selected.chapter" (selectionChange)="chapterChanged()">
+    <mat-option [value]="option[0]" *ngFor="let option of chapters">{{option[1]}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
-  {{selected | json}}
-  <mat-form-field appearance="fill">
-    <mat-label [innerHTML]="'Chapter'"></mat-label>
-    <mat-select  [(ngModel)]="selected.chapter" (selectionChange)="chapterChanged()">
-      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-form-field *ngIf="selected.chapter" appearance="fill">
+  <mat-label [innerHTML]="'Category'"></mat-label>
+  <mat-select [(ngModel)]="selected.category" (selectionChange)="categoryChanged()">
+    <mat-option [value]="option[0]" *ngFor="let option of categories">{{option[1]}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
-  <mat-form-field *ngIf="selected.chapter" appearance="fill">
-    <mat-label [innerHTML]="'Category'"></mat-label>
-    <mat-select  [(ngModel)]="selected.category" (selectionChange)="categoryChanged()">
-      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field *ngIf="selected.category" appearance="fill">
-    <mat-label [innerHTML]="'marks'"  (selectionChange)="marksChanged()"></mat-label>
-    <mat-select  [(ngModel)]="selected.marks">
-      <mat-option [value]="option[0]" *ngFor="let option of options">{{option[1]}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-dialog-actions>
-    <button mat-button [mat-dialog-close]='arrayTable' >Ok</button>
-  </mat-dialog-actions>
+<mat-form-field *ngIf="selected.category" appearance="fill">
+  <mat-label [innerHTML]="'marks'"></mat-label>
+  <mat-select [(ngModel)]="selected.marks" (selectionChange)="marksChanged()">
+    <mat-option [value]="option" *ngFor="let option of marks">{{option}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
 
+<br>
+<app-number-spinner *ngIf="selected.marks" [config]="numberSpinnerConfig" (getValue)="setNoOfQuestions($event)">
+</app-number-spinner>
+
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]='selected'>Ok</button>
+</mat-dialog-actions>

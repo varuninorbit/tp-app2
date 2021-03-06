@@ -7,34 +7,36 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class NumberSpinnerComponent implements OnInit {
   
-  @Input('min') minValue: number;
-  @Input('max') maxValue: number;
-  @Input() step:number;
-  @Input('start') value=60;
+  // @Input('min') minValue: number;
+  // @Input('max') maxValue: number;
+  // @Input() step: number;
+  // @Input('start') value=60;
+
+  @Input() config={min:1,max:10,step:1,start:1};
 
   @Output('getValue') valueEmit = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
   }
   
   add(){
-    this.value +=this.step;
-    if(this.value > this.maxValue){
-      this.value = this.minValue;      
+    this.config.start +=this.config.step;
+    if(this.config.start > this.config.max){
+      this.config.start = this.config.min;      
     }
          
-    this.emit(this.value);   
+    this.emit(this.config.start);   
   }
 
   subtract(){
-    this.value -=this.step;
-    if(this.value < this.minValue){
-      this.value = this.maxValue;
+    this.config.start -=this.config.step;
+    if(this.config.start < this.config.min){
+      this.config.start = this.config.max;
     }
     
-    this.emit(this.value);
+    this.emit(this.config.start);
   }
 
   emit(value){
@@ -42,13 +44,15 @@ export class NumberSpinnerComponent implements OnInit {
   }
 
   limitMaxAndMin(){
-    if(this.value < this.minValue){
-      this.value = this.maxValue;
+    if(this.config.start < this.config.min){
+      this.config.start = this.config.max;
     }
 
-    if(this.value > this.maxValue){
-      this.value = this.minValue;      
+    if(this.config.start > this.config.max){
+      this.config.start = this.config.min;      
     }
   }
+
+
 
 }

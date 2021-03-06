@@ -9,7 +9,7 @@
         <button mat-button (click)="getTestDate()">Test Date {{testDate | date: 'medium'}}</button>
         <div>
             <span class="badge-pill h6" style="vertical-align: -webkit-baseline-middle;">Duration</span>
-            <app-number-spinner (getValue)="getValue($event)" [step]="15" [min]="15" [max]="240"></app-number-spinner>
+            <app-number-spinner (getValue)="getValue($event)" [config]="{min:15,max:240,step:15,start:15}"></app-number-spinner>
             <span class="badge-pill h6" style="vertical-align: -webkit-baseline-middle;">Minutes</span>
         </div>
     </mat-card-content>

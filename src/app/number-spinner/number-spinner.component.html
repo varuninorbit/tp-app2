@@ -1,5 +1,5 @@
 <div class="qty">
     <span class="minus bg-primary" (click)="subtract()">-</span>
-    <input [min]="minValue" [max]="maxValue" type="number" class="count" name="qty" [(ngModel)]="value" (ngModelChange)="limitMaxAndMin()">
+    <input [min]="config.min" [max]="config.max" type="number" class="count" name="qty" [(ngModel)]="config.start" (ngModelChange)="limitMaxAndMin()">
     <span class="plus bg-primary" (click)="add()">+</span>
 </div>
