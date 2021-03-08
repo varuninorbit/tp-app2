@@ -20,10 +20,13 @@
 </mat-form-field>
 
 
-<br>
-<app-number-spinner *ngIf="selected.marks" [config]="numberSpinnerConfig" (getValue)="setNoOfQuestions($event)">
-</app-number-spinner>
 
-<mat-dialog-actions>
-  <button mat-button [mat-dialog-close]='selected'>Ok</button>
-</mat-dialog-actions>
+<div *ngIf="selected.marks">
+  <mat-label>Number of Questions</mat-label><br>
+  <app-number-spinner  [config]="numberSpinnerConfig" (getValue)="setNoOfQuestions($event)">
+  </app-number-spinner>
+
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]='selected'>Ok</button>
+  </mat-dialog-actions>
+</div>
