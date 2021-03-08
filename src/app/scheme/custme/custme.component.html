@@ -1,16 +1,10 @@
 <br>
 <table class="table table-striped">
     <tr>
-        <th>Q No</th>
-        <th>CHAPTER</th>
-        <th>MARKS</th>
-        <th>CATEGORY</th>
+        <th *ngFor="let heading of arrayTable[0]">{{heading.split('_')[0]}}</th>
     </tr>
-    <tr *ngFor="let i of [1,2,3]" (click)="add()">
-        <td>{{i}}</td>
-        <td>1</td>
-        <td>2</td>
-        <td>MCQ</td>
+    <tr *ngFor="let row of arrayTable[1]" (click)="add()">
+        <td *ngFor="let no of row">{{ no }}</td>        
     </tr>
 </table>
 <button (click)="openDatrixDialog()">Add</button>

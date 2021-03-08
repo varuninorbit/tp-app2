@@ -16,7 +16,7 @@ import { ChikooStateService } from './chikoo-state.service';
   styleUrls: ['./chikoo.component.css'],
   providers: [ChikooStateService]
 })
-export class ChikooComponent implements OnInit, AfterContentChecked ,AfterContentInit{
+export class ChikooComponent implements OnInit{
   questionsList:IQuestionsList[];
   showBud:boolean[]; 
   edit:number;
@@ -35,7 +35,6 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     ) { 
     window['chikoo']=this;
     //this.getQuestionsFromServer();
-    this.loadState();
     this.showBud=[];    
     this.edit=-1;
 
@@ -69,13 +68,6 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     this.sm.LOAD_QUESTIONS_FROM_SERVER();
   }
 
-  loadState(){
-    //this.st = this.gs.store()['chikoo'];
-  }
-
-  saveState(){
-    this.gs.store()['chikoo']= this.st;
-  }
 
   reloadQuestions(){
     this.getQuestionsFromServer();
@@ -86,14 +78,6 @@ export class ChikooComponent implements OnInit, AfterContentChecked ,AfterConten
     return (!this.showBud[i])
     ?true
     :false;
-  }
-
-  ngAfterContentChecked(){
-    //window['jQuery'].event.trigger('mathjax-typeset');
-  }
-  
-  ngAfterContentInit(){
-    
   }
 
   _(str){

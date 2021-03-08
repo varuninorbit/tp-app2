@@ -9,9 +9,38 @@ import { DatrixDialogComponent } from '../datrix-dialog/datrix-dialog.component'
   styleUrls: ['./custme.component.css']
 })
 export class CustmeComponent implements OnInit {
+  arrayTable=[
+    [
+      "chapter_id",
+      "category_id",
+      "marks",
+      "no"
+    ],
+    [
+      [
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        7,
+        1,
+        1,
+        6
+      ],
+      [
+        4,
+        1,
+        0,
+        5
+      ]
+    ]
+  ];
 
   constructor(private ah: ArrayTableService, private datrixDialog: MatDialog) {
     window['custme'] = this;
+
   }
 
   get valueSheet() {
@@ -636,8 +665,7 @@ export class CustmeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   add() {
     let csv = confirm('Type separated by comma');

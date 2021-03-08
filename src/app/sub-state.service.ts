@@ -10,21 +10,35 @@ import { BehaviorSubject, Subject } from "rxjs";
 @Injectable({
     providedIn: "root",
 })
-export  abstract class SubStateService {    
+export  abstract class SubStateService {
+    //default state. If nothing is set this is used.    
     defaultState: any;
+
+    //temp state variable;
     state_: {};
+
+    //name of the state which is used in state tree.
     stateName = '';
+
+    //reference of parent state where this state is attached 
+    //as children
     parentState_:any;
+
+    //state$ rxjs subject. It emits when state changes.
     state$:BehaviorSubject<any>; 
 
-    constructor() { 
+    constructor() {
+        //rxjs initialized 
         this.state$ = new BehaviorSubject<any>(this.state_);      
     }
 
+    //TODO: check if working in production
+    //emits about new state when it is set.
     set state(state_){
         this.state$.next(state_);
     }
 
+    //returns current state value from rxSubject.
     get state(){
         return this.state$.getValue();
     }
@@ -39,6 +53,8 @@ export  abstract class SubStateService {
         return this;
     }
 
+    //initialized on each state.
+    //this is to be called from children
     Init() {        
         this.
         CopyDefaultStateToState().
@@ -46,10 +62,12 @@ export  abstract class SubStateService {
         return this;
     }
 
+    //return parent state
     get parent() {
         return this['rootStateService'].getNodesOfName(this.stateName)[0].parent;
     }
 
+    //attaches state to parent
     Attach(){
       let node = this['rootStateService'].getNodesOfName(this.stateName)[0];
       if(node!=undefined) { //node is defined
