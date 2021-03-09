@@ -58,6 +58,13 @@ export class RootStateService {
                                 {name:'chikoo'},
                                 {name:'shrim'},
                             ]
+                        },
+                        {
+                            name:'custme',
+                            children: [
+                                {name:'chikoo'},
+                                {name:'shrim'},
+                            ]
                         }
                     ]
                 },

@@ -69,18 +69,21 @@ export  abstract class SubStateService {
 
     //attaches state to parent
     Attach(){
-      let node = this['rootStateService'].getNodesOfName(this.stateName)[0];
-      if(node!=undefined) { //node is defined
-       if(node.model.state==undefined){ //node state is not defined
-        node.model.state = this.state;
-       }else{                           //node state is defined
-        this.state = node.model.state;
-       }
-      }else{ //node is defined       
-        if(node.model.state == undefined){   //state is undefined
-            node.model.state = this.state;
-        }
-      }
+      let node = this['rootStateService'].getNodesOfName(this.stateName)
+      .forEach(node => {          
+        if(node!=undefined) { //node is defined
+            if(node.model.state==undefined){ //node state is not defined
+             node.model.state = this.state;
+            }else{                           //node state is defined
+             this.state = node.model.state;
+            }
+           }else{ //node is defined       
+             if(node.model.state == undefined){   //state is undefined
+                 node.model.state = this.state;
+             }
+           }
+      });
+     
       return this;
     }
 

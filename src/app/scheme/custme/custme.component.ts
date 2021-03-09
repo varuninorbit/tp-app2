@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ArrayTableService } from '../array-table.service';
 import { DatrixDialogComponent } from '../datrix-dialog/datrix-dialog.component';
+import { CustmeStateService } from './custme-state.service';
 
 @Component({
   selector: 'app-custme',
@@ -9,38 +10,15 @@ import { DatrixDialogComponent } from '../datrix-dialog/datrix-dialog.component'
   styleUrls: ['./custme.component.css']
 })
 export class CustmeComponent implements OnInit {
-  arrayTable=[
-    [
-      "chapter_id",
-      "category_id",
-      "marks",
-      "no"
-    ],
-    [
-      [
-        3,
-        1,
-        0,
-        3
-      ],
-      [
-        7,
-        1,
-        1,
-        6
-      ],
-      [
-        4,
-        1,
-        0,
-        5
-      ]
-    ]
-  ];
+  st = {arrayTable:{}};
 
-  constructor(private ah: ArrayTableService, private datrixDialog: MatDialog) {
+  constructor(private ah: ArrayTableService, 
+    private datrixDialog: MatDialog,
+    private sm: CustmeStateService
+    ) {
     window['custme'] = this;
 
+    this.st = this.sm.state;
   }
 
   get valueSheet() {
