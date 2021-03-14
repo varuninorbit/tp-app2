@@ -14,7 +14,7 @@ export class DatrixDialogComponent implements OnInit {
   selected:any = {chapter:'',category:'',marks:'',q_no:''};
   chapters = [[]];
   categories =[[]];
-  valuesheet:any={};
+  valuesheet:Array<Object> =[];
   marks:string[]=[];
   maxQuestions:number=0;
 

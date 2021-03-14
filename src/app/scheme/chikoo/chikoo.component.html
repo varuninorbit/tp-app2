@@ -24,7 +24,7 @@
 
 <app-bottom-nav>
 
-    <a type="button" routerLink='/scheme/shrim' class="btn btn-primary btn-lg float-left">
+    <a type="button" [href]="urls.base+'test/custom/saved'" class="btn btn-primary btn-lg float-left">
         <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
     </a>
     <a type="button" (click)="reloadQuestions()" class="btn btn-primary btn-lg float-left">

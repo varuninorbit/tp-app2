@@ -7,11 +7,11 @@
         <td *ngFor="let no of row">{{ no }}</td>        
     </tr>
 </table>
-<button (click)="openDatrixDialog()">Add</button>
+<button (click)="addRow()">Add</button>
 
 
 <app-bottom-nav>    
-    <a  type="button" 
+    <a  type="button" routerLink='/scheme/chikoo'
     class="btn btn-primary btn-lg float-left">
      <span class="fa fa-arrow-right text-light" ></span>
     </a> 

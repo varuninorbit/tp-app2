@@ -9,6 +9,7 @@ import { ErrorReportComponent } from '../error-report/error-report.component';
 import { ExamChoiceAttributesService } from 'src/app/exam-choice/exam-choice-add/exam-choice-attributes.service';
 import { GlobalService } from 'src/app/_services';
 import { ChikooStateService } from './chikoo-state.service';
+import { Urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chikoo',
@@ -25,6 +26,8 @@ export class ChikooComponent implements OnInit{
   errorQuestionID:number;
   st ={chapters:[], categories:[], questionsList:[]};
 
+  urls = Urls;
+
   constructor(private ac:ActionService, private state: StateService,
     private li:LiteralService,
     private sc:SchemeCreateService,
@@ -39,7 +42,7 @@ export class ChikooComponent implements OnInit{
     this.edit=-1;
 
     this.st = this.sm.state;
-    this.getAttribs();    
+    this.getAttribs();
   }
 
   ngOnInit(): void {
