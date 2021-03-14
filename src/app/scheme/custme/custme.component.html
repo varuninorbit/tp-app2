@@ -1,7 +1,7 @@
 <br>
 <table class="table table-striped">
     <tr>
-        <th *ngFor="let heading of st.arrayTable[0]">{{heading.split('_')[0]}}</th>
+        <th *ngFor="let heading of st.arrayTable[0]">{{heading.split('_')[0] | uppercase}}</th>
     </tr>
     <tr *ngFor="let row of st.arrayTable[1]" (click)="add()">
         <td *ngFor="let no of row">{{ no }}</td>        

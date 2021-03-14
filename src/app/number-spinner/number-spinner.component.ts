@@ -19,6 +19,7 @@ export class NumberSpinnerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {   
+    this.emit(this.config.start);
   }
   
   add(){
