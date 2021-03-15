@@ -22,7 +22,9 @@ export class CustmeComponent implements OnInit, OnDestroy {
     private stateService: StateService) {
     window['custme'] = this;
 
-    this.st = this.sm.state;
+    this.sm.state$.subscribe(state=>{
+      this.st = state;
+    });
   }
 
   valueSheet = [
@@ -646,7 +648,9 @@ export class CustmeComponent implements OnInit, OnDestroy {
 
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.sm.Attach();
+  }
 
   add() {
     let csv = confirm('Type separated by comma');

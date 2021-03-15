@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterContentChecked, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentChecked, AfterContentInit, OnDestroy } from '@angular/core';
 import { ActionService } from 'src/app/services/action.service';
 import { StateService } from 'src/app/state.service';
 import { IQuestionsList } from 'src/app/types/i-questions-list';
@@ -10,21 +10,22 @@ import { ExamChoiceAttributesService } from 'src/app/exam-choice/exam-choice-add
 import { GlobalService } from 'src/app/_services';
 import { ChikooStateService } from './chikoo-state.service';
 import { Urls } from 'src/environments/environment';
-
+import { IChickooState } from './i-chickoo-state';
+import { RootStateService } from 'src/app/root-state.service';
 @Component({
   selector: 'app-chikoo',
   templateUrl: './chikoo.component.html',
   styleUrls: ['./chikoo.component.css'],
   providers: [ChikooStateService]
 })
-export class ChikooComponent implements OnInit{
+export class ChikooComponent implements OnInit, OnDestroy{
   questionsList:IQuestionsList[];
   showBud:boolean[]; 
   edit:number;
   
   showErrorComponent_q=false;
   errorQuestionID:number;
-  st ={chapters:[], categories:[], questionsList:[]};
+  st:IChickooState ={chapters:[], categories:[], questionsList:[]};
 
   urls = Urls;
 
@@ -34,7 +35,8 @@ export class ChikooComponent implements OnInit{
     private dialog: MatDialog,
     private attrib: ExamChoiceAttributesService,
     private gs: GlobalService,
-    private sm: ChikooStateService
+    private sm: ChikooStateService,
+    private rs: RootStateService
     ) { 
     window['chikoo']=this;
     //this.getQuestionsFromServer();
@@ -116,6 +118,20 @@ export class ChikooComponent implements OnInit{
 
   getCategory(id){
     return this.st.categories[id-1].name
+  }
+
+  transport(){
+    //save state to store;
+    this.gs.store().appSt= this.rs.root.model;
+  }
+
+  ngOnDestroy(){
+    this.transport();
+  }
+
+  openInQpw(){
+    this.transport();
+    window.open("/test/custom/saved?page=appst", "_blank")
   }
 
 }

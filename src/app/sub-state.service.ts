@@ -10,7 +10,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 @Injectable({
     providedIn: "root",
 })
-export  abstract class SubStateService {
+export abstract class SubStateService {
     //default state. If nothing is set this is used.    
     defaultState: any;
 
@@ -22,29 +22,29 @@ export  abstract class SubStateService {
 
     //reference of parent state where this state is attached 
     //as children
-    parentState_:any;
+    parentState_: any;
 
     //state$ rxjs subject. It emits when state changes.
-    state$:BehaviorSubject<any>; 
+    state$: BehaviorSubject<any>;
 
     constructor() {
         //rxjs initialized 
-        this.state$ = new BehaviorSubject<any>(this.state_);      
+        this.state$ = new BehaviorSubject<any>(this.state_);
     }
 
     //TODO: check if working in production
     //emits about new state when it is set.
-    set state(state_){
+    set state(state_) {
         this.state$.next(state_);
     }
 
     //returns current state value from rxSubject.
-    get state(){
+    get state() {
         return this.state$.getValue();
     }
 
     SetDefaultState(defaultState) {
-        this.defaultState = defaultState;        
+        this.defaultState = defaultState;
         return this;
     }
 
@@ -55,10 +55,10 @@ export  abstract class SubStateService {
 
     //initialized on each state.
     //this is to be called from children
-    Init() {        
+    Init() {
         this.
-        CopyDefaultStateToState().
-        Attach()
+            CopyDefaultStateToState().
+            Attach()
         return this;
     }
 
@@ -68,53 +68,47 @@ export  abstract class SubStateService {
     }
 
     //attaches state to parent
-    Attach(){
-      let node = this['rootStateService'].getNodesOfName(this.stateName)
-      .forEach(node => {          
-        if(node!=undefined) { //node is defined
-            if(node.model.state==undefined){ //node state is not defined
-             node.model.state = this.state;
-            }else{                           //node state is defined
-             this.state = node.model.state;
-            }
-           }else{ //node is defined       
-             if(node.model.state == undefined){   //state is undefined
-                 node.model.state = this.state;
-             }
-           }
-      });
-     
-      return this;
+    Attach() {
+        let node = this['rootStateService'].getNodesOfName(this.stateName)
+            .forEach(node => {
+                if(node?.model?.state){ //state is present
+                    this.state = node.model.state; //load state from tree
+                }else{
+                    node.model.state = this.state; //load state to tree
+                }
+            });
+
+        return this;
     }
 
-    CopyDefaultStateToState(){ 
+    CopyDefaultStateToState() {
         this.state = Object.assign({}, this.defaultState);
         return this;
     }
 
-    UpdateState(callback){
+    UpdateState(callback) {
         this.state$.next(callback(this.state));
     }
 
-    get EMIT_STATE(){ 
+    get EMIT_STATE() {
         this.state$.next(this.state);
         return this;
     }
 
-    get REMOVE_CHILDREN(){
+    get REMOVE_CHILDREN() {
         //deletes state of all children
         this['rootStateService'].getNodesOfName('examChoice')[0]
-        .children.forEach(node=>
-            node.all().forEach(n=>{
-                if(n.model.state){ delete n.model.state; }
-            })
-        );
+            .children.forEach(node =>
+                node.all().forEach(n => {
+                    if (n.model.state) { delete n.model.state; }
+                })
+            );
 
 
         //triggers cashBuster subject observable
         this['cashBuster$'].next();
         return this;
-    }  
+    }
 
 }
 
