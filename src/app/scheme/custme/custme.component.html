@@ -1,3 +1,5 @@
+<span class="alert d-inline-flex h3 modal-dialog" style="background: #007bff29;"
+>Blue Print</span>
 <br>
 <table class="table table-striped">
     <tr>
@@ -7,7 +9,10 @@
         <td *ngFor="let no of row">{{ no }}</td>        
     </tr>
 </table>
-<button (click)="addRow()">Add</button>
+<button (click)="addRow()"
+mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>add</mat-icon>
+  </button>
 
 
 <app-bottom-nav>    
