@@ -6,17 +6,22 @@
     </app-card>
     <div class="list-group">
         <div *ngFor="let choice of st.choices">
-            <div [hidden]="choice.id == st.currentChoice.id" 
-            (click)="openChoicesDialog(choice)" href="#" class="list-group-item list-group-item-action ">
-                <strong >{{choice.name}}</strong>
+            <div [hidden]="choice.id == st.currentChoice.id" (click)="openChoicesDialog(choice)" href="#"
+                class="list-group-item list-group-item-action ">
+                <strong>{{choice.name}}</strong>
             </div>
         </div>
     </div>
-    
+
     <app-bottom-nav>
-        <a type="button" routerLink="add" class="btn btn-lg btn-outline-light float-left"
-            style="margin-left: 10px;">
-            Add Choice
+        <a type="button" routerLink="add" class="btn btn-lg btn-outline-light float-left" style="margin-left: 10px;">
+            More
         </a>
+
+        <span>
+            <a class="btn btn-lg btn-outline-light float-left" routerLink='/scheme/mcq-chapcil'>MCQ</a>
+            <a class="btn btn-lg btn-outline-light float-left" routerLink='/scheme/custme'>Blue Print</a>
+        </span>
+
     </app-bottom-nav>
 </div>

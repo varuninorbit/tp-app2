@@ -25,7 +25,7 @@ export class ExamChoiceComponent implements OnInit {
     private ac: ActionService, private dialog: MatDialog,
     private state: StateService
   ) {    
-    window['examChoice'] = this;    
+    window['examChoice'] = this; 
   }
 
   
