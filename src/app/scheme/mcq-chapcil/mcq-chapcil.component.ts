@@ -46,6 +46,7 @@ export class McqChapcilComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.stateManager.LOAD_CHAPTERS();
   }
  
 

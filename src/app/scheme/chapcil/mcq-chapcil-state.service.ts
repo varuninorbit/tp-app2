@@ -62,8 +62,8 @@ export class McqChapcilStateService extends SubStateService {
     return this;
   }
 
-  @Cacheable({cacheBusterObserver: cacheBusterObserver$.asObservable()})
-
+  //@Cacheable({cacheBusterObserver: cacheBusterObserver$.asObservable()})
+debugger;
   chapters$(examChoice){       
     return this.ac.
         get({query:'exam_choice='+examChoice+'&'})
