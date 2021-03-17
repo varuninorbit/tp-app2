@@ -1,4 +1,4 @@
-<p>Questions List</p>
+<app-top-title>Questions List</app-top-title>
 <div [hidden]="showErrorComponent_q">
     <div *ngFor="let question of st.questionsList; let i = index" (mouseover)="showBud[i]=true"
         (mouseout)="showBud[i]=false" class="border bottom-bar breadcrumb" mathjax>
@@ -25,7 +25,7 @@
 <app-bottom-nav>
 
     <a type="button" (click)="openInQpw()" class="btn btn-primary btn-lg float-left">
-        <span class="fa fa-arrow-right text-light" data-toogle="tooltip"></span>
+        <span class="fa fa-chevron-right text-light" data-toogle="tooltip"></span>
     </a>
     <a type="button" (click)="reloadQuestions()" class="btn btn-primary btn-lg float-left">
         <span class="fa fa-refresh text-light" data-toogle="tooltip"></span>

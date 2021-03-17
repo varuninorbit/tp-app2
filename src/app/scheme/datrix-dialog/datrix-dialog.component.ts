@@ -59,7 +59,7 @@ export class DatrixDialogComponent implements OnInit {
   ChaptersFromSheet(){
     let ids= this.ah.entityArray(this.valuesheet,'chapter_id')
       let chapters= this.ah.entityArray(this.data,'chapter_name')
-      this.chapters = _.zip(ids,chapters);
+      this.chapters = _.zip(ids,chapters).sort(this.sortNo);
       return this;
   }
 
@@ -71,7 +71,7 @@ export class DatrixDialogComponent implements OnInit {
     let vs = this.categoryValueSheet();
     let ids= this.ah.entityArray(vs,'category_id')
     let categories= this.ah.entityArray(vs,'category_name')
-    this.categories= _.zip(ids,categories);
+    this.categories= _.zip(ids,categories).sort(this.sortNo);
     return this;
   }
 
@@ -97,8 +97,6 @@ export class DatrixDialogComponent implements OnInit {
     this.selected.q_no=$e;   
   }
 
-
-
-
+  sortNo=(a,b)=>(a[0]-b[0]); //sorts nos in inc order
 
 }

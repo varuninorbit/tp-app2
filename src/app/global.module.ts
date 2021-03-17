@@ -24,17 +24,18 @@ import { RootStateService } from './root-state.service';
 import { ExamChoiceStateService } from './exam-choice/exam-choice-state.service';
 import { RedirectGuard } from './_guards/redirect.guard';
 import { QeditModule } from './qedit/qedit.module';
+import { TopTitleComponent } from './top-title.component';
 
 
 @NgModule({
   declarations: [BackButtonDirective, BottomNavComponent, ConfirmDialog, CheckboxComponent, 
-    NumberSpinnerComponent, PlutiComponent
+    NumberSpinnerComponent, PlutiComponent, TopTitleComponent
   ],
   imports: [
     CommonModule, NotifierModule, MaterialModule, NgbModule, FormsModule, QeditModule
   ],
   exports:[BackButtonDirective,BottomNavComponent, NotifierModule, ConfirmDialog,
-  NgbModule, CheckboxComponent, NumberSpinnerComponent, PlutiComponent
+  NgbModule, CheckboxComponent, NumberSpinnerComponent, PlutiComponent, TopTitleComponent
   ],
   providers:[
     StateService, UserService, GlobalService, LiteralService, UserService,
