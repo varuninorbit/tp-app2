@@ -4,8 +4,8 @@ export const environment = {
 }
 
 export const Urls = {
-  //base:"https://paperabsolute.com/",
-  base:"http://qpw_manage.test/",
+  base:"https://paperabsolute.com/",
+  // base:"http://qpw_manage.test/",
   get apiBase (){
     return this.base+'api/';
   },

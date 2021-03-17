@@ -35,12 +35,13 @@ export class CustmeStateService extends SubStateService {
   }
 
   LOADING_CONDITION(){
-      return true
+      return (this.state.arrayTable[1].length===0)?true:false;
   }
 
   //TODO: Check that it can be pur for cache busting
   loadValueSheet(){
-    this.ac.get({query:'exam_choice=9th_mat_cb_en'})('AExamChoice.valueSheet')()
+    let exam_choice = this.rootStateService.getSateOf('examChoice').currentChoice.db_prefix;
+    this.ac.get({query:`exam_choice=${exam_choice}`})('AExamChoice.valueSheet')()
     .subscribe(r=>{
       this.state.valueSheet = r;
     })

@@ -12,7 +12,7 @@ import { ValueSheetHelper } from './ValueSheeHelper';
   styleUrls: ['./custme.component.css']
 })
 export class CustmeComponent implements OnInit, OnDestroy {
-  st = { arrayTable:[],valueSheet:[]};
+  st:any;
   vh = new ValueSheetHelper();
 
   constructor(private ah: ArrayTableService,
@@ -22,9 +22,7 @@ export class CustmeComponent implements OnInit, OnDestroy {
     private stateService: StateService) {
     window['custme'] = this;
 
-    this.sm.state$.subscribe(state=>{
-      this.st = state;
-    });
+    this.st = this.sm.state;
   }
 
  

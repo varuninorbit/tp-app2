@@ -43,6 +43,7 @@ export class McqChapcilStateService extends SubStateService {
       SetStateName('mcqChapcil').
       Init()
 
+
     if (this.state.chaptersBag.length === 0) {
       this.LOAD_CHAPTERS();
     }    
@@ -50,7 +51,7 @@ export class McqChapcilStateService extends SubStateService {
 
 
   LOAD_CHAPTERS() {
-
+    
     // ac2.get({apiGroup:'8th_mat_cb_en',keyval:true})
     // ('AExamChoice.attributes')().subscribe(r=>console.log(r))
     
