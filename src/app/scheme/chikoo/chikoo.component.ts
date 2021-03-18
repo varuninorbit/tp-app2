@@ -12,6 +12,7 @@ import { ChikooStateService } from './chikoo-state.service';
 import { Urls } from 'src/environments/environment';
 import { IChickooState } from './i-chickoo-state';
 import { RootStateService } from 'src/app/root-state.service';
+import { Action2Service } from 'src/app/services/action2.service';
 @Component({
   selector: 'app-chikoo',
   templateUrl: './chikoo.component.html',
@@ -36,7 +37,8 @@ export class ChikooComponent implements OnInit, OnDestroy{
     private attrib: ExamChoiceAttributesService,
     private gs: GlobalService,
     private sm: ChikooStateService,
-    private rs: RootStateService
+    private rs: RootStateService,
+    private ac2: Action2Service
     ) { 
     window['chikoo']=this;
     //this.getQuestionsFromServer();
@@ -105,7 +107,9 @@ export class ChikooComponent implements OnInit, OnDestroy{
   }
 
   getAttribs(){
-    this.attrib.observable.subscribe(({chapters,categories})=>{
+    let exam_choice = this.rs.getSateOf('examChoice').currentChoice.db_prefix;
+    this.ac2.get({ apiGroup: exam_choice, cache: '&cache', keyval: true })('AExamChoice.attributes')()
+    .subscribe(({chapters,categories})=>{
       this.st.chapters= chapters;
       this.st.categories= categories;
     })

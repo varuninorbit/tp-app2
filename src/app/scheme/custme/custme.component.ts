@@ -27,8 +27,8 @@ export class CustmeComponent implements OnInit, OnDestroy {
 
  
 
-  ngOnInit(): void { 
-    this.sm.Attach();
+  ngOnInit(): void {
+    this.sm.LOAD_STATE;
   }
 
   add() {
